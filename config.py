@@ -1,7 +1,9 @@
 """
 Common module for all the static data used in the different tests
 """
+
 import os
+import random
 import json
 import webbrowser
 
@@ -10,7 +12,10 @@ import webbrowser
 TESTS_PATH = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_PATHS = r"%s\outs" % TESTS_PATH
 OUTPUT_PATHS_LOCALS_HTML = r"%s\locals\outs\html" % TESTS_PATH
+OUTPUT_TEMPS = r"C:\tmps"
 
+#
+IMG_PATH = "https://raw.githubusercontent.com/epykure/epyk-ui/master/epyk/static/images"
 
 # Extra static information with the links of the different external websites
 URL_w3c = r"https://www.w3schools.com/html/tryit.asp?filename=tryhtml_basic"
@@ -59,3 +64,18 @@ def get_data(name, n=None, map_cols_type=None):
         rec[c] = t(rec[c])
       records.append(rec)
   return records
+
+
+def getSeries(count, size, negatives=0.1, missing=0.2):
+  data = []
+  #
+  neg = size * [False]
+  miss = size * [False]
+  for s in range(size):
+    data.append({"x": s, 'r': random.randint(0, 10), 'g': random.randint(0, 5)})
+    for c in range(count):
+      if miss[s]:
+        continue
+
+      data[-1][c] = random.randint(0, 10000) / 100 * (-1 if neg[s] else 1)
+  return data
