@@ -9,13 +9,15 @@ Those template a ready do use
 Presentation
 ================================
 
-This repository is spit in multiple folders
+This repository is split in multiple folders
 
 
 Locals
 ---------------
 Those are static report which will generate HTML pages when they are imported.
 Those pages can the be opened in any web browsers.
+
+Those reports are tutorials in order to explain how to use the components / modules. 
 
 The Javascript external dependencies will not be downloaded an they will be retrieved on the fly by the browser
 
