@@ -64,6 +64,7 @@ if COMPONENTS:
   import locals.file_list
   import locals.file_image
   import locals.file_select
+  import locals.file_radio
   import locals.file_button
   import locals.file_bespoke
   print("")
