@@ -44,7 +44,7 @@ By default, the server package embeds a Flask app as it is easier to install and
 
 The Framework can be included within a Jupyter or JupyterLab project. But this will lead to some limitations - for example Ajax and Socket will not be available.
 
-It  can also be integrated to a pure Javascript Framework like Angular or NodeJs as it will only rendere JS packages
+It  can also be integrated to a pure Javascript Framework like Angular or NodeJs as it will only render JS packages
 
 Coming Soon
 ================================
