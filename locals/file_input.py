@@ -9,9 +9,9 @@ input = rptObj.ui.inputs.d_range(3)
 text_area = rptObj.ui.inputs.textarea("This is a textarea")
 
 
-# contents = rptObj.ui.contents()
+contents = rptObj.ui.contents()
 #
-# rptObj.ui.title("title", contents=contents)
+rptObj.ui.title("title")
 # rptObj.ui.title("title", level=2, contents=contents)
 # rptObj.ui.title("title", contents=contents)
 #
