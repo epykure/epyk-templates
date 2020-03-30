@@ -4,13 +4,13 @@ import time
 sys.path.append("../epyk-ui")
 
 
-CHARTS = True
-GEO = True
+CHARTS = False
+GEO = False
 PACKAGES = True
-COMPONENTS = True
-TABLES = True
-TEXT = True
-LAYOUT = True
+COMPONENTS = False
+TABLES = False
+TEXT = False
+LAYOUT = False
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -36,9 +36,11 @@ if CHARTS:
 #
 if GEO:
   print("Processing Geo examples.... ")
+  start = time.time()
   import locals.file_geo_chartjs
   import locals.file_geo_dc
   import locals.file_geo_plotly
+  print("total time: %s" % (time.time() - start))
   print("")
 
 
@@ -47,10 +49,15 @@ if GEO:
 #
 if PACKAGES:
   print("Processing PACKAGES examples.... ")
+  start = time.time()
   import locals.file_jquery_ui
+  import locals.file_jquery_ui_datepicker
+  import locals.file_jquery_ui_slider
+  import locals.file_jquery_ui_timepicker
   import locals.file_d3
   import locals.file_data_vis
   import locals.file_data_crossfilter
+  print("total time: %s" % (time.time() - start))
   print("")
 
 
@@ -59,14 +66,17 @@ if PACKAGES:
 #
 if COMPONENTS:
   print("Processing COMPONENTS examples.... ")
+  start = time.time()
   import locals.file_canvas
   import locals.file_svg
+  import locals.file_icons
   import locals.file_list
   import locals.file_image
   import locals.file_select
   import locals.file_radio
   import locals.file_button
   import locals.file_bespoke
+  print("total time: %s" % (time.time() - start))
   print("")
 
 
@@ -75,10 +85,13 @@ if COMPONENTS:
 #
 if TABLES:
   print("Processing TABLES examples.... ")
+  start = time.time()
   import locals.file_table
   import locals.file_tables_d3
+  import locals.file_tables_plotly
   import locals.file_tables_datatable
   import locals.file_tables_tabulator
+  print("total time: %s" % (time.time() - start))
   print("")
 
 
@@ -86,10 +99,13 @@ if TABLES:
 # TEXT
 #
 if TEXT:
+  print("Processing TEXT examples.... ")
+  start = time.time()
   import locals.file_rich_texts
   import locals.file_input
   import locals.file_texts
   import locals.file_links
+  print("total time: %s" % (time.time() - start))
   print("")
 
 
@@ -97,11 +113,14 @@ if TEXT:
 # LAYOUT AND NAVIGATION
 #
 if LAYOUT:
+  print("Processing LAYOUT examples.... ")
+  start = time.time()
   import locals.file_navigation
   import locals.file_menu
   import locals.file_popup
   import locals.file_panels
   # import locals.file_form
+  print("total time: %s" % (time.time() - start))
   print("")
 
 
@@ -113,3 +132,4 @@ if LAYOUT:
 # -------------------------------------------------------------------------------------------------------------------
 # WEBSITES
 #
+
