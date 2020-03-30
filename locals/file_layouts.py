@@ -16,6 +16,8 @@ rptObj.theme = ThemeDark.Dark()
 # Console component
 c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
+rptObj.ui.layouts.iframe("http://www.google.com")
+
 #
 # dd = rptObj.ui.icon("fas fa-arrow-down").css({"border": '1px solid black', "position": 'fixed', "width": 'none',
 #                    "border-radius": '20px', "padding": '8px', "right": '20px'})
@@ -44,6 +46,30 @@ rptObj.ui.navigation.pin()
 #   p.click(i, [b.build(rptObj.js.objects.this), rptObj.js.console.log(rptObj.js.objects.this.getAttribute("data-position"))])
 #   d.click(i, [])
 #   ind.click(i, [])
+
+# tab = rptObj.ui.layouts.pills()
+# tab.add_panel("test", rptObj.ui.div("Test Content"))
+# tab.add_panel("test 2", rptObj.ui.div("Test Content 2"))
+
+
+# tab2 = rptObj.ui.layouts.tabs()
+# tab2.add_panel("test", rptObj.ui.div("Test Content"))
+# tab2.add_panel("test 2", rptObj.ui.layouts.col([
+#   rptObj.ui.div("Test Content 3")]))
+
+
+# fixed = rptObj.ui.layouts.slide([], title="This is a title")
+# fixed += rptObj.ui.title("Sub title")
+#fixed.title.click([
+#  rptObj.js.getElementsByName("panel_%s" % fixed.htmlId).first.toggle()
+#])
+
+#div = rptObj.ui.layouts.panelsplit(left=number, right=number_2, resizable=True)
+#div = rptObj.ui.layouts.tabs([number, number_3, number_2, number_4])
+
+# rptObj.ui.layouts.dialogs()
+
+rptObj.ui.layouts.hr()
 
 rptObj.ui.layouts.new_line(5)
 

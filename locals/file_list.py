@@ -28,6 +28,10 @@ data = [{"label": 'test', 'items': [
 
 # t2 = rptObj.ui.trees.tree(data)
 
+# list = rptObj.ui.lists.styles()
+# list.add_list("test", ["Test", "test 2"])
+# list.add_list("test2", ["Test", "test 2"])
+
 #
 # rptObj.ui.grid([t1, t2])
 
