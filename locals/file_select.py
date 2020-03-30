@@ -15,7 +15,14 @@ c = rptObj.ui.rich.console("* This is a log section for all the events in the di
 data = rptObj.py.requests.csv(data_urls.AIRPORT_TRAFFIC, store_location=config.OUTPUT_TEMPS)
 
 select = rptObj.ui.select(data, column="airport")
+select.options.showTick = True
+select.options.title = "Select title"
+
 multi = rptObj.ui.select(data, column="city", multiple=True)
+multi.options.actionsBox = False
+multi.options.header = "Test Select"
+multi.options.selectOnTab = True
+multi.options.showTick = True
 
 # Create a lookup object
 lookupData = {"Akron-Canton Regional": [
