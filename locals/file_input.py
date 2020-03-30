@@ -10,8 +10,7 @@ text_area = rptObj.ui.inputs.textarea("This is a textarea")
 
 
 contents = rptObj.ui.contents()
-#
-rptObj.ui.title("title")
+
 # rptObj.ui.title("title", level=2, contents=contents)
 # rptObj.ui.title("title", contents=contents)
 #
@@ -48,11 +47,6 @@ data = [{"value": 'test', '_children': [
   ]
          }]
 
-rptObj.ui.texts.number(28, title="Total RFQs", color="green")
-rptObj.ui.texts.number(9, title="Working", color="orange")
-rptObj.ui.texts.number(4, title="Done", color="green")
-rptObj.ui.texts.number(15, title="Missed", color="red")
-
 
 # w = rptObj.ui.workflow([
 #   {"value": 'test 1', "status": 'success', 'label': 'test'},
@@ -80,13 +74,24 @@ rptObj.ui.row([
   ])
 ])
 
+input = rptObj.ui.input()
+input.options.css({"color": 'red'})
+input.options.toFixed(4)
+
+rptObj.ui.button("Build Input").click([
+  # For the color to orange to show the button has been clicked
+  input.build("1234.456789")
+])
+
+rptObj.ui.fields.input(label="Label Input")
 rptObj.ui.fields.now(label="test")
 rptObj.ui.fields.cob(label="test")
 
 i = rptObj.ui.fields.static(label="test", value="Test 2", placeholder="Read only", helper="RRRR")
 rptObj.ui.fields.integer(label="test", value="Test 2", placeholder="Number", icon="fas fa-sort-numeric-up-alt", helper="Youpi")
 p = rptObj.ui.fields.password(label="test", value="Test 2", placeholder="password", icon="fas fa-unlock-alt")
-rptObj.ui.fields.range(54, min=20, label="test", icon="fas fa-unlock-alt")
+rptObj.ui.fields.range(54, min=20, label="Range 1", icon="fas fa-unlock-alt").tooltip("With an output")
+rptObj.ui.fields.range(54, min=20, label="Range 2", icon="fas fa-unlock-alt", options={"output": False})
 
 rptObj.ui.fields.checkbox(True, label="Check")
 rptObj.ui.fields.radio(True, label="Check", group_name="test")
@@ -114,7 +119,7 @@ p.input.focus(rptObj.js.console.log("ok"), options={"reset": True})
 # ----------------
 # Component Inputs
 rptObj.ui.fields.today("2019-11-18", label="timestamp", color="red", helper="This is the report timestamp")
-rptObj.ui.fields.now(label="timestamp", color="red", helper="This is the report timestamp")
+rptObj.ui.fields.now(label="timestamp", helper="This is the report timestamp")
 rptObj.ui.fields.cob(label="Date").selectable(["2019-09-01", "2019-09-06"])
 
 #-------------------
@@ -131,7 +136,7 @@ input.tooltip("Test")
 rptObj.ui.inputs.input("RRRRRRRRR")
 
 input = rptObj.ui.input()
-#input.quantity()
+
 input.enter(rptObj.js.console.log(input.dom.val))
 
 print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="report_input"))
