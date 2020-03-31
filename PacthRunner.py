@@ -54,6 +54,7 @@ if PACKAGES:
   import locals.file_jquery_ui_datepicker
   import locals.file_jquery_ui_slider
   import locals.file_jquery_ui_menu
+  import locals.file_jquery_ui_autocomplete
   import locals.file_jquery_ui_progressbar
   import locals.file_timepicker
   import locals.file_d3
