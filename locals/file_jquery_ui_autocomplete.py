@@ -20,7 +20,7 @@ rptObj.ui.button("click").click([
   c.write(field.input.dom.content)
 ])
 
-# 
+#
 rptObj.ui.button("Empty").click([
   field.input.dom.empty(),
   text.dom.empty(),

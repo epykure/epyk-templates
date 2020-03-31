@@ -74,6 +74,7 @@ if COMPONENTS:
   import locals.file_svg
   import locals.file_icons
   import locals.file_list
+  import locals.file_tree
   import locals.file_image
   import locals.file_select
   import locals.file_radio
