@@ -385,6 +385,8 @@ rptObj.ui.icons.awesome(icon="fas fa-align-center", text="This is a text")
 rptObj.ui.buttons.check(label="test")
 rptObj.ui.buttons.radio(["A", "B"])
 rptObj.ui.buttons.toggle({'on': "true", 'off': 'false'})
+rptObj.ui.buttons.button('Confirm')
+rptObj.ui.buttons.important('Important')
 #
 # c.move()
 
