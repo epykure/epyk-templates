@@ -159,6 +159,8 @@ simple_table = rptObj.ui.tables.grid(rec, cols=["col_%s" % i for i in range(int(
 #  ts[0].build("ok")
 #])
 
+rptObj.ui.buttons.zipfile("This is the data", "filename.txt")
+
 # ps.title.style.css.color = "red"
 #
 # rptObj.ui.input("test")

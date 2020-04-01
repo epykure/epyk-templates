@@ -28,6 +28,16 @@ car = rptObj.ui.images.carrousel(["epykIcon.PNG", "epyklogo.ico", "epyklogo_whol
                                  path=config.IMG_PATH, height=(200, 'px'))
 car.click([rptObj.js.console.log('data', skip_data_convert=True)])
 
+#
+c1 = rptObj.ui.images.badge(3, icon="far fa-bell", url="test")
+c1.style.display = None
+rptObj.ui.layouts.div([c1], align='right')
+rptObj.ui.button("display").click(c1.dom.toggle())
+
+# from epyk.core.html import Defaults
+#
+# Defaults.SERVER_PATH = r"C:\Pictures"
+# rptObj.ui.images.animated("philo.PNG")
 
 rptObj.ui.images.emoji(rptObj.symbols.smileys.DISAPPOINTED_FACE)
 #

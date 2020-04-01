@@ -8,7 +8,7 @@ import config
 rptObj = Report()
 rptObj.body.set_background()
 
-data = config.getSeries(5, 30)
+data_series = config.getSeries(5, 30)
 
 z1 = [[
     [8.83,8.89,8.81,8.87,8.9,8.87],
@@ -34,23 +34,27 @@ z1 = [[
 # data_line_3d = r'https://raw.githubusercontent.com/plotly/datasets/master/mesh_dataset.txt'
 
 # data = rptObj.py.requests.csv(data_line_3d, delimiter=" ", with_header=False)
-#
-# sc = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2], x_axis=0)
-# sc.layout.no_background()
-# sc.layout.no_grid()
+
+
 
 data = rptObj.py.requests.csv(data_urls.PLOTLY_WEBGL_POLAR, store_location=config.OUTPUT_TEMPS)
 
 sc = rptObj.ui.charts.plotly.scatterpolar(data, r_columns=['trial_1_r'], theta_axis='trial_1_theta')
-# shape = sc.layout.shapes.add_line(-100, 10, -50, -10, color="red")
-# an = sc.layout.annotations
-# an.text = "Super"
-# an.x = 10
-# an.y = 10
-# an.showarrow = False
-# an.font.color = 'red'
+sc.layout.no_background()
 
-#shape = sc.layout.shapes.circle('2015-01-31', 1, '2016-01-01', 1)
+sc = rptObj.ui.charts.plotly.scatter(data_series, y_columns=[1, 2], x_axis=0)
+sc.layout.no_background()
+sc.layout.no_grid()
+
+shape = sc.layout.shapes.add_line(-100, 10, -50, -10, color="red")
+an = sc.layout.annotations
+an.text = "Super"
+an.x = 10
+an.y = 10
+an.showarrow = False
+an.font.color = 'red'
+
+# shape = sc.layout.shapes.circle('2015-01-31', 1, '2016-01-01', 1)
 # shape.type = 'rect'
 # shape.xref = 'x'
 # shape.yref = 'paper'
@@ -61,120 +65,119 @@ sc = rptObj.ui.charts.plotly.scatterpolar(data, r_columns=['trial_1_r'], theta_a
 # shape.fillcolor = 'yellow'
 
 
-# s3d = rptObj.ui.charts.plotly.scatter3d(data, y_columns=["y1", "y2"], x_columns=["x1", "x2"], z_columns=["z1", "z2"])
-# s3d.data.opacity = 0.5
-# s3d.layout.grid_colors('white')
-# s3d.layout.axis_colors('white')
-# s3d.layout.no_background()
-
-#
-# pie = rptObj.ui.charts.plotly.pie()
-# pie.data.values = [2, 3, 4, 4]
-# pie.data.type = "pie"
-# pie.data.textinfo = "label+percent"
-# pie.data.textposition = "outside"
-# pie.data.automargin = True
-# pie.data.labels = ["Wages", "Operating expenses", "Cost of sales", "Insurance"]
-# pie.layout.no_background()
-# pie.data.outsidetextfont.color = 'white'
-
-# line = rptObj.ui.charts.plotly.line()
-# line.data.x = [19097, 18601, 15595, 13546, 12026, 7434, 5419]
-# line.data.y = [43, 47, 56, 80, 86, 93, 80]
-# line.data.mode = 'markers'
-# line.data.type = 'scatter'
-# line.data.name = 'Latin America'
-# line.data.text = ['Chile', 'Argentina', 'Mexico', 'Venezuela', 'Venezuela', 'El Salvador', 'Bolivia']
-# line.layout.no_grid()
-# line.layout.no_background()
+s3d = rptObj.ui.charts.plotly.scatter3d(data, y_columns=["y1", "y2"], x_columns=["x1", "x2"], z_columns=["z1", "z2"])
+s3d.data.opacity = 0.5
+s3d.layout.grid_colors('white')
+s3d.layout.axis_colors('white')
+s3d.layout.no_background()
 
 
-# bar = rptObj.ui.charts.plotly.bar()
-# bar.layout.no_background()
-# bar.layout.grid_colors('grey')
-# bar.layout.axis_colors('white')
-# bar.data.x = ['giraffes', 'orangutans', 'monkeys']
-# bar.data.y = [12, 18, 29]
-# bar.data.name = 'LA Zoo'
-# bar.data.type = 'bar'
-# bar.layout.barmode = 'stack'
+pie = rptObj.ui.charts.plotly.pie()
+pie.data.values = [2, 3, 4, 4]
+pie.data.type = "pie"
+pie.data.textinfo = "label+percent"
+pie.data.textposition = "outside"
+pie.data.automargin = True
+pie.data.labels = ["Wages", "Operating expenses", "Cost of sales", "Insurance"]
+pie.layout.no_background()
+pie.data.outsidetextfont.color = 'white'
+
+line = rptObj.ui.charts.plotly.line()
+line.data.x = [19097, 18601, 15595, 13546, 12026, 7434, 5419]
+line.data.y = [43, 47, 56, 80, 86, 93, 80]
+line.data.mode = 'markers'
+line.data.type = 'scatter'
+line.data.name = 'Latin America'
+line.data.text = ['Chile', 'Argentina', 'Mexico', 'Venezuela', 'Venezuela', 'El Salvador', 'Bolivia']
+line.layout.no_grid()
+line.layout.no_background()
+
+
+bar = rptObj.ui.charts.plotly.bar()
+bar.layout.no_background()
+bar.layout.grid_colors('grey')
+bar.layout.axis_colors('white')
+bar.data.x = ['giraffes', 'orangutans', 'monkeys']
+bar.data.y = [12, 18, 29]
+bar.data.name = 'LA Zoo'
+bar.data.type = 'bar'
+bar.layout.barmode = 'stack'
 
 
 
 #pie.layout.plot_bgcolor = 'rgba(0,0,0,0)'
 
-# mp = rptObj.ui.charts.plotly.maps(z1)
-# mp.data.contours.z.show = True
-# mp.data.contours.z.usecolormap = True
-# mp.data.contours.z.project.z = True
-#
+mp = rptObj.ui.charts.plotly.maps(z1)
+mp.data.contours.z.show = True
+mp.data.contours.z.usecolormap = True
+mp.data.contours.z.project.z = True
+
 
 # me = rptObj.ui.charts.plotly.mesh3d(data, intensity="x", x=1, y=2, z=3)
-#
-# gs = rptObj.ui.geo.plotly.scatter([])
-# d = rptObj.ui.geo.plotly.density([])
-#
-# l = rptObj.ui.charts.plotly.line(data, y_columns=[1, 2, 3, 4], x_axis='x')
-# # su = rptObj.ui.charts.plotly.ribbon(data, y_columns=[1, 4], x_axis='x', z_axis='z')
-# sur = rptObj.ui.charts.plotly.surface(data, y_columns=[1], x_axis='x', z_axis=2)
-# b = rptObj.ui.charts.plotly.bar(data, y_columns=[1, 2], x_axis='x')
-# b.add_trace({"x": [1, 3 , 4, 5], 'y': [12, 10, 11, 7]}, type="scatter")
-#
-# hist = rptObj.ui.charts.plotly.histogram(data, x_columns=['y', 'z'])
-# h = rptObj.ui.charts.plotly.hbar(data, y_columns=[3, 4], x_axis='x')
-# s = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2], x_axis='x')
-# a = rptObj.ui.charts.plotly.area(data, y_columns=[1, 2], x_axis='x')
-#
-# bu = rptObj.ui.charts.plotly.bubble(data, y_columns=[1, 2], x_axis='x')
-# bu.layout.title = "Test"
-# bu.layout.showlegend = True
-#
-# p1 = rptObj.ui.charts.plotly.pie(data, y_columns=[2], x_axis='g')
-# p1.data.hole = 0.4
-# p1.data.textposition = "inside"
-#
-# p2 = rptObj.ui.charts.plotly.pie(data, y_columns=[1], x_axis='g')
-
-# s2 = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2, 3, 4], x_axis='x')
-# s2.traces(1).axis_index(3)
-# s2.traces(2).axis_index(2)
-# s2.traces(3).axis_index(4)
-# s2.layout.sub_plot(2, 2)
-# s2.layout.title = "Test Subplots"
 
 #
-# s3 = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2], x_axis='x')
-# s3.traces(1).axis_index(2)
-# s3.layout.xaxis.domain = [0, 0.7]
-# s3.layout.xaxis2.domain = [0.8, 1]
-# s3.layout.yaxis2.anchor = 'x2'
-# s3.layout.title = "Test Subplots 2"
+
+l = rptObj.ui.charts.plotly.line(data, y_columns=[1, 2, 3, 4], x_axis='x')
+su = rptObj.ui.charts.plotly.ribbon(data, y_columns=[1, 4], x_axis='x', z_axis='z')
+sur = rptObj.ui.charts.plotly.surface(data, y_columns=[1], x_axis='x', z_axis=2)
+b = rptObj.ui.charts.plotly.bar(data, y_columns=[1, 2], x_axis='x')
+b.add_trace({"x": [1, 3 , 4, 5], 'y': [12, 10, 11, 7]}, type="scatter")
+
+hist = rptObj.ui.charts.plotly.histogram(data, x_columns=['y', 'z'])
+h = rptObj.ui.charts.plotly.hbar(data, y_columns=[3, 4], x_axis='x')
+s = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2], x_axis='x')
+a = rptObj.ui.charts.plotly.area(data, y_columns=[1, 2], x_axis='x')
+
+bu = rptObj.ui.charts.plotly.bubble(data, y_columns=[1, 2], x_axis='x')
+bu.layout.title = "Test"
+bu.layout.showlegend = True
+
+p1 = rptObj.ui.charts.plotly.pie(data, y_columns=[2], x_axis='g')
+p1.data.hole = 0.4
+p1.data.textposition = "inside"
+
+p2 = rptObj.ui.charts.plotly.pie(data, y_columns=[1], x_axis='g')
+
+s2 = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2, 3, 4], x_axis='x')
+s2.traces(1).axis_index(3)
+s2.traces(2).axis_index(2)
+s2.traces(3).axis_index(4)
+s2.layout.sub_plot(2, 2)
+s2.layout.title = "Test Subplots"
+
 #
+s3 = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2], x_axis='x')
+s3.traces(1).axis_index(2)
+s3.layout.xaxis.domain = [0, 0.7]
+s3.layout.xaxis2.domain = [0.8, 1]
+s3.layout.yaxis2.anchor = 'x2'
+s3.layout.title = "Test Subplots 2"
+
 #
-# l1 = rptObj.ui.charts.plotly.line(data, y_columns=[2, 3, 4], x_axis='x')
-# l1.traces(1).axis_index(2)
-# l1.traces(1).type = 'bar'
-# l1.traces(2).axis_index(3)
-# l1.layout.inset_trace([0.8, 1], 2)
-# l1.layout.inset_trace([0.8, 1], 3, y_domain=[0.1, 0.3])
-# l1.layout.title = "Inset"
+l1 = rptObj.ui.charts.plotly.line(data, y_columns=[2, 3, 4], x_axis='x')
+l1.traces(1).axis_index(2)
+l1.traces(1).type = 'bar'
+l1.traces(2).axis_index(3)
+l1.layout.inset_trace([0.8, 1], 2)
+l1.layout.inset_trace([0.8, 1], 3, y_domain=[0.1, 0.3])
+l1.layout.title = "Inset"
 
 # me1 = rptObj.ui.charts.plotly.mesh3d(data, intensity="x", x=1, y=2, z=3)
 # me1.layout.yaxis.tickfont.color = "#1f77b4"
-#
-# delta = rptObj.ui.charts.plotly.number_with_delta(2009860)
-# delta.data.delta.reference = 400
-# delta.data.vmax = 400
-# delta.data.gauge.shape = "bullet"
-# delta.data.delta.valueformat = ".0f"
-# delta.data.domain([0, 0.5], [0, 0.5])
-# delta.data.add_title("<b style='color:red'>test</b>")
+
+delta = rptObj.ui.charts.plotly.number_with_delta(2009860)
+delta.data.delta.reference = 400
+delta.data.vmax = 400
+delta.data.gauge.shape = "bullet"
+delta.data.delta.valueformat = ".0f"
+delta.data.domain([0, 0.5], [0, 0.5])
+delta.data.add_title("<b style='color:red'>test</b>")
 #
 # delta = rptObj.ui.charts.plotly.gauge(2000)
 # delta.data.gauge.axis.range = [0, 5000]
 #
 #
-# rptObj.ui.charts.plotly.scatterpolar(data)
+# ##rptObj.ui.charts.plotly.scatterpolar(data)
 #
 # series = [
 #   {"t": '2013-10-04 22:23:00', 'y': 1, 'y2': 4},
@@ -183,12 +186,10 @@ sc = rptObj.ui.charts.plotly.scatterpolar(data, r_columns=['trial_1_r'], theta_a
 # ]
 #
 
-# data_time_series = 'https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv'
-# data_time_series = 'https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv'
-# data = rptObj.py.requests.csv(data_time_series)
+data = rptObj.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES, store_location=config.OUTPUT_TEMPS)
 #
-# ts = rptObj.ui.charts.plotly.timeseries(data, y_columns=['AAPL.Open', 'AAPL.High', 'AAPL.Low'], x_axis="Date")
-# ts.layout.no_background()
+ts = rptObj.ui.charts.plotly.timeseries(data, y_columns=['AAPL.Open', 'AAPL.High', 'AAPL.Low'], x_axis="Date")
+ts.layout.no_background()
 
 # ts = rptObj.ui.charts.plotly.timeseries(series, y_columns=['y', 'y2'], x_axis="t")
 # ts.layout.xaxis.type = "date"
@@ -208,81 +209,45 @@ sc = rptObj.ui.charts.plotly.scatterpolar(data, r_columns=['trial_1_r'], theta_a
 data_geo_path = 'https://raw.githubusercontent.com/plotly/datasets/master/2014_us_cities.csv'
 data_meteo_usa_path = 'https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv'
 data_meteo_usa_path = 'https://raw.githubusercontent.com/plotly/datasets/master/earthquakes-23k.csv'
-# data_meteo_usa_path = 'https://covid.ourworldindata.org/data/total_cases.csv'
-# data_geo = rptObj.py.requests.csv(data_meteo_usa_path)
-# covid_per_countries = {}
-# for c, v in data_geo[0].items():
-#   if c in ['date', 'World'] or not v:
-#     continue
-#
-#   covid_per_countries[c] = covid_per_countries.get(c, 0) + float(v)
-
-# covid = [{"country": k, 'value': v} for k, v in covid_per_countries.items()]
-covid = [{'country': 'China', 'value': 278.0}, {'country': 'Japan', 'value': 100.0}, {'country': 'South Korea', 'value': 1.0}, {'country': 'Thailand', 'value': 2.0}]
 
 
-# data_meteo_usa_path = 'https://raw.githubusercontent.com/plotly/datasets/master/2011_february_us_airport_traffic.csv'
-# data_meteo_usa_path = 'https://raw.githubusercontent.com/plotly/datasets/master/2015_06_30_precipitation.csv'
-# data_geo = rptObj.py.requests.csv(data_meteo_usa_path)
-# print(data_geo)
-#
-# m = rptObj.ui.geo.plotly_bubble.usa(data_geo, lon_columns=['Lon'], lat_columns=['Lat'])
+tb = rptObj.ui.tables.plotlys.table([], [], [])
+tb.columns_color(["red", "green"])
+tb.columns_font_color(["green", "red"])
+tb.add_trace({"x": [1, 2, 3], "y": [2, 1, 5]}, type="scatter")
+tb.add_trace({"x": [1, 2, 3], "y": [2, 1, 5]}, type="bar")
+tb.add_trace({"x": [1, 2, 3], "y": [2, 1, 5]}, type="bar")
+tb.traces(1).axis_index(2)
+tb.traces(2).axis_index(3)
+tb.traces(3).axis_index(4)
+tb.traces(0).set_domain([0, 0.7], [0, 1])
 
+tb.layout.inset_trace([0.8, 1], 2)
+tb.layout.inset_trace([0.8, 1], 3, y_domain=[0.4, 0.7])
+tb.layout.inset_trace([0.8, 1], 4, y_domain=[0, 0.3])
 
-# m.data.locations = ['FRA', 'DEU', 'RUS', 'ESP']
-# m.data.marker.size = [20, 30, 15, 10]
-# m.data.marker.color = [10, 20, 40, 50]
+s = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2], x_axis='x')
+s.add_trace({"x": [1, 2, 3, 35], "y": [20, 10, 50, 45]}, type="bar")
+s.traces(1).yaxis = "y2"
+s.layout.yaxis2.side = 'right'
+s.layout.yaxis2.overlaying = 'y'
+#s.layout.legend.xanchor = 'right'
+s.layout.legend.orientation = 'h'
+s.layout.yaxis2.title = 'yaxis2 title'
 
-#scmb = rptObj.ui.geo.plotly.scattermapbox(data_geo, lon_columns=["Longitude"], lat_columns=["Latitude"])
-#scmb.layout.no_background()
+#
+csv = rptObj.js.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv")
 
-# scgeo = rptObj.ui.geo.plotly.bubble('usa', data_geo, y_column="lon", x_axis="lat")
-# scgeo.data.locationmode = 'USA-states'
-# scgeo.layout.no_background()
+scatter = rptObj.ui.charts.plotly.scatter()
 
-# rptObj.ui.geo.plotly.bubble('europe', data, y_column='v', x_axis='i')
-# rptObj.ui.geo.plotly.asia(data, y_column='v', x_axis='c')
-# af = rptObj.ui.geo.plotly.africa(data, y_column='v', x_axis='c')
-# us = rptObj.ui.geo.plotly.usa(data, y_column='v', x_axis='c')
-# af.data.zmin = 500
-# af.data.zmax = 500
+but = rptObj.ui.button("test")
+print(but.dom.d3.append('table').attr("style", "margin-left: 250px"))
 
-# tb = rptObj.ui.tables.plotlys.table([], [], [])
-# tb.columns_color(["red", "green"])
-# tb.columns_font_color(["green", "red"])
-# tb.add_trace({"x": [1, 2, 3], "y": [2, 1, 5]}, type="scatter")
-# tb.add_trace({"x": [1, 2, 3], "y": [2, 1, 5]}, type="bar")
-# tb.add_trace({"x": [1, 2, 3], "y": [2, 1, 5]}, type="bar")
-# tb.traces(1).axis_index(2)
-# tb.traces(2).axis_index(3)
-# tb.traces(3).axis_index(4)
-# tb.traces(0).set_domain([0, 0.7], [0, 1])
-#
-# tb.layout.inset_trace([0.8, 1], 2)
-# tb.layout.inset_trace([0.8, 1], 3, y_domain=[0.4, 0.7])
-# tb.layout.inset_trace([0.8, 1], 4, y_domain=[0, 0.3])
-#
-# s = rptObj.ui.charts.plotly.scatter(data, y_columns=[1, 2], x_axis='x')
-# s.add_trace({"x": [1, 2, 3, 35], "y": [20, 10, 50, 45]}, type="bar")
-# s.traces(1).yaxis = "y2"
-# s.layout.yaxis2.side = 'right'
-# s.layout.yaxis2.overlaying = 'y'
-# #s.layout.legend.xanchor = 'right'
-# s.layout.legend.orientation = 'h'
-# s.layout.yaxis2.title = 'yaxis2 title'
-#
-# csv = rptObj.js.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv")
-#
-# scatter = rptObj.ui.charts.plotly.scatter()
-#
-# but = rptObj.ui.button("test")
-# print(but.dom.d3.append('table').attr("style", "margin-left: 250px"))
-#
-# but.click([
-#   scatter.dom.add_trace(x=csv.unpack("myDate", "Date"), y=csv.unpack("High", "AAPL.High")),
-#   scatter.dom.add_trace(x=csv.unpack("myDate", "Date"), y=csv.unpack("Open", "AAPL.Open")),
-# ])
-#
+but.click([
+  scatter.dom.add_trace(x=csv.unpack("myDate", "Date"), y=csv.unpack("High", "AAPL.High")),
+  scatter.dom.add_trace(x=csv.unpack("myDate", "Date"), y=csv.unpack("Open", "AAPL.Open")),
+])
+
 # rptObj.ui.button("delete").click([
 #   scatter.dom.deleteTraces(0)
 # ])
@@ -306,15 +271,15 @@ covid = [{'country': 'China', 'value': 278.0}, {'country': 'Japan', 'value': 100
 #   rptObj.body.dom.d3.var('tr').selectAll("td").dataFncRows(columns).enter().rappend("td").html("")
 # ])
 
-# l1 = rptObj.ui.charts.plotly.line(data, y_columns=[2, 3, 4], x_axis='x')
-# l1.layout.yaxis.set_color("#1f77b4")
-# l1.layout.xaxis.set_color("red")
-# l1.layout.yaxis.title = "Test"
+l1 = rptObj.ui.charts.plotly.line(data, y_columns=[2, 3, 4], x_axis='x')
+l1.layout.yaxis.set_color("#1f77b4")
+l1.layout.xaxis.set_color("red")
+l1.layout.yaxis.title = "Test"
 
-# rptObj.ui.grid([
-#   [d, gs, me],
-#   [l, b, s, p1, sur],
-#   [bu, a, p2, h, hist]
-# ])
+rptObj.ui.grid([
+  #[d, gs, me],
+  [l, b, s, p1, sur],
+  [bu, a, p2, h, hist]
+])
 
 print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="report_charts_plotly"))

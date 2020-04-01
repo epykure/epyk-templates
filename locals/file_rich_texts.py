@@ -15,6 +15,9 @@ t = rptObj.ui.title("test", 4)
 t = rptObj.ui.title("test", 3)
 t = rptObj.ui.title("test")
 
+rptObj.ui.sliders.progressbar(40)
+rptObj.ui.slider(recordSet=[1, 2, 3, 4, 5, 6, 7])
+
 rptObj.ui.vignets.bubble({"value": 23.890, "title": "Title", 'url': '#'}, helper="This is a helper")
 rptObj.ui.rich.delta({'number': 100, 'prevNumber': 60, 'thresold1': 100, 'thresold2': 50}, helper="test")
 rptObj.ui.rich.stars(3, label="test", helper="This is a helper")
@@ -28,6 +31,11 @@ rptObj.ui.rich.update("Last update: ")
 rptObj.ui.title("test print")
 rptObj.ui.rich.prism("print('test')")
 
+stars = rptObj.ui.rich.stars(3, label="test", helper="This is a helper")
+stars.click()
+
+rptObj.ui.rich.countdown("2020-09-24")
+rptObj.ui.rich.update("Last update: ")
 
 # rptObj.ui.rich.countdown("2050-09-24")
 #rptObj.ui.rich.blocktext({"text": 'This is a brand new python framework', "title": 'New Python Web Framework',
