@@ -8,7 +8,7 @@ CHARTS = False
 GEO = False
 PACKAGES = False
 COMPONENTS = True
-TABLES = False
+TABLES = True
 TEXT = False
 LAYOUT = False
 
@@ -73,6 +73,7 @@ if COMPONENTS:
   import locals.file_canvas
   import locals.file_svg
   import locals.file_icons
+  import locals.file_numbers
   import locals.file_list
   import locals.file_tree
   import locals.file_image

@@ -21,6 +21,18 @@ data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=r"
 data_rest_2[0]['airline'] = 'fab fa-python'
 
 t1 = rptObj.ui.tables.tabulators.table(data_rest_2)
+t1.config.paginationSize = 10
+c2 = t1.get_column("incidents_85_99")
+c2.formatters.wrapper("progress", {"height": '6px'}, {'color': ['orange', 'green']})
+# c2.formatters.custom('''
+#   function(cell, formatterParams){
+#     var cell = cell.getTable().modules.format.getFormatter('progress').call(cell.getTable().modules.format, cell, formatterParams);
+#     let frag = document.createRange().createContextualFragment(cell).firstChild;
+#     frag.style.height = '4px';
+#     console.log(cell);
+#     return frag;
+#   }
+#   ''')
 
 c = t1.get_column("avail_seat_km_per_week")#c.editor_input()
 #c.formatter_number_format()
