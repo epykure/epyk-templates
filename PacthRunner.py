@@ -6,8 +6,8 @@ sys.path.append("../epyk-ui")
 
 CHARTS = False
 GEO = False
-PACKAGES = True
-COMPONENTS = False
+PACKAGES = False
+COMPONENTS = True
 TABLES = False
 TEXT = False
 LAYOUT = False
