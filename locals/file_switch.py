@@ -31,7 +31,7 @@ s4 = rptObj.ui.buttons.toggle({'on': "true", 'off': 'false'})
 s5 = rptObj.ui.buttons.toggle({'on': "true", 'off': 'false'})
 s5.switch_label.style.css.width = 40
 
-# Click even 
+# Click even
 rptObj.ui.button("click").click([
   c.write(s1.dom.content),
 
