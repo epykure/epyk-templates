@@ -1,5 +1,5 @@
 
-from epyk.core.Page import Report#
+from epyk.core.Page import Report
 
 import config
 
