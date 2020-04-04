@@ -43,6 +43,7 @@ Thumbs.db
 # Ignore test outs results
 */tests/outs/*
 */outs/html*
+*outs/html*
 
 # Ignore build results
 dist/*

@@ -16,7 +16,7 @@ t = rptObj.ui.title("test", 3)
 t = rptObj.ui.title("test")
 
 rptObj.ui.sliders.progressbar(40)
-rptObj.ui.slider(recordSet=[1, 2, 3, 4, 5, 6, 7])
+rptObj.ui.slider([1, 2, 3, 4, 5, 6, 7])
 
 rptObj.ui.vignets.bubble({"value": 23.890, "title": "Title", 'url': '#'}, helper="This is a helper")
 rptObj.ui.rich.delta({'number': 100, 'prevNumber': 60, 'thresold1': 100, 'thresold2': 50}, helper="test")

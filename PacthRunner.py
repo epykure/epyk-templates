@@ -11,6 +11,8 @@ COMPONENTS = False
 TABLES = False
 TEXT = True
 LAYOUT = False
+DASH = True
+WEB = True
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -110,6 +112,7 @@ if TEXT:
   start = time.time()
   import locals.file_rich_texts
   import locals.file_input
+  import locals.file_paragraph
   import locals.file_texts
   import locals.file_links
   import locals.file_vignet
@@ -135,9 +138,21 @@ if LAYOUT:
 # -------------------------------------------------------------------------------------------------------------------
 # DASHBOARDS
 #
+if DASH:
+  print("Processing Dashboards examples.... ")
+  start = time.time()
+  import dashboards.dash_wikipedia
+  print("total time: %s" % (time.time() - start))
+  print("")
 
 
 # -------------------------------------------------------------------------------------------------------------------
 # WEBSITES
 #
+if WEB:
+  print("Processing Websites examples.... ")
+  start = time.time()
+  import websites.web_stackoverflow
+  print("total time: %s" % (time.time() - start))
+  print("")
 

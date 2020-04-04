@@ -21,7 +21,7 @@ n1.onReady([
 
 rptObj.ui.button("display").click([
   rptObj.js.alert(n1.dom.content.number.toFixed(5)),
-  c.write(n1.dom.val, stringify=True)
+  c.write(n1.dom.val, stringify=True, format="Number: %s")
 ])
 
 #
