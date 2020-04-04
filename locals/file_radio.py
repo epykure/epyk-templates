@@ -34,7 +34,7 @@ r.click([
 ])
 
 #
-rptObj.ui.inputs.checkbox(True, label="Check")
+rptObj.ui.inputs.checkbox(True)
 rptObj.ui.inputs.radio(True, label="Check")
 
 #
