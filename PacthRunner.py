@@ -6,10 +6,10 @@ sys.path.append("../epyk-ui")
 
 CHARTS = False
 GEO = False
-PACKAGES = True
-COMPONENTS = True
+PACKAGES = False
+COMPONENTS = False
 TABLES = False
-TEXT = False
+TEXT = True
 LAYOUT = False
 
 
@@ -112,6 +112,7 @@ if TEXT:
   import locals.file_input
   import locals.file_texts
   import locals.file_links
+  import locals.file_vignet
   print("total time: %s" % (time.time() - start))
   print("")
 
