@@ -9,10 +9,10 @@ rptObj = Report()
 c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 # #
-# data = [{"label": 'test', 'items': [{"label": 'child 1', 'color': 'red'}]}]
+data = [{"label": 'test', 'items': [{"label": 'child 1', 'color': 'red'}]}]
 #
 # #
-# tree1 = rptObj.ui.lists.tree(data)
+tree1 = rptObj.ui.lists.tree(data)
 #
 # #
 # tree2 = rptObj.ui.trees.tree(data)
@@ -42,7 +42,11 @@ data2 = [
   ]}
 ]
 
-tree4 = rptObj.ui.lists.dropdown(data2, text="Button")
+#
+tree2 = rptObj.ui.trees.tree(data2)
+
+#
+tree4 = rptObj.ui.lists.dropdown(data2, text="Button", height=(50, "px"))
 
 #tree5 = rptObj.ui.buttons.menu(["A", "B", "C"])
 
