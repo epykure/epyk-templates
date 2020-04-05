@@ -96,6 +96,7 @@ if TABLES:
   print("Processing TABLES examples.... ")
   start = time.time()
   import locals.file_table
+  import locals.file_tables_aggrid
   import locals.file_tables_d3
   import locals.file_tables_plotly
   import locals.file_tables_datatable
