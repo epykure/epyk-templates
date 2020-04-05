@@ -142,7 +142,6 @@ if LAYOUT:
 if DASH:
   print("Processing Dashboards examples.... ")
   start = time.time()
-  import dashboards.dash_wikipedia
   print("total time: %s" % (time.time() - start))
   print("")
 
@@ -154,6 +153,7 @@ if WEB:
   print("Processing Websites examples.... ")
   start = time.time()
   import websites.web_stackoverflow
+  import websites.web_app
   print("total time: %s" % (time.time() - start))
   print("")
 
