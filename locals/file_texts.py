@@ -22,6 +22,23 @@ rptObj.ui.images.badge("This is a badge", background_color="red", color="white")
 rptObj.ui.layouts.new_line()
 rptObj.ui.images.icon("fab fa-angellist")
 
+f = rptObj.ui.texts.fieldset("fieldset")
+f += rptObj.ui.title("test")
+f += rptObj.ui.texts.label("label")
+
+rptObj.ui.texts.preformat("This is a pre formatted text")
+
+rptObj.ui.texts.highlights("Test content", title="Test")
+
+n = rptObj.ui.numbers.pound(4647666876)
+n = rptObj.ui.numbers.euro(4647666876)
+
+
+rptObj.ui.button("Test").click([
+  f.build("Ok", {"css": {"color": 'red'}}),
+  f[0].build("new title"),
+  n.build(34.5656)
+])
 
 #rptObj.ui.texts.blockquote("This is a code")
 #rptObj.ui.texts.preformat("This is a pre formatted text")

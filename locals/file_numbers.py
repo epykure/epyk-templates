@@ -15,6 +15,15 @@ n.style.color = "red"
 
 n1 = rptObj.ui.text(76862.095)
 
+#
+delta = rptObj.ui.charts.plotly.number_with_delta(2009860)
+delta.data.delta.reference = 400
+delta.data.vmax = 400
+delta.data.gauge.shape = "bullet"
+delta.data.delta.valueformat = ".0f"
+delta.data.domain([0, 0.5], [0, 0.5])
+delta.data.add_title("<b style='color:red'>test</b>")
+
 n1.onReady([
   n1.dom.format.number.toFixed(6)
 ])

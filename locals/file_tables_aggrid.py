@@ -9,6 +9,8 @@ rptObj = Report()
 
 data_rest_1 = rptObj.py.requests.csv(data_urls.DC_QUAKES, store_location=config.OUTPUT_TEMPS)
 
-rptObj.ui.tables.aggrid.table(data_rest_1)
+table = rptObj.ui.tables.aggrid.table(data_rest_1)
+table.config.sideBar.toolPanelsColumn()
+# table.config.deltaColumnMode = True
 
 print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="report_table_aggrid"))
