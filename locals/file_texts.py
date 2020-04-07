@@ -22,6 +22,14 @@ rptObj.ui.images.badge("This is a badge", background_color="red", color="white")
 rptObj.ui.layouts.new_line()
 rptObj.ui.images.icon("fab fa-angellist")
 
+rptObj.ui.texts.blockquote("This is a blockquote")
+
+python = rptObj.ui.codes.python('''
+def test(a):
+  print("Ok")
+
+''')
+
 f = rptObj.ui.texts.fieldset("fieldset")
 f += rptObj.ui.title("test")
 f += rptObj.ui.texts.label("label")
@@ -37,7 +45,8 @@ n = rptObj.ui.numbers.euro(4647666876)
 rptObj.ui.button("Test").click([
   f.build("Ok", {"css": {"color": 'red'}}),
   f[0].build("new title"),
-  n.build(34.5656)
+  n.build(34.5656),
+  python.refresh()
 ])
 
 #rptObj.ui.texts.blockquote("This is a code")
