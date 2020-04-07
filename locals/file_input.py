@@ -118,9 +118,9 @@ p.input.focus(rptObj.js.console.log("ok"), options={"reset": True})
 
 # ----------------
 # Component Inputs
-rptObj.ui.fields.today("2019-11-18", label="timestamp", color="red", helper="This is the report timestamp")
+rptObj.ui.fields.today(label="timestamp", color="red", helper="This is the report timestamp")
 rptObj.ui.fields.now(label="timestamp", helper="This is the report timestamp")
-rptObj.ui.fields.cob(label="Date").selectable(["2019-09-01", "2019-09-06"])
+rptObj.ui.fields.cob(label="Date")
 
 #-------------------
 

@@ -9,8 +9,10 @@ GEO = False
 PACKAGES = False
 COMPONENTS = True
 TABLES = True
-TEXT = False
+TEXT = True
 LAYOUT = False
+DASH = False
+WEB = False
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -72,9 +74,11 @@ if COMPONENTS:
   start = time.time()
   import locals.file_canvas
   import locals.file_svg
+  import locals.file_checkbox
   import locals.file_icons
   import locals.file_numbers
   import locals.file_list
+  import locals.file_switch
   import locals.file_tree
   import locals.file_image
   import locals.file_select
@@ -92,6 +96,7 @@ if TABLES:
   print("Processing TABLES examples.... ")
   start = time.time()
   import locals.file_table
+  import locals.file_tables_aggrid
   import locals.file_tables_d3
   import locals.file_tables_plotly
   import locals.file_tables_datatable
@@ -108,8 +113,10 @@ if TEXT:
   start = time.time()
   import locals.file_rich_texts
   import locals.file_input
+  import locals.file_paragraph
   import locals.file_texts
   import locals.file_links
+  import locals.file_vignet
   print("total time: %s" % (time.time() - start))
   print("")
 
@@ -132,9 +139,21 @@ if LAYOUT:
 # -------------------------------------------------------------------------------------------------------------------
 # DASHBOARDS
 #
+if DASH:
+  print("Processing Dashboards examples.... ")
+  start = time.time()
+  print("total time: %s" % (time.time() - start))
+  print("")
 
 
 # -------------------------------------------------------------------------------------------------------------------
 # WEBSITES
 #
+if WEB:
+  print("Processing Websites examples.... ")
+  start = time.time()
+  import websites.web_stackoverflow
+  import websites.web_app
+  print("total time: %s" % (time.time() - start))
+  print("")
 

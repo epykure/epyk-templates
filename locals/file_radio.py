@@ -20,35 +20,45 @@ c = rptObj.ui.rich.console("* This is a log section for all the events in the di
 #
 # rptObj.ui.radio(data, column='city')
 
-#
-c = rptObj.ui.fields.checkbox(True, label="Check")
-c.click([
-  rptObj.js.console.log(c.dom.content)
-])
-
-r = rptObj.ui.fields.radio(True, label="Check 1", group_name="group1")
-r1 = rptObj.ui.fields.radio(True, label="Check 2", group_name="group1")
-
-r.click([
-  rptObj.js.console.log(r.dom.content)
-])
 
 #
-rptObj.ui.inputs.checkbox(True, label="Check")
-rptObj.ui.inputs.radio(True, label="Check")
+c1 = rptObj.ui.fields.radio(True, label="Check 1", group_name="group1")
+c2 = rptObj.ui.fields.radio(True, label="Check 2", group_name="group1")
+
+c3 = rptObj.ui.inputs.radio(True, label="Check")#
 
 #
-rptObj.ui.icons.tick(False, "Check")
+c4 = rptObj.ui.icons.tick(False, "Check")
 
-
-rptObj.ui.lists.radios([
+#
+c5 = rptObj.ui.lists.radios([
   {"value": True, 'label': 'Python'},
   {"value": False, 'label': 'Javascript'},
 ])
 
+c1.click([
+  c.write(c1.dom.content),
+  c.write(c1.dom.selected),
+  c.write(c3.dom.val, stringify=True)
+])
 
-data = [{"label": "python", "value": False}, {"label": "Java", "value": 5}]
-checks = rptObj.ui.lists.checklist(data)
 
+# Click even
+rptObj.ui.button("click").click([
+  c.write(c4.dom.val, stringify=True),
+  c.write(c5.dom.content),
+
+  # Check the value C1
+  c1.js.check()
+])
+
+rptObj.ui.button("Uncheck C1").click([
+  # uncheck the value C1
+  c1.js.uncheck(),
+  # Change the label of the tick component
+  c4.span.build("New Label"),
+  # Change the color CSS property of the internal label
+  c4.span.dom.css({"color": 'red'})
+])
 
 print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="report_radio"))

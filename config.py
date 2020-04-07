@@ -11,7 +11,7 @@ import webbrowser
 # the \outs folder is excluded from Git
 TESTS_PATH = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_PATHS = r"%s\outs" % TESTS_PATH
-OUTPUT_PATHS_LOCALS_HTML = r"%s\locals\outs\html" % TESTS_PATH
+OUTPUT_PATHS_LOCALS_HTML = r"%s\outs\html" % TESTS_PATH
 OUTPUT_TEMPS = r"C:\tmps"
 
 #
