@@ -75,6 +75,7 @@ if COMPONENTS:
   start = time.time()
   import locals.file_canvas
   import locals.file_svg
+  import locals.file_dates
   import locals.file_checkbox
   import locals.file_icons
   import locals.file_numbers
