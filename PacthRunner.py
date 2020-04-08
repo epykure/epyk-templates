@@ -6,7 +6,7 @@ sys.path.append("../epyk-ui")
 
 CHARTS = False
 GEO = False
-PACKAGES = False
+PACKAGES = True
 COMPONENTS = True
 TABLES = True
 TEXT = True
@@ -52,6 +52,7 @@ if GEO:
 if PACKAGES:
   print("Processing PACKAGES examples.... ")
   start = time.time()
+  import locals.file_extension_google
   import locals.file_jquery_ui
   import locals.file_jquery_ui_datepicker
   import locals.file_jquery_ui_slider
