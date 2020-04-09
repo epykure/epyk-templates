@@ -73,7 +73,7 @@ rptObj.ui.lists.disc([
 
 rptObj.ui.button("Test").click([
   c.write(p.dom.content),
-  p.build("Ok")
+  p.refresh()
 ])
 
 c.move()
