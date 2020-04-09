@@ -7,7 +7,7 @@ import config
 rptObj = Report()
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+c = rptObj.ui.rich.console("This is a log section for all the events in the different buttons *")
 
 rptObj.ui.text("this is a test")
 rptObj.ui.texts.label("this is a test", color="red").css({"float": 'none'})
@@ -25,20 +25,20 @@ rptObj.ui.images.badge("This is a badge", background_color="red", color="white")
 rptObj.ui.layouts.new_line()
 rptObj.ui.images.icon("fab fa-angellist")
 
-quotation = rptObj.ui.texts.blockquote("If you decide to design your own language, there are thousands of sort of amateur language designer pitfalls.", author="Guido van Rossum")
+quotation = rptObj.ui.texts.blockquote("If you decide to design your own language, there are thousands of sort **of amateur language** designer pitfalls.", author="Guido van Rossum", options={"markdown": True})
 quotation.style.css.padding = "0 50px"
 
-python = rptObj.ui.codes.python('''
-def test(a):
-  print("Ok")
-
-''')
+# python = rptObj.ui.codes.python('''
+# def test(a):
+#   print("Ok")
+#
+# ''')
 
 f = rptObj.ui.texts.fieldset("fieldset")
 f += rptObj.ui.title("test")
 f += rptObj.ui.texts.label("label")
 
-pre = rptObj.ui.texts.preformat("This is a pre formatted text")
+pre = rptObj.ui.texts.preformat("# This is a pre formatted text", options={"markdown": True})
 
 
 rptObj.ui.texts.highlights("Test content", title="Test")
@@ -52,10 +52,10 @@ rptObj.ui.button("Test").click([
   f[0].build("new title"),
   c.write(pre.dom.content),
   n.build(34.5656),
-  python.build('''
-def function(test):
-  print("RRRRRRRRRRRR")
-''')
+#   python.build('''
+# def function(test):
+#   print("RRRRRRRRRRRR")
+# ''')
 ])
 
 c.move()

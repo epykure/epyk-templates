@@ -9,7 +9,7 @@ b = rptObj.ui.navbar(title="Epyk")
 # b += rptObj.ui.link("Test")
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+c = rptObj.ui.rich.console("This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 content = rptObj.ui.contents(top=50)
 
@@ -18,6 +18,7 @@ t = rptObj.ui.title("test", 4)
 t = rptObj.ui.title("test", 3)
 t = rptObj.ui.title("test")
 
+content.move()
 rptObj.ui.sliders.progressbar(40)
 rptObj.ui.slider([1, 2, 3, 4, 5, 6, 7])
 
@@ -31,10 +32,13 @@ rptObj.ui.info("Test")
 rptObj.ui.vignets.number(500, "Test")
 rptObj.ui.rich.update("Last update: ")
 
+number = rptObj.ui.vignets.number(500, "Test")
+number_2 = rptObj.ui.vignets.number(500, "Test 2 ", options={"url": "http://www.google.fr"})
+number.span.add_icon(rptObj.ui.icons.get.ICON_ENVELOPE)
+
 light = rptObj.ui.rich.light("red", label="label", tooltip="Tooltip", helper="Helper")
 
 rptObj.ui.title("test print")
-rptObj.ui.rich.prism("print('test')")
 
 stars = rptObj.ui.rich.stars(3, label="test", helper="This is a helper")
 stars.click()
@@ -43,7 +47,7 @@ rptObj.ui.rich.countdown("2020-09-24")
 rptObj.ui.rich.update("Last update: ")
 
 rptObj.ui.button("Click").click([
-  c.write(light.dom.content)
+  c.write(light.dom.val, stringify=True)
 ])
 
 c.move()
