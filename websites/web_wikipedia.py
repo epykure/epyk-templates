@@ -12,4 +12,4 @@ Python is an interpreted, high-level, general-purpose programming language. Crea
 Python's design philosophy emphasizes code readability with its notable use of significant whitespace. 
 Its language constructs and object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.[28]
 ''')
-print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="dash_wikipedia"))
+print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="web_wikipedia"))

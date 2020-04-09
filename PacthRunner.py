@@ -6,13 +6,13 @@ sys.path.append("../epyk-ui")
 
 CHARTS = False
 GEO = False
-PACKAGES = True
-COMPONENTS = True
-TABLES = True
+PACKAGES = False
+COMPONENTS = False
+TABLES = False
 TEXT = True
 LAYOUT = False
 DASH = False
-WEB = False
+WEB = True
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -156,6 +156,47 @@ if WEB:
   start = time.time()
   import websites.web_stackoverflow
   import websites.web_app
+  import websites.web_coming_soon
+  import websites.web_amazon
+  import websites.web_bitbucket
+  import websites.web_hotel
+  import websites.web_photos
+  import websites.web_restaurant
+  import websites.web_social_media
+  import websites.web_startup
+  import websites.web_wedding
+  import websites.web_wikipedia
+  import websites.web_youtube
+  import websites.web_google
   print("total time: %s" % (time.time() - start))
   print("")
 
+#
+# from docutils.core import publish_parts
+#
+# rst = publish_parts('''
+#
+# Usage:
+# ------
+# number = rptObj.ui.vignets.number(500, "Test")
+# number_2 = rptObj.ui.vignets.number(500, "Test 2 ", options={"url": "http://www.google.fr"})
+# number.span.add_icon(rptObj.ui.icons.get.ICON_ENVELOPE)
+#
+# Related Pages:
+# --------------
+# https://www.w3schools.com/tags/att_input_type_number.asp
+#
+# Attributes:
+# --------------
+# :param test2: test
+# :param test: test
+# ''', writer_name='html')['html_body']
+# print(rst)
+#
+# import pydoc
+#
+# from epyk.core.html import Html
+#
+# doc = pydoc.HTMLDoc()
+# output = doc.docmodule(Html)
+# print(output)

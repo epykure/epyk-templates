@@ -5,14 +5,14 @@ from epyk.core.Page import Report
 # Create a basic report object
 rptObj = Report()
 
-b = rptObj.ui.navbar(title="Epyk")
+#b = rptObj.ui.navbar(title="Epyk")
 # b += rptObj.ui.link("Test")
 
 # Console component
 c = rptObj.ui.rich.console("This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 content = rptObj.ui.contents(top=50)
-
+#
 t = rptObj.ui.title("test", 1)
 t = rptObj.ui.title("test", 4)
 t = rptObj.ui.title("test", 3)
@@ -49,6 +49,7 @@ rptObj.ui.rich.update("Last update: ")
 rptObj.ui.button("Click").click([
   c.write(light.dom.val, stringify=True)
 ])
+
 
 c.move()
 
