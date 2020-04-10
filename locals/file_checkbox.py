@@ -27,7 +27,7 @@ checks = rptObj.ui.lists.checklist(data)
 
 c2.click([
   # Write the full details of C2
-  c.write(c2.dom.val, stringify=True)
+  c.dom.write(c2.dom.val, stringify=True)
 ], [
   # Check another checkbox
   c3.js.checked()
@@ -39,11 +39,11 @@ rptObj.ui.button("click").click([
   c3.js.unchecked(),
 
   # Write the content of the checkbox in C5
-  c.write(c5.input.dom.content),
+  c.dom.write(c5.input.dom.content),
 
   # Write the content and details of C4
-  c.write(c4.dom.content),
-  c.write(c4.dom.val, stringify=True)
+  c.dom.write(c4.dom.content),
+  c.dom.write(c4.dom.val, stringify=True)
 ])
 
 rptObj.ui.button("Check c3").click([

@@ -30,7 +30,7 @@ rptObj.ui.layouts.iframe("http://www.google.com")
 # du.style.addCls("CssDivOnHoverBackgroundLight")
 
 #rptObj.ui.navigation.down()
-rptObj.ui.navigation.pin()
+rptObj.ui.navigation.pin("test")
 
 # du = rptObj.ui.navigation.to(100, tooltip="test")
 #
@@ -94,7 +94,7 @@ t = rptObj.ui.text("Test")
 t.click([
   rptObj.js.objects.event.stopPropagation(),
   rptObj.js.objects.event.preventDefault(),
-  c.write("Message from the text box"),
+  c.dom.write("Message from the text box"),
 ])
 
 rptObj.ui.images.badge("306", url="google", icon="fas fa-align-center", options={'badge_css': {'color': 'white', "background": 'red'}})

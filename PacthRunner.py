@@ -4,14 +4,14 @@ import time
 sys.path.append("../epyk-ui")
 
 
-CHARTS = False
-GEO = False
+CHARTS = True
+GEO = True
 PACKAGES = True
-COMPONENTS = False
-TABLES = False
+COMPONENTS = True
+TABLES = True
 TEXT = True
-LAYOUT = False
-DASH = False
+LAYOUT = True
+DASH = True
 WEB = True
 
 
@@ -132,6 +132,7 @@ if LAYOUT:
   start = time.time()
   import locals.file_navigation
   import locals.file_menu
+  import locals.file_layouts
   import locals.file_popup
   import locals.file_panels
   # import locals.file_form

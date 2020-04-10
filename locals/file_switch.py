@@ -17,7 +17,7 @@ s2.click([
   rptObj.js.alert("Go to True")
 ],
   [
-  c.write("S2 => Back to false")
+  c.dom.write("S2 => Back to false")
   ]
 )
 # In Sync with S2 changes
@@ -33,7 +33,7 @@ s5.switch_label.style.css.width = 40
 
 # Click even
 rptObj.ui.button("click").click([
-  c.write(s1.dom.content),
+  c.dom.write(s1.dom.content),
 
   # Change the label without changing the state of the component
   s4.dom.set_text("Correct"),

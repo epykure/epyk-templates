@@ -17,7 +17,7 @@ text.options.source = ["abs"]
 
 #
 rptObj.ui.button("click").click([
-  c.write(field.input.dom.content)
+  c.dom.write(field.input.dom.content)
 ])
 
 #

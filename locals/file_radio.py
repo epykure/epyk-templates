@@ -37,16 +37,16 @@ c5 = rptObj.ui.lists.radios([
 ])
 
 c1.click([
-  c.write(c1.dom.content),
-  c.write(c1.dom.selected),
-  c.write(c3.dom.val, stringify=True)
+  c.dom.write(c1.dom.content),
+  c.dom.write(c1.dom.selected),
+  c.dom.write(c3.dom.val, stringify=True)
 ])
 
 
 # Click even
 rptObj.ui.button("click").click([
-  c.write(c4.dom.val, stringify=True),
-  c.write(c5.dom.content),
+  c.dom.write(c4.dom.val, stringify=True),
+  c.dom.write(c5.dom.content),
 
   # Check the value C1
   c1.js.check()
