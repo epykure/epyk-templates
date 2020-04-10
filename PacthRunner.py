@@ -11,7 +11,7 @@ COMPONENTS = True
 JS = True
 TABLES = False
 TEXT = False
-LAYOUT = False
+LAYOUT = True
 DASH = False
 WEB = False
 
@@ -88,6 +88,7 @@ if COMPONENTS:
   print("Processing COMPONENTS examples.... ")
   start = time.time()
   import locals.file_canvas
+  import locals.file_editor
   import locals.file_svg
   import locals.file_dates
   import locals.file_checkbox

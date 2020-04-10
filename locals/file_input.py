@@ -63,6 +63,9 @@ data = [{"value": 'test', '_children': [
 #   w.dom.set_complete(5)
 # ])
 
+# t = rptObj.ui.inputs.textarea("Test", placeholder='This is a placeholer')
+# t.selectable()
+# t.options.rows = 10
 
 rptObj.ui.row([
   rptObj.ui.title("test"),

@@ -1,5 +1,3 @@
-import sys
-sys.path.append(r"C:\Users\nelso\PycharmProjects\epyk-ui")
 
 from epyk.core.Page import Report
 from epyk.core.css.themes import ThemeBlue
