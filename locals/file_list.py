@@ -77,37 +77,21 @@ a.input.attr["data-live-search"] = "true"
 
 rptObj.ui.layouts.hr(3)
 
-i = rptObj.ui.fields.input("", label="Range Example", icon="fas fa-unlock-alt")
-print(i.label.dom.transform.rotate(100))
-
-rptObj.ui.button("test").click([
-  i.label.dom.transition('margin-left', '100px', 2, reverse=True),
-  i.label.dom.transition('color', 'red', 5, reverse=True),
-  #i.label.dom.css({'WebkitTransition': 'opacity 1s'}),
-  #i.label.dom.transform.translateX(100),
-  #i.label.dom.transform.skewX(20),
-  #i.label.dom.transform.rotate(90),
-  #rptObj.js.alert("ok"),
-])
-
-rptObj.js.addKeyEvent([rptObj.js.alert('')], 13)
-
-#i.dom.animate("transform", "rotate", "0 190 50", "360 190 50")
 
 #
-# l = rptObj.ui.list(range(10))
+l = rptObj.ui.list(range(10))
 # l.set_items(in_span=True)
 #
-# l2 = rptObj.ui.list(range(10))
-# #
-# l3 = rptObj.ui.list(range(10)).css({"color": "red"})
 
-# menu = rptObj.ui.context_menu([{"text": 'text', 'event': 'alert("ok")'}])
-# rptObj.ui.title("Test").attach_menu(menu)
+l2 = rptObj.ui.list(range(10))
 
-# #l3[1].add_menu()
 #
-# l2.add_item(l3)[-1].val.css({"margin": "2px 10px"})
+l3 = rptObj.ui.list(range(10)).css({"color": "red"})
+
+
+#
+l2.add_item(l3)[-1].val.css({"margin": "2px 10px"})
+
 # #l2[-1].set_html_content(rptObj.ui.texts.span(l2[-1].val))
 # l2[-1].add_label("test")
 # l2[-1].add_icon("fas fa-folder")
