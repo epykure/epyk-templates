@@ -25,6 +25,8 @@ rptObj.ui.images.badge("This is a badge", background_color="red", color="white")
 rptObj.ui.layouts.new_line()
 rptObj.ui.images.icon("fab fa-angellist")
 
+rptObj.ui.fields.textarea()
+
 quotation = rptObj.ui.texts.blockquote("If you decide to design your own language, there are thousands of sort **of amateur language** designer pitfalls.", author="Guido van Rossum", options={"markdown": True})
 quotation.style.css.padding = "0 50px"
 

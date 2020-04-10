@@ -4,15 +4,28 @@ import time
 sys.path.append("../epyk-ui")
 
 
-CHARTS = True
-GEO = True
-PACKAGES = True
+CHARTS = False
+GEO = False
+PACKAGES = False
 COMPONENTS = True
-TABLES = True
-TEXT = True
-LAYOUT = True
-DASH = True
-WEB = True
+JS = True
+TABLES = False
+TEXT = False
+LAYOUT = False
+DASH = False
+WEB = False
+
+
+# -------------------------------------------------------------------------------------------------------------------
+# Pure Javascript
+#
+if JS:
+  print("Processing Chart examples.... ")
+  start = time.time()
+  import locals.file_js_events
+  import locals.file_js_transforms
+  print("total time: %s" % (time.time() - start))
+  print("")
 
 
 # -------------------------------------------------------------------------------------------------------------------

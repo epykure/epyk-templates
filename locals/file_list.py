@@ -23,50 +23,32 @@ data = [{"label": 'test', 'items': [
   {"label": 'child 3', 'color': 'red'},
 
 ]}]
-# t1 = rptObj.ui.trees.inputs(data)
-# t1.options.expanded = False
 
-# t2 = rptObj.ui.trees.tree(data)
 
-# list = rptObj.ui.lists.styles()
-# list.add_list("test", ["Test", "test 2"])
-# list.add_list("test2", ["Test", "test 2"])
 
-#
-# rptObj.ui.grid([t1, t2])
-
-# t = rptObj.ui.lists.dropdown(data)
-# t.options.expanded = False
+t = rptObj.ui.lists.dropdown(data)
+t.options.expanded = False
 #t.level(1)
 
 #
-# table = rptObj.ui.layouts.table([
-#   ["A", "B", "C"],
-#   ["1", "2", "C3"],
-#   ["A4", "5", "4C"],
-# ], width=(50, 'px'))
-#
-# #for c in table.col(i=1):
-# #  c.add_title(c.val)
-#   #v[i] = self._report.ui.texts.span(v[i])
-#   #v[i].inReport = False
-# #  c.css({"background": 'red'})
-#
-# table.style.clear()
-#
-# #rptObj.ui.sliders.slider(40)
-# d = rptObj.ui.fields.textarea()
-# i = rptObj.ui.inputs.search(extensible=True)
-# i.enter(
-#   #rptObj.js.alert(i.dom.content),
-#   rptObj.js.alert(d.dom.content),
-# )
-#
-# i.attr['autocomplete'] = 'false'
+table = rptObj.ui.layouts.table([
+  ["A", "B", "C"],
+  ["1", "2", "C3"],
+  ["A4", "5", "4C"],
+], width=(100, 'px'))
 #
 
-# s = rptObj.ui.fields.select(["A"], label="test")
-# s.input.attr["data-live-search"] = "true"
+for c in table.col(i=1):
+  c.add_title(c.val)
+  #v[i] = self._report.ui.texts.span(v[i])
+  #v[i].inReport = False
+  c.css({"background": 'red'})
+#
+table.style.clear()
+
+a = rptObj.ui.fields.select(["A"], label="test")#
+a.input.attr["data-live-search"] = "true"
+
 #
 #
 # rptObj.js.addOnReady([
@@ -81,7 +63,7 @@ data = [{"label": 'test', 'items': [
 #         'function(data) {return [{text: "C", value: "C"}, {text: "D", value: "D"}]}', "locale": {
 #     "emptyTitle": "Select and Begin Typing"}})
 # ])
-#
+
 # rptObj.ui.button("test").click([
 #   rptObj.js.window.toggleInterval(rptObj.js.console.log('ok'), 'test', 400),
 # ])
@@ -93,22 +75,14 @@ data = [{"label": 'test', 'items': [
 # s.change(c.write(s.dom.content))
 
 
-# records = [
-#   {"label": 'python', 'value': 12},
-#   {"label": 'Java', 'value': 5},
-#   {"label": 'Javascript', 'value': 80}]
-# rptObj.ui.charts.skillbars(records, y_column=['value'], x_axis=['label']).css({"width": '100px'})
-
-
 rptObj.ui.layouts.hr(3)
 
 i = rptObj.ui.fields.input("", label="Range Example", icon="fas fa-unlock-alt")
-# print(i.label.dom.transform.rotate(100))
+print(i.label.dom.transform.rotate(100))
 
 rptObj.ui.button("test").click([
   i.label.dom.transition('margin-left', '100px', 2, reverse=True),
   i.label.dom.transition('color', 'red', 5, reverse=True),
-
   #i.label.dom.css({'WebkitTransition': 'opacity 1s'}),
   #i.label.dom.transform.translateX(100),
   #i.label.dom.transform.skewX(20),
