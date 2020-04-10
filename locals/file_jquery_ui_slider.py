@@ -23,7 +23,7 @@ row = rptObj.ui.row([
 # Create a simple slider
 s3 = rptObj.ui.slider(40)
 s3.change([
-  c.write(s3.dom.content),
+  c.dom.write(s3.dom.content),
 ]).css({"margin-bottom": "5px"})
 
 # Add a slider based on a range of numbers
@@ -45,15 +45,15 @@ for col in row:
 
 # Add event on the progress bar to change and retrieve the value
 rptObj.ui.button("click").click([
-  c.write(s1.dom.content),
-  c.write(s4.dom.content),
-  c.write(s5.dom.content),
-  c.write(s2.dom.val, stringify=True),
+  c.dom.write(s1.dom.content),
+  c.dom.write(s4.dom.content),
+  c.dom.write(s5.dom.content),
+  c.dom.write(s2.dom.val, stringify=True),
 ])
 
 rptObj.ui.button("Enable").click([
   s2.js.enable(),
-  c.write(s6.dom.content),
+  c.dom.write(s6.dom.content),
 ])
 
 rptObj.ui.button("Set 150").click([

@@ -27,12 +27,12 @@ date4.input.options.showOtherMonths  = True
 
 # Button and transofmation on the datepicker components
 rptObj.ui.button("click").click([
-  c.write(date1.input.dom.val, stringify=True),
-  c.write(date2.input.dom.content),
+  c.dom.write(date1.input.dom.val, stringify=True),
+  c.dom.write(date2.input.dom.content),
 
   # Some Javascript conversion functions
-  c.write(date2.input.dom.content.date.getTime()),
-  c.write(date2.input.dom.content.date.getMonthName()),
+  c.dom.write(date2.input.dom.content.date.getTime()),
+  c.dom.write(date2.input.dom.content.date.getMonthName()),
 ])
 
 # Button and transformation on the datepicker components
@@ -46,7 +46,7 @@ rptObj.ui.button("Disable").click([
 rptObj.ui.button("Set Date").click([
   date3.input.build("1985-09-24"),
   date2.input.js.disable(),
-  c.write("date 2 disabled")
+  c.dom.write("date 2 disabled")
 ])
 
 c.move()

@@ -159,7 +159,7 @@ if WEB:
   import websites.web_app
   import websites.web_coming_soon
   import websites.web_amazon
-  import websites.web_bitbucket
+  import websites.web_github
   import websites.web_hotel
   import websites.web_photos
   import websites.web_restaurant

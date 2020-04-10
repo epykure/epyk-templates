@@ -18,13 +18,13 @@ morning.options.interval = 60
 
 # Add event when the timepciker object change
 morning.change([
-  c.write("time", skip_data_convert=True)
+  c.dom.write("time", skip_data_convert=True)
 ])
 
 # Add button to retrieve the value of the different timepcickers
 rptObj.ui.button("Click").click([
-  c.write(current.input.dom.content),
-  c.write(first.input.dom.val, stringify=True),
+  c.dom.write(current.input.dom.content),
+  c.dom.write(first.input.dom.val, stringify=True),
   first.input.js.value("9:00:00"),
   current.input.build("9:00:00"),
 ])

@@ -16,9 +16,9 @@ b2 = rptObj.ui.sliders.progressbar(50)
 
 # Add event on the progress bar to change and retrieve the value
 rptObj.ui.button("click").click([
-  c.write(b2.dom.content),
+  c.dom.write(b2.dom.content),
   b1.build(20),
-  c.write(b1.dom.val, stringify=True),
+  c.dom.write(b1.dom.val, stringify=True),
 ])
 
 c.move()

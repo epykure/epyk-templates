@@ -5,7 +5,9 @@ from epyk.core.Page import Report
 # Create a basic report object
 rptObj = Report()
 
-#b = rptObj.ui.navbar(title="Epyk")
+b = rptObj.ui.navbar(title="Epyk")
+b.move()
+
 # b += rptObj.ui.link("Test")
 
 # Console component
@@ -47,7 +49,7 @@ rptObj.ui.rich.countdown("2020-09-24")
 rptObj.ui.rich.update("Last update: ")
 
 rptObj.ui.button("Click").click([
-  c.write(light.dom.val, stringify=True)
+  c.dom.write(light.dom.val, stringify=True)
 ])
 
 
