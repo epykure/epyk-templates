@@ -3,6 +3,9 @@ import time
 
 sys.path.append("../epyk-ui")
 
+from epyk.core.js import Imports
+#
+Imports.STATIC_PATH = "./../../static"
 
 CHARTS = False
 GEO = False
@@ -17,7 +20,6 @@ DASH = False
 WEB = False
 
 
-
 # -------------------------------------------------------------------------------------------------------------------
 # Pure CSS
 #
@@ -25,6 +27,10 @@ if CSS:
   print("Processing Chart examples.... ")
   start = time.time()
   import locals.file_css_custom
+  import locals.file_css_classes
+  import locals.file_css_inline
+  import locals.file_css_effect
+  import locals.file_css_overrides
   print("total time: %s" % (time.time() - start))
   print("")
 
