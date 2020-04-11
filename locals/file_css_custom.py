@@ -35,6 +35,26 @@ t2.style.add_classes.external(["animated", "bounce"])
 
 # Create a bespoke CSS class from the Python framework
 # => target being to get this included at some point in the official package
+from epyk.core.css.styles.classes import CssStyle
 
+
+class CssHoverColor(CssStyle.Style):
+  _attrs = {'color': 'blue', 'cursor': 'pointer'}
+  _hover = {'color': 'orange'}
+
+# Bespoke component creation
+div = rptObj.ui.div("This is a container")
+
+# Attach the class to the component
+div.style.add_classes.custom(CssHoverColor)
+
+class CssBodyMargin(CssStyle.Style):
+  _attrs = {'padding': '0 40px'}
+
+# same thing can be added to the body
+rptObj.body.style.add_classes.custom(CssBodyMargin)
+
+# it is important to keep in mind that the inline CSS style of any component will be used in priority compoared
+# to the styles in a CSS class
 
 print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="report_css_custom"))
