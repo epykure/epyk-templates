@@ -24,4 +24,6 @@ edit.on('click', rptObj.js.console.log('test'))
 rptObj.ui.icons.clock().css({"color": 'blue'})
 #rptObj.ui.icons.edit().color("red")
 
+
+
 print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="report_icons"))

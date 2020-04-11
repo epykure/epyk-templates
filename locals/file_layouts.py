@@ -87,17 +87,10 @@ t.click([
   rptObj.js.objects.event.stopPropagation(),
   rptObj.js.objects.event.preventDefault(),
   c.dom.write("Message from the text box"),
+  c.dom.write(t.dom.content),
 ])
 
-rptObj.ui.images.badge("306", url="google", icon="fas fa-align-center", options={'badge_css': {'color': 'white', "background": 'red'}})
-rptObj.ui.images.badge("306", url="google", icon="fas fa-align-center", options={'badge_css': {'color': 'white', "background": 'orange'}})
-rptObj.ui.images.badge("306", url="google", icon="fas fa-align-center", options={'badge_css': {'color': 'white', "background": 'red'}})
-rptObj.ui.images.badge("306", url="google", icon="fas fa-align-center", options={'badge_css': {'color': 'white', "background": 'red'}})
-b = rptObj.ui.images.badge(7688, icon="fab fa-python", options={'badge_css': {'color': 'white', "background": 'red'}})
-b.options.badge_css = {"background": 'green'}
-
-i = rptObj.ui.layouts.icons(["fas fa-align-center", 'fab fa-python'])
-i.icon.click([i.icon.dom.css({"color": 'red'})])
+print(rptObj.css.button.basic())
 
 #d + t
 

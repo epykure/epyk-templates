@@ -9,11 +9,24 @@ GEO = False
 PACKAGES = True
 COMPONENTS = True
 JS = True
+CSS = True
 TABLES = False
 TEXT = False
 LAYOUT = True
 DASH = False
 WEB = False
+
+
+
+# -------------------------------------------------------------------------------------------------------------------
+# Pure CSS
+#
+if CSS:
+  print("Processing Chart examples.... ")
+  start = time.time()
+  import locals.file_css_custom
+  print("total time: %s" % (time.time() - start))
+  print("")
 
 
 # -------------------------------------------------------------------------------------------------------------------
@@ -23,6 +36,7 @@ if JS:
   print("Processing Chart examples.... ")
   start = time.time()
   import locals.file_js_events
+  import locals.file_js_custom
   import locals.file_js_transforms
   print("total time: %s" % (time.time() - start))
   print("")
