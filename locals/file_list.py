@@ -32,19 +32,12 @@ t.options.expanded = False
 
 #
 table = rptObj.ui.layouts.table([
-  ["A", "B", "C"],
-  ["1", "2", "C3"],
-  ["A4", "5", "4C"],
-], width=(100, 'px'))
+  ["A",  rptObj.ui.text("B"), rptObj.ui.text("C")],
+  ["1",  rptObj.ui.text("3"), rptObj.ui.text("5")],
+])
 #
-
-for c in table.col(i=1):
-  c.add_title(c.val)
-  #v[i] = self._report.ui.texts.span(v[i])
-  #v[i].inReport = False
-  c.css({"background": 'red'})
-#
-table.style.clear()
+table.add_caption("This is a caption")
+table.css({"border": '1px solid black'})
 
 a = rptObj.ui.fields.select(["A"], label="test")#
 a.input.attr["data-live-search"] = "true"
@@ -78,10 +71,10 @@ a.input.attr["data-live-search"] = "true"
 rptObj.ui.layouts.hr(3)
 
 
-#
+
 l = rptObj.ui.list(range(10))
-# l.set_items(in_span=True)
-#
+#l.set_items(in_span=True)
+
 
 l2 = rptObj.ui.list(range(10))
 
@@ -90,12 +83,12 @@ l3 = rptObj.ui.list(range(10)).css({"color": "red"})
 
 
 #
-l2.add_item(l3)[-1].val.css({"margin": "2px 10px"})
-
+# l2.add_item(l3)[-1].val.css({"margin": "2px 10px"})
+#
 # #l2[-1].set_html_content(rptObj.ui.texts.span(l2[-1].val))
 # l2[-1].add_label("test")
 # l2[-1].add_icon("fas fa-folder")
-#
+
 #
 # l2[-1].label.tooltip("test")
 # l2[-1].icon.click([
