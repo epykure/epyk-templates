@@ -1,3 +1,4 @@
+# http://jsfiddle.net/KUCaL/
 
 from epyk.core.Page import Report
 from epyk.tests import test_statics
@@ -19,22 +20,19 @@ c = rptObj.ui.rich.console("* This is a log section for all the events in the di
 rptObj.ui.layouts.iframe("http://www.google.com")
 
 #
-# dd = rptObj.ui.icon("fas fa-arrow-down").css({"border": '1px solid black', "position": 'fixed', "width": 'none',
-#                    "border-radius": '20px', "padding": '8px', "right": '20px'})
-#
-# du = rptObj.ui.icon("fas fa-arrow-up").css({"border": '1px solid black', "position": 'fixed', "width": 'none',
-#                    "border-radius": '20px', "padding": '8px', "right": '20px', "bottom": "20px"})
-#
-#
-# dd.style.addCls("CssDivOnHoverBackgroundLight")
-# du.style.addCls("CssDivOnHoverBackgroundLight")
+dd = rptObj.ui.icon("fas fa-arrow-down").css({"border": '1px solid black', "position": 'fixed', "width": 'none',
+                   "border-radius": '20px', "padding": '8px', "left": '20px'})
+
+du = rptObj.ui.icon("fas fa-arrow-up").css({"border": '1px solid black', "position": 'fixed', "width": 'none',
+                   "border-radius": '20px', "padding": '8px', "left": '20px', "bottom": "20px"})
+
 
 #rptObj.ui.navigation.down()
 rptObj.ui.navigation.pin("test")
 
-# du = rptObj.ui.navigation.to(100, tooltip="test")
+du = rptObj.ui.navigation.to(100, tooltip="test")
 #
-# ind = rptObj.ui.navigation.indices(10)
+ind = rptObj.ui.navigation.indices(10)
 #
 # p = rptObj.ui.navigation.points(10)
 # d = rptObj.ui.navigation.dots(10)
@@ -58,16 +56,10 @@ rptObj.ui.navigation.pin("test")
 #   rptObj.ui.div("Test Content 3")]))
 
 
-# fixed = rptObj.ui.layouts.slide([], title="This is a title")
-# fixed += rptObj.ui.title("Sub title")
-#fixed.title.click([
-#  rptObj.js.getElementsByName("panel_%s" % fixed.htmlId).first.toggle()
-#])
-
 #div = rptObj.ui.layouts.panelsplit(left=number, right=number_2, resizable=True)
 #div = rptObj.ui.layouts.tabs([number, number_3, number_2, number_4])
 
-# rptObj.ui.layouts.dialogs()
+rptObj.ui.layouts.dialogs()
 
 rptObj.ui.layouts.hr()
 
