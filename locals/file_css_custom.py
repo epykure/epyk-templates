@@ -56,5 +56,12 @@ rptObj.body.style.add_classes.custom(CssBodyMargin)
 
 # it is important to keep in mind that the inline CSS style of any component will be used in priority compoared
 # to the styles in a CSS class
+v_cls = rptObj.css.anonymous_cls({
+  '_attrs': {'color': 'green', 'cursor': 'pointer'},
+  '_hover': {'color': 'red'}})
+
+# Bespoke component creation
+div2 = rptObj.ui.div("This is a container")
+div2.style.add_classes.custom(v_cls)
 
 print(rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name="report_css_custom"))
