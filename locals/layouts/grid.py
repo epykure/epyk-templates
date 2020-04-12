@@ -6,16 +6,16 @@ from epyk.core.Page import Report
 # Create a basic report object
 rptObj = Report()
 
-#
+# Create a grid
 grid1 = rptObj.ui.grid()
 
-#
+# Change the style of the main container
 grid1.style.css.border = "1px solid black"
 
 # Add a row to the grid
 grid1 += [1, 2, 3]
 
-#
+# Apply still changes on all the row
 for c in grid1[0]:
   c.style.color = 'green'
   # Change the div container created as cells were not html components
@@ -51,16 +51,32 @@ for c in grid1[1]:
   c.val[0].style.css.text_align = "center"
 
 # Add event
+grid1[1][0].click([
+  #
+  rptObj.js.console.log(grid1[1][0].val[0].dom.content),
+  # Hide row
+  grid1[0].dom.toggle(),
+  # Change value of row
+  grid1[0][1].build("new value")
+])
 
+# create a container with a row and columns
+col2 = rptObj.ui.col([
+  rptObj.ui.div("Text 1"),
+  rptObj.ui.div("Text 2"),
+])
 
-# Hide row
+text = rptObj.ui.div("Text 3")
+grid2 = rptObj.ui.grid([
+  [text, col2]
+]).css({"border": '1px solid black'})
 
-
-# Change value of row
-
+# Change the background style of the first column
+grid2[0][0].style.css.background = 'green'
 
 # hide colon (and rescale)
-
-
+rptObj.ui.button("Toggle Panel").click([
+  grid2.dom.togglePanel(1)
+])
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
