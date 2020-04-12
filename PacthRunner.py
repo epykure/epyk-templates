@@ -1,5 +1,8 @@
+
+import os
 import sys
 import time
+import config
 
 sys.path.append("../epyk-ui")
 
@@ -7,232 +10,48 @@ from epyk.core.js import Imports
 #
 Imports.STATIC_PATH = "./../../static"
 
-CHARTS = False
-GEO = False
-PACKAGES = True
-COMPONENTS = True
-JS = True
-CSS = True
-TABLES = False
-TEXT = False
-LAYOUT = True
-DASH = False
-WEB = False
+# To reduce the scope of filters to generate
+filter = None
 
 
-# -------------------------------------------------------------------------------------------------------------------
-# Pure CSS
-#
-if CSS:
-  print("Processing Chart examples.... ")
-  start = time.time()
-  import locals.file_css_custom
-  import locals.file_css_classes
-  import locals.file_css_inline
-  import locals.file_css_effect
-  import locals.file_css_overrides
-  print("total time: %s" % (time.time() - start))
-  print("")
+def process_folder(folder, main_folder=None):
+  """
+
+  :param folder:
+  :param main_folder:
+
+  :return:
+  """
+  start, count_scripts, count_run_scripts = time.time(), 0, 0
+  if main_folder is not None:
+    script_path = os.path.join(os.getcwd(), main_folder, folder)
+  else:
+    script_path = os.path.join(os.getcwd(), folder)
+  for file in os.listdir(script_path):
+    if file.endswith(".py") and file != "__init__.py":
+      count_scripts += 1
+      if filter is not None and not filter in file:
+        continue
+
+      script_name = file[:-3]
+      try:
+        if main_folder is not None:
+          config.OUT_FILENAME = "%s_%s_%s" % (main_folder, folder, script_name)
+          __import__("%s.%s.%s" % (main_folder, folder, script_name))
+        else:
+          config.OUT_FILENAME = "%s_%s" % (folder, script_name)
+          __import__("%s.%s" % (folder, script_name))
+        count_run_scripts += 1
+      except:
+        print("Error with: %s" % file)
+  print("Processing %s (%s / %s reports) in %s seconds" % (folder, count_run_scripts, count_scripts, time.time() - start))
 
 
-# -------------------------------------------------------------------------------------------------------------------
-# Pure Javascript
-#
-if JS:
-  print("Processing Chart examples.... ")
-  start = time.time()
-  import locals.file_js_events
-  import locals.file_js_custom
-  import locals.file_js_transforms
-  print("total time: %s" % (time.time() - start))
-  print("")
+for folder in os.listdir(os.path.join(os.getcwd(), 'locals')):
+  if os.path.isdir(os.path.join(os.getcwd(), 'locals', folder)) and folder != '__pycache__':
+    process_folder(folder, main_folder='locals')
 
-
-# -------------------------------------------------------------------------------------------------------------------
-# CHARTS
-#
-if CHARTS:
-  print("Processing Chart examples.... ")
-  start = time.time()
-  import locals.file_charts_dc
-  import locals.file_charts_nvd3
-  import locals.file_charts_vis
-  import locals.file_charts_chartjs
-  import locals.file_charts_sparklines
-  import locals.file_charts_billboard
-  import locals.file_charts_c3
-  import locals.file_charts_plotly
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# GEO
-#
-if GEO:
-  print("Processing Geo examples.... ")
-  start = time.time()
-  import locals.file_geo_chartjs
-  import locals.file_geo_dc
-  import locals.file_geo_plotly
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# PACKAGES
-#
-if PACKAGES:
-  print("Processing PACKAGES examples.... ")
-  start = time.time()
-  import locals.file_extension_google
-  import locals.file_codemirror
-  import locals.file_jquery_ui
-  import locals.file_jquery_ui_datepicker
-  import locals.file_jquery_ui_slider
-  import locals.file_jquery_ui_menu
-  import locals.file_jquery_ui_autocomplete
-  import locals.file_jquery_ui_progressbar
-  import locals.file_timepicker
-  import locals.file_d3
-  import locals.file_data_vis
-  import locals.file_data_crossfilter
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# BASIC HTML COMPONENT
-#
-if COMPONENTS:
-  print("Processing COMPONENTS examples.... ")
-  start = time.time()
-  import locals.file_canvas
-  import locals.file_editor
-  import locals.file_svg
-  import locals.file_dates
-  import locals.file_checkbox
-  import locals.file_icons
-  import locals.file_numbers
-  import locals.file_list
-  import locals.file_switch
-  import locals.file_tree
-  import locals.file_image
-  import locals.file_select
-  import locals.file_radio
-  import locals.file_button
-  import locals.file_bespoke
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# TABLES
-#
-if TABLES:
-  print("Processing TABLES examples.... ")
-  start = time.time()
-  import locals.file_table
-  import locals.file_tables_aggrid
-  import locals.file_tables_d3
-  import locals.file_tables_plotly
-  import locals.file_tables_datatable
-  import locals.file_tables_tabulator
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# TEXT
-#
-if TEXT:
-  print("Processing TEXT examples.... ")
-  start = time.time()
-  import locals.file_rich_texts
-  import locals.file_input
-  import locals.file_paragraph
-  import locals.file_texts
-  import locals.file_links
-  import locals.file_vignet
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# LAYOUT AND NAVIGATION
-#
-if LAYOUT:
-  print("Processing LAYOUT examples.... ")
-  start = time.time()
-  import locals.file_navigation
-  import locals.file_menu
-  import locals.file_layouts
-  import locals.file_popup
-  import locals.file_panels
-  # import locals.file_form
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# DASHBOARDS
-#
-if DASH:
-  print("Processing Dashboards examples.... ")
-  start = time.time()
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-
-# -------------------------------------------------------------------------------------------------------------------
-# WEBSITES
-#
-if WEB:
-  print("Processing Websites examples.... ")
-  start = time.time()
-  import websites.web_stackoverflow
-  import websites.web_app
-  import websites.web_coming_soon
-  import websites.web_amazon
-  import websites.web_github
-  import websites.web_hotel
-  import websites.web_photos
-  import websites.web_restaurant
-  import websites.web_social_media
-  import websites.web_startup
-  import websites.web_wedding
-  import websites.web_wikipedia
-  import websites.web_youtube
-  import websites.web_google
-  print("total time: %s" % (time.time() - start))
-  print("")
-
-#
-# from docutils.core import publish_parts
-#
-# rst = publish_parts('''
-#
-# Usage:
-# ------
-# number = rptObj.ui.vignets.number(500, "Test")
-# number_2 = rptObj.ui.vignets.number(500, "Test 2 ", options={"url": "http://www.google.fr"})
-# number.span.add_icon(rptObj.ui.icons.get.ICON_ENVELOPE)
-#
-# Related Pages:
-# --------------
-# https://www.w3schools.com/tags/att_input_type_number.asp
-#
-# Attributes:
-# --------------
-# :param test2: test
-# :param test: test
-# ''', writer_name='html')['html_body']
-# print(rst)
-#
-# import pydoc
-#
-# from epyk.core.html import Html
-#
-# doc = pydoc.HTMLDoc()
-# output = doc.docmodule(Html)
-# print(output)
+# Run other type of reports
+process_folder('websites')
+process_folder('interactives')
+process_folder('dashboards')
