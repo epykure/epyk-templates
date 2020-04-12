@@ -11,7 +11,7 @@ from epyk.core.js import Imports
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = 'tabs'
+filter = 'div'
 
 
 def process_folder(folder, results, main_folder=None):
@@ -41,9 +41,10 @@ def process_folder(folder, results, main_folder=None):
         else:
           config.OUT_FILENAME = "%s_%s" % (folder, script_name)
           __import__("%s.%s" % (folder, script_name))
-        results.append(os.path.join(config.OUTPUT_PATHS_LOCALS_HTML, config.OUT_FILENAME))
+        results.append("%s.html" % os.path.join(config.OUTPUT_PATHS_LOCALS_HTML, config.OUT_FILENAME))
         count_run_scripts += 1
-      except:
+      except Exception as err:
+        print(err)
         print("Error with: %s" % file)
   print("Processing %s (%s / %s reports) in %s seconds" % (folder, count_run_scripts, count_scripts, time.time() - start))
 
