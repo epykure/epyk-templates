@@ -25,24 +25,34 @@ for c in tb1.get_header():
   c.style.border = "1px solid black"
 
 # Create bespoke HTML component to be added to the table
-span1 = rptObj.ui.texts.span("Text 1")
+span1 = rptObj.ui.texts.span("Text 1").tooltip("Click to hide header last line")
 span2 = rptObj.ui.texts.span("Text 2")
-span3 = rptObj.ui.texts.span("Text 3")
+span3 = rptObj.ui.texts.span("Text 3").tooltip("Click to change table values")
 
 # Add the row to the table (to the body)
 tb1 += [span1, span2, span3]
+
 span3.click([
   rptObj.js.log(span3.dom.content),
   span2.build("New text"),
 
   # Change the cell properties
-  tb1[1][1].dom.css({"background": rptObj.theme.warning[0]})
+  #tb1[1].cell(1).dom.css({"background": rptObj.theme.warning[0]})
+  tb1[0][1].dom.css({"background": rptObj.theme.warning[0]}),
+
+  # Change the component in the cell
+  tb1[0][1].val[0].dom.css({'text-decoration': 'underline'}),
 ])
 
 # Add an extra row to the header
 tb1.header += [4, 5]
 tb1.get_header(1)[1].colspan(2)
 tb1.get_header(1)[1].style.border = "1px solid black"
+
+span1.click([
+  # The display value must be table-row for a row
+  tb1.get_header(1).dom.toggle()
+])
 
 # Add a text caption to this table
 text = tb1.add_caption("This is a text attached to the table")
@@ -61,10 +71,9 @@ class MyCssBody(CssStyle.Style):
 # Attach the class to the component
 tb1.style.add_classes.custom(MyCssBody)
 
-# add row
-
-
 # delete row
-
+rptObj.ui.button("Remove").click([
+  tb1[0].dom.remove()
+])
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
