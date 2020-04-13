@@ -3,6 +3,7 @@ import os
 import sys
 import time
 import config
+import traceback
 
 sys.path.append("../epyk-ui")
 
@@ -11,7 +12,7 @@ from epyk.core.js import Imports
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = 'div'
+filter = 'panels'
 
 
 def process_folder(folder, results, main_folder=None):
@@ -44,7 +45,7 @@ def process_folder(folder, results, main_folder=None):
         results.append("%s.html" % os.path.join(config.OUTPUT_PATHS_LOCALS_HTML, config.OUT_FILENAME))
         count_run_scripts += 1
       except Exception as err:
-        print(err)
+        traceback.print_exception(*sys.exc_info())
         print("Error with: %s" % file)
   print("Processing %s (%s / %s reports) in %s seconds" % (folder, count_run_scripts, count_scripts, time.time() - start))
 
