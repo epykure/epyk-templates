@@ -27,7 +27,7 @@ rptObj.ui.vignets.block({"text": 'This is a brand new python framework', "title"
 v = rptObj.ui.vignets.text({"title": "New Python Framework", 'value': "A new Python Web Framework", 'color': 'green',
                         'icon': 'fab fa-python', 'colorTitle': 'darkgreen'})
 
-v.click(c.write(v.dom.content))
+v.click(c.dom.write(v.dom.content))
 
 rptObj.ui.vignets.bubble({"value": 23, "title": "Title"}, helper="This is a helper")
 
