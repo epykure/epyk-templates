@@ -24,4 +24,20 @@ rptObj.ui.button("Click").click([
   tabs.dom.deselect_tabs()
 ])
 
+up = rptObj.ui.panels.arrows_up()
+for i in range(5):
+  up.add_panel("Panel %s" % i, rptObj.ui.text("test %s" % i), selected=True)
+
+down = rptObj.ui.panels.arrows_down()
+for i in range(5):
+  down.add_panel("Panel %s" % i, rptObj.ui.text("test %s" % i), selected=True)
+
+menu = rptObj.ui.panels.menu()
+for i in range(5):
+  menu.add_panel("Panel %s" % i, rptObj.ui.text("test %s" % i), selected=True)
+
+pills = rptObj.ui.panels.pills()
+for i in range(5):
+  pills.add_panel("Panel %s" % i, rptObj.ui.text("test %s" % i), selected=True)
+
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
