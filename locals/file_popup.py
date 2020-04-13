@@ -12,8 +12,8 @@ rptObj.theme = ThemeBlue.BlueGrey()
 d = rptObj.ui.fields.today('test')
 i = rptObj.ui.fields.input(placeholder='test2', label='test1')
 i2 = rptObj.ui.fields.input('test3', label='test2')
-form_modal = rptObj.ui.modal.forms([d, i, i2], "http://127.0.0.1:5000", "POST")
-rptObj.ui.buttons.button('SHOW').click(form_modal.show())
+form_modal = rptObj.ui.modals.forms([d, i, i2], "http://127.0.0.1:5000", "POST")
+rptObj.ui.buttons.button('SHOW').click(form_modals.show())
 
 privacy_title = rptObj.ui.texts.title('A privacy reminder from Google', 2)
 p1 = rptObj.ui.texts.paragraph('''Scroll down and click “%s” when you’re ready to continue to Maps, or explore other options on this page.''' % rptObj.ui.tags.strong('''I agree''', options={'managed': False}))
@@ -35,7 +35,7 @@ combining = rptObj.ui.texts.title('''Combining data''')
 p4 = rptObj.ui.texts.paragraph('''We also combine data among our services and across your devices for these purposes. For example, we use data from trillions of search queries to build spell-correction models that we use across all of our services, and we combine data to alert you and other users to potential security risks.''')
 control = rptObj.ui.texts.title('''Privacy Controls''')
 p5 = rptObj.ui.texts.paragraph('''There are many privacy controls you can use, even when you're signed out, to get the Google experience you want.''')
-disc = rptObj.ui.modal.disclaimer([privacy_title, p1, stroke, p2, data_protect,
+disc = rptObj.ui.modals.disclaimer([privacy_title, p1, stroke, p2, data_protect,
                                    list_1, process, p3, list_2, combining, p4,
                                    control, p5])
 button_show = rptObj.ui.buttons.button('Disclaimer')
