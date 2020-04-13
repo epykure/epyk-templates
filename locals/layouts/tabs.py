@@ -21,7 +21,8 @@ tabs.select("Panel 2")
 rptObj.ui.button("Click").click([
   tabs.dom.add_tab("New tab"),
   rptObj.js.console.log(tabs.dom.selected_index),
-  tabs.dom.deselect_tabs()
+  tabs.dom.deselect_tabs(),
+  tabs.panel("Panel 2").dom.transition("color", 'red', duration=1, reverse=True)
 ])
 
 up = rptObj.ui.panels.arrows_up()
