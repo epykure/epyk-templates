@@ -12,7 +12,7 @@ from epyk.core.js import Imports
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = 'panels'
+filter = 'tabs'
 
 
 def process_folder(folder, results, main_folder=None):
