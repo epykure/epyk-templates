@@ -5,7 +5,8 @@ import time
 import config
 import traceback
 
-sys.path.append("../epyk-ui")
+cur_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(cur_dir, "..", "epyk-ui"))
 
 from epyk.core.js import Imports
 #
@@ -25,9 +26,9 @@ def process_folder(folder, results, main_folder=None):
   """
   start, count_scripts, count_run_scripts = time.time(), 0, 0
   if main_folder is not None:
-    script_path = os.path.join(os.getcwd(), main_folder, folder)
+    script_path = os.path.join(cur_dir, main_folder, folder)
   else:
-    script_path = os.path.join(os.getcwd(), folder)
+    script_path = os.path.join(cur_dir, folder)
   for file in os.listdir(script_path):
     if file.endswith(".py") and file != "__init__.py":
       count_scripts += 1
@@ -51,8 +52,8 @@ def process_folder(folder, results, main_folder=None):
 
 
 results = []
-for folder in os.listdir(os.path.join(os.getcwd(), 'locals')):
-  if os.path.isdir(os.path.join(os.getcwd(), 'locals', folder)) and folder != '__pycache__':
+for folder in os.listdir(os.path.join(cur_dir, 'locals')):
+  if os.path.isdir(os.path.join(cur_dir, 'locals', folder)) and folder != '__pycache__':
     process_folder(folder, results, main_folder='locals')
 
 # Run other type of reports
