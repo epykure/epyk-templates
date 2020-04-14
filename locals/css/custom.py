@@ -42,11 +42,13 @@ class CssHoverColor(CssStyle.Style):
   _attrs = {'color': 'blue', 'cursor': 'pointer'}
   _hover = {'color': 'orange'}
 
+
 # Bespoke component creation
 div = rptObj.ui.div("This is a container")
 
 # Attach the class to the component
 div.style.add_classes.custom(CssHoverColor)
+
 
 class CssBodyMargin(CssStyle.Style):
   _attrs = {'padding': '0 40px'}
