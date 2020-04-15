@@ -22,11 +22,22 @@ text = rptObj.ui.text("This is a text")
 bottom = rptObj.ui.banners.bottom([icon, text], options={"inline": True})
 
 # Add a banner on the bottom right corner
-rptObj.ui.banners.corner("bottom", 'red')
+b = rptObj.ui.banners.corner("bottom", 'red')
+# Add click event on the banner
+b.click([
+  # hide the bonner on click
+  b.dom.hide()
+])
 
 # Add a banner on the top right conner
 conrner = rptObj.ui.banners.corner("top", 'red', position='top')
 # Add interactivity on the banner style
 conrner.style.hover({"background": "white", 'color': 'red'})
+
+# Add event when mouse is on the component
+conrner.hover([
+  # display the banner
+  b.dom.show()
+])
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
