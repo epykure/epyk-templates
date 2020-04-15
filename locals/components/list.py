@@ -24,23 +24,14 @@ data = [{"label": 'test', 'items': [
 
 ]}]
 
-
+rptObj.ui.lists.numbers(["A", "B"])
+rptObj.ui.lists.alpha(["A", "B"])
 
 t = rptObj.ui.lists.dropdown(data)
 t.options.expanded = False
 #t.level(1)
 
-#
-table = rptObj.ui.layouts.table([
-  ["A",  rptObj.ui.text("B"), rptObj.ui.text("C")],
-  ["1",  rptObj.ui.text("3"), rptObj.ui.text("5")],
-])
-#
-table.add_caption("This is a caption")
-table.css({"border": '1px solid black'})
 
-a = rptObj.ui.fields.select(["A"], label="test")#
-a.input.attr["data-live-search"] = "true"
 
 #
 #
@@ -66,14 +57,6 @@ a.input.attr["data-live-search"] = "true"
 #                       options={"title": "ttle", 'showTick': True, 'maxOptions': 2})
 # s.selected = "B"
 # s.change(c.write(s.dom.content))
-
-
-rptObj.ui.layouts.hr(3)
-
-
-
-l = rptObj.ui.list(range(10))
-#l.set_items(in_span=True)
 
 
 l2 = rptObj.ui.list(range(10))
