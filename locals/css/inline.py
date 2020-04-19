@@ -44,3 +44,6 @@ div3 = rptObj.ui.div("This is a container 4")
 div3.style.css.font_size = Defaults.font(-5) # -5 from the reference
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
+
+# Reset the default size to not corrupt the other reports
+Defaults.Font.size = 12

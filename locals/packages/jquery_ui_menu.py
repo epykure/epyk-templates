@@ -12,7 +12,7 @@ c = rptObj.ui.rich.console("* This is a log section for all the events in the di
 current = rptObj.ui.menus.selections([])
 
 #
-modal = rptObj.ui.modal.dialog("rsr")
+modal = rptObj.ui.modals.dialog("rsr")
 modal.options.title = "Test Modal"
 
 #

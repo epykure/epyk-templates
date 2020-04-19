@@ -241,7 +241,6 @@ csv = rptObj.js.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master
 scatter = rptObj.ui.charts.plotly.scatter()
 
 but = rptObj.ui.button("test")
-print(but.dom.d3.append('table').attr("style", "margin-left: 250px"))
 
 but.click([
   scatter.dom.add_trace(x=csv.unpack("myDate", "Date"), y=csv.unpack("High", "AAPL.High")),
