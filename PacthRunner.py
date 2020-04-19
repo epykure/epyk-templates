@@ -8,12 +8,13 @@ import traceback
 cur_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(cur_dir, "..", "epyk-ui"))
 
+
 from epyk.core.js import Imports
 #
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = 'tabs'
+filter = None
 
 
 def process_folder(folder, results, main_folder=None):
