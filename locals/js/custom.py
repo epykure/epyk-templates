@@ -5,6 +5,7 @@ from epyk.core.Page import Report
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 # Add the file from the local environment context defined in Imports.STATIC_PATH
 # This path will be overridden and specific to your configuration

@@ -5,6 +5,7 @@ from epyk.core.Page import Report
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 i = rptObj.ui.fields.input("", label="Range Example", icon="fas fa-unlock-alt")
 #i.dom.animate("transform", "rotate", "0 190 50", "360 190 50")

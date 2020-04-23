@@ -5,6 +5,7 @@ from epyk.core.Page import Report
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 # Dom events are available on each components and they will be more detailed on the Javascript section
 # CSS effects are mainly driven by Javascript function

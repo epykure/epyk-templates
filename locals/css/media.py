@@ -6,6 +6,8 @@ from epyk.core.Page import Report
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+
 div = rptObj.ui.div("toto")
 
 div.style.css_class.media({div: {"background-color": "red"}}, 'only', 'screen', {"and": [{'max-width': '600px'}]})

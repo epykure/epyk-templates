@@ -6,6 +6,7 @@ from epyk.tests import data_urls
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 # Add a title to the report
 rptObj.ui.title("Panel", level=3)

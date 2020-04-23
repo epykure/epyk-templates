@@ -5,6 +5,7 @@ from epyk.tests import data_urls
 import config
 
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 csv = rptObj.js.d3.csv(data_urls.PLOTLY_APPLE_PRICES)
 

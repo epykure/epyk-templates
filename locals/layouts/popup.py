@@ -6,6 +6,8 @@ import config
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+
 rptObj.theme = ThemeBlue.BlueGrey()
 d = rptObj.ui.fields.today('test')
 i = rptObj.ui.fields.input(placeholder='test2', label='test1')

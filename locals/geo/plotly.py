@@ -5,6 +5,7 @@ from epyk.tests import data_urls
 import config
 
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 data_geo = rptObj.py.requests.csv(data_urls.GEO_US_RAINS, store_location=config.OUTPUT_TEMPS)
 

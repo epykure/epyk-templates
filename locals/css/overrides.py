@@ -5,6 +5,7 @@ from epyk.core.Page import Report
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 # Framework is quite flexible and most of the attributes can be changed and overridden before transpiling to Javascript.
 # This section will just remind some overrides already mentioned in some other examples
