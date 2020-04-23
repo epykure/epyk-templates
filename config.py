@@ -16,6 +16,7 @@ OUTPUT_TEMPS = r"C:\tmps"
 OUT_FILENAME = 'report_example'
 
 #
+FAVICON_URL = r"https://raw.githubusercontent.com/epykure/epyk-templates/master/static/images/logo.ico"
 IMG_PATH = "https://raw.githubusercontent.com/epykure/epyk-ui/master/epyk/static/images"
 
 # Extra static information with the links of the different external websites
