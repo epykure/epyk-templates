@@ -5,6 +5,7 @@ from epyk.tests import data_urls
 import config
 
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 menu = rptObj.ui.layouts.icons()
 menu.add_icon("fab fa-accusoft")

@@ -9,28 +9,56 @@ Defaults.TEXTS_SPAN_WIDTH = None
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
-rptObj.theme = ThemeDark.Dark()
+input = rptObj.ui.input()
+tags = rptObj.ui.lists.tags(["ok", 'Test'])
+
+rptObj.ui.button("Click").click([
+  rptObj.js.console.log( tags.dom.content )
+  #tags.dom.add("Youpi")
+])
+
+
+rptObj.ui.button("Add").click([
+  tags.dom.add(input.dom.content)
+])
+
+rptObj.ui.button("Toggle Display").click([
+  tags.dom.toggle(),
+  #tags.dom.add("Youpi")
+])
+
+
+rptObj.ui.button("Remove").click([
+  tags.dom.remove(input.dom.content),
+  #tags.dom.add("Youpi")
+])
+
+
+#rptObj.theme = ThemeDark.Dark()
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
-
-data = [{"label": 'test', 'items': [
-  {"label": 'child 1', 'color': 'red'},
-  {"label": 'child 2', 'color': 'green', 'items': [
-      {"label": 'sub child 1', 'color': 'red'},
-  ]},
-  {"label": 'child 3', 'color': 'red'},
-
-]}]
-
-rptObj.ui.lists.numbers(["A", "B"])
-rptObj.ui.lists.alpha(["A", "B"])
-
-t = rptObj.ui.lists.dropdown(data)
-t.options.expanded = False
-#t.level(1)
-
+# c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+#
+# data = [{"label": 'test', 'items': [
+#   {"label": 'child 1', 'color': 'red'},
+#   {"label": 'child 2', 'color': 'green', 'items': [
+#       {"label": 'sub child 1', 'color': 'red'},
+#   ]},
+#   {"label": 'child 3', 'color': 'red'},
+#
+# ]}]
+#
+# rptObj.ui.lists.numbers(["A", "B"])
+# rptObj.ui.lists.alpha(["A", "B"])
+#
+# t = rptObj.ui.lists.dropdown(data)
+# t.options.expanded = False
+# #t.level(1)
+#
+#
+# rptObj.ui.lists.tags(["ok", 'Test'])
 
 
 #
@@ -58,12 +86,12 @@ t.options.expanded = False
 # s.selected = "B"
 # s.change(c.write(s.dom.content))
 
-
-l2 = rptObj.ui.list(range(10))
-
 #
-l3 = rptObj.ui.list(range(10)).css({"color": "red"})
-
+# l2 = rptObj.ui.list(range(10))
+#
+# #
+# l3 = rptObj.ui.list(range(10)).css({"color": "red"})
+#
 
 #
 # l2.add_item(l3)[-1].val.css({"margin": "2px 10px"})
