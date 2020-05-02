@@ -10,7 +10,7 @@ rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 # Console component
 c = rptObj.ui.rich.console("This is a log section for all the events in the different buttons *")
 
-rptObj.ui.text("this is a test")
+rptObj.ui.text("this is a test").popover("test")
 rptObj.ui.texts.label("this is a test", color="red").css({"float": 'none'})
 rptObj.ui.texts.span("Test").css({"border": "1px solid black"})
 rptObj.ui.texts.highlights("Test content", title="Test", icon="fab fa-angellist")

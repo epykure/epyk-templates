@@ -1,6 +1,5 @@
 
 import config
-import PacthRunner
 
 from epyk.core.Page import Report
 
