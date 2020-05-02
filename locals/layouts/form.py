@@ -32,7 +32,7 @@ b = rptObj.ui.button("Run").css({"width": "100px"})
 #s = rptObj.ui.select(["A", "B"])
 n = rptObj.ui.layouts.new_line()
 #s.set_attrs({"name": "ok"})
-f = rptObj.ui.layouts.form([n])
+#f = rptObj.ui.layouts.form([n])
 #f += f.submit
 
 b.click([
