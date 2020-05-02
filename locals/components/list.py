@@ -12,7 +12,7 @@ rptObj = Report()
 rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 input = rptObj.ui.input()
-tags = rptObj.ui.lists.tags(["ok", 'Test'])
+tags = rptObj.ui.lists.chips(["ok", 'Test'])
 
 rptObj.ui.button("Click").click([
   rptObj.js.console.log( tags.dom.content )
