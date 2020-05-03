@@ -32,7 +32,7 @@ Its language constructs and object-oriented approach aim to help programmers wri
 Python is dynamically typed and garbage-collected. 
 It supports multiple programming paradigms, including structured (particularly, procedural,) object-oriented, and functional programming. 
 Python is often described as a "batteries included" language due to its comprehensive standard library.%s
-''' % (a.html(), rptObj.ui.tags.sup("[29]", options={'managed': False})), helper="Paragraph helper")
+''' % (a.html(), rptObj.ui.tags.sup("[29]", options={'managed': False})), helper="Paragraph helper", options={'markdown': True})
 
 
 rptObj.ui.title("History", level=2)
