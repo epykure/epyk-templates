@@ -8,7 +8,7 @@ rptObj = Report()
 c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 #
-ch = rptObj.ui.chips(["example", {"value": 'test', 'name': 'group 2'}])
+ch = rptObj.ui.chips(["example", {"value": 'test', 'name': 'group 2'}], options={"visible": True})
 ch.append("new data")
 ch.enter([
 
