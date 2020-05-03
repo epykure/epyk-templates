@@ -19,11 +19,17 @@ rptObj.ui.button('Click').click([
   c.dom.write(ch.dom.content)
 ])
 
+#
 rptObj.ui.button('Add Fixed').click([
   ch.dom.add(ch.dom.input, fixed=True),
   c.dom.write(ch.dom.content)
 ])
 
+#
+icons = rptObj.ui.icons.bar(['fas fa-times', 'fas fa-anchor'])
+icons[0].click([
+  rptObj.js.alert("pl")
+])
 c.move()
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
