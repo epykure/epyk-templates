@@ -8,7 +8,7 @@ rptObj = Report()
 c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 #
-ch = rptObj.ui.chips(["example"])
+ch = rptObj.ui.chips(["example", {"value": 'test', 'name': 'group 2'}])
 ch.append("new data")
 ch.enter([
 
@@ -21,8 +21,10 @@ rptObj.ui.button('Click').click([
 
 #
 rptObj.ui.button('Add Fixed').click([
-  ch.dom.add(ch.dom.input, fixed=True),
-  c.dom.write(ch.dom.content)
+  ch.dom.add(ch.dom.input, category="other", fixed=True),
+  c.dom.write(ch.dom.content, stringify=True),
+  c.dom.write(ch.dom.values('group')),
+  c.dom.write(ch.dom.values()),
 ])
 
 #
