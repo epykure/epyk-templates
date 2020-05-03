@@ -18,7 +18,7 @@ rptObj.ui.links.button('data', 'www.google.fr', icon="fas fa-align-center", opti
 rptObj.ui.layouts.new_line(2)
 
 #
-rptObj.ui.link({"text": "Profiling results", "url": '#'})
+rptObj.ui.link("Profiling results", url='#')
 rptObj.ui.layouts.new_line(2)
 
 #
