@@ -14,6 +14,10 @@ ch.enter([
 
 ])
 
+ch.keyup.shift_with('L',[
+  rptObj.js.alert("Ok")
+])
+
 rptObj.ui.button('Click').click([
   ch.dom.add(ch.dom.input),
   c.dom.write(ch.dom.content)
@@ -33,6 +37,8 @@ icons[0].click([
   rptObj.js.alert("pl")
 ])
 c.move()
+
+print( rptObj.imports().show(all=True))
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
 

@@ -45,6 +45,9 @@ sc.layout.no_background()
 sc = rptObj.ui.charts.plotly.scatter(data_series, y_columns=[1, 2], x_axis=0)
 sc.layout.no_background()
 sc.layout.no_grid()
+sc.click([
+  rptObj.js.alert("Ok")
+])
 
 shape = sc.layout.shapes.add_line(-100, 10, -50, -10, color="red")
 an = sc.layout.annotations
@@ -239,6 +242,9 @@ s.layout.yaxis2.title = 'yaxis2 title'
 csv = rptObj.js.d3.csv("https://raw.githubusercontent.com/plotly/datasets/master/finance-charts-apple.csv")
 
 scatter = rptObj.ui.charts.plotly.scatter()
+scatter.click([
+  rptObj.js.alert("Ok")
+])
 
 but = rptObj.ui.button("test")
 

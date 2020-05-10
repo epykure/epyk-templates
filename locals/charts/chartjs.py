@@ -13,6 +13,9 @@ data = config.getSeries(5, 30)
 data_rest = rptObj.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES, store_location=config.OUTPUT_TEMPS)
 
 ts = rptObj.ui.charts.chartJs.timeseries(data_rest, y_columns=['AAPL.Open'], x_axis="Date")
+#ts.hover([
+#  rptObj.js.console.log(ts.js.value, skip_data_convert=True)
+#])
 yaxis = ts.options.scales.add_y_axis()
 yaxis.gridLines.display = True
 yaxis.gridLines.color = 'red'
@@ -33,16 +36,28 @@ ts.options.legend.labels.fontColor = 'white'
 # xaxis.gridLines.display = False
 
 a = rptObj.ui.charts.chartJs.line(data, y_columns=[3, 4], x_axis='x')
-donut = rptObj.ui.charts.chartJs.donut(data[:5], y_column=2, x_axis='x')
-p = rptObj.ui.charts.chartJs.pie(data[:5], y_column=2, x_axis='x')
+donut = rptObj.ui.charts.chartJs.donut(data[:5], y_columns=[2], x_axis='x')
+p = rptObj.ui.charts.chartJs.pie(data[:5], y_columns=[2], x_axis='x')
 p.dataset().hoverBorderWidth = 10
+p.click([
+  p.js.reset()
+])
+
+rptObj.ui.button("Click").click([
+  p.js.update(),
+
+])
 
 r = rptObj.ui.charts.chartJs.radar(data[:5], y_columns=[2, 3, 4], x_axis='x')
 r.options.legend.labels.fontColor = 'white'
-
+r.click([
+  rptObj.js.alert("event", skip_data_convert=True)
+])
 polar = rptObj.ui.charts.chartJs.polar(data[:5], y_columns=[1], x_axis='x')
 polar.options.add_title("Title", color="red")
-
+#polar.click([
+#  rptObj.js.console.log(polar.js.value)
+#])
 polar.options.legend.labels.fontColor = 'white'
 for d in polar.datasets:
   d.borderWidth = 0
@@ -55,20 +70,34 @@ l.options.showLines = True
 #l.options.scales.xAxes.ticks.min = 0
 
 bu = rptObj.ui.charts.chartJs.bubble(data, y_columns=list(range(4)), x_axis='x', r_values=['r'])
+bu.click([
+  rptObj.js.console.log(bu.js.value)
+])
+
 s = rptObj.ui.charts.chartJs.scatter(data, y_columns=list(range(4)), x_axis='x')
+s.click([
+  rptObj.js.console.log(s.js.value)
+])
 
 h = rptObj.ui.charts.chartJs.hbar(data[:5], y_columns=list(range(4)), x_axis='x')
-b = rptObj.ui.charts.chartJs.bar(data, y_columns=[1, 2, 3], x_axis='x')
+h.click([
+  rptObj.js.console.log(h.js.value)
+])
+
+#b = rptObj.ui.charts.chartJs.bar(data, y_columns=[1, 2, 3], x_axis='x')
 # b.add_dataset([2, 3, 4, 5, 6])
 
 rptObj.ui.grid([
   [ts, r, li, polar],
-  [bu, b, h, a],
+#  [bu, b, h, a],
   [p, l, s, donut]
 ])
 
 rptObj.ui.button("test").click([
 
 ])
+
+rptObj.ui.tables.tabulators.table()
+
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

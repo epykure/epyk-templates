@@ -11,29 +11,72 @@ Defaults.TEXTS_SPAN_WIDTH = None
 rptObj = Report()
 rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
+
+rptObj.ui.titles.head("Test")
+rptObj.ui.titles.headline("Test")
+rptObj.ui.titles.rubric("Test")
+rptObj.ui.titles.underline("Test")
+rptObj.ui.titles.caption("Test")
+rptObj.ui.text("Test")
+
 input = rptObj.ui.input()
-tags = rptObj.ui.lists.chips(["ok", 'Test'])
 
-rptObj.ui.button("Click").click([
-  rptObj.js.console.log( tags.dom.content )
-  #tags.dom.add("Youpi")
+i = rptObj.ui.lists.badges([
+  {"text": 'text', 'icon': 'fas fa-times', 'checked': True, 'value': 8},
+  {"text": 'text', 'icon': 'fas fa-times', 'checked': True, 'value': 5},
+], options={"badge": {"background": 'green'}})
+i.click([
+  rptObj.js.console.log(i.dom.content),
 ])
 
+c = rptObj.ui.lists.items([
+  {"text": 'value 1', 'icon': 'fas fa-times', 'checked': True, 'value': 8000},
+  {"text": 'value 1', 'icon': 'fas fa-times', 'checked': True, 'value': 50000},
+], options={"style": {"background": 'green'}})
 
-rptObj.ui.button("Add").click([
-  tags.dom.add(input.dom.content)
+rptObj.jsImports.add("accounting")
+c.add_type('number', '''
+var item = document.createElement("DIV");
+item.setAttribute('name', 'value'); item.setAttribute('data-valid', true);
+if(options.click != null){ 
+  item.style.cursor = 'pointer'; item.onclick = function(event){var value = this.innerHTML; options.click(event, value)}};
+var text = document.createElement("DIV"); text.innerHTML = data.text +":&nbsp;";
+text.style.display = "inline-block";
+var value = document.createElement("DIV"); value.innerHTML = accounting.formatNumber(data.value);
+value.style.display = "inline-block";
+item.appendChild(text); item.appendChild(value);
+''')
+
+input.enter([
+  i.dom.add({"text": input.dom.content, "checked": True}),
 ])
 
-rptObj.ui.button("Toggle Display").click([
-  tags.dom.toggle(),
-  #tags.dom.add("Youpi")
+rptObj.ui.button("Get").click([
+  rptObj.js.console.log(i.dom.content),
 ])
-
-
-rptObj.ui.button("Remove").click([
-  tags.dom.remove(input.dom.content),
-  #tags.dom.add("Youpi")
-])
+# input = rptObj.ui.input()
+# tags = rptObj.ui.lists.chips(["ok", 'Test'])
+#
+# rptObj.ui.button("Click").click([
+#   rptObj.js.console.log( tags.dom.content )
+#   #tags.dom.add("Youpi")
+# ])
+#
+#
+# rptObj.ui.button("Add").click([
+#   tags.dom.add(input.dom.content)
+# ])
+#
+# rptObj.ui.button("Toggle Display").click([
+#   tags.dom.toggle(),
+#   #tags.dom.add("Youpi")
+# ])
+#
+#
+# rptObj.ui.button("Remove").click([
+#   tags.dom.remove(input.dom.content),
+#   #tags.dom.add("Youpi")
+# ])
 
 
 #rptObj.theme = ThemeDark.Dark()

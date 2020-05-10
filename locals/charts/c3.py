@@ -15,9 +15,16 @@ data_rest = rptObj.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES, store_location
 ts = rptObj.ui.charts.c3.timeseries(data_rest, y_columns=['AAPL.Open'], x_axis="Date")
 
 g = rptObj.ui.charts.c3.gauge(60)
-p = rptObj.ui.charts.c3.pie(data, y_column=1, x_axis='g')
-d = rptObj.ui.charts.c3.donut(data, y_column=1, x_axis='g')
+p = rptObj.ui.charts.c3.pie(data, y_columns=[1], x_axis='g')
+
+
+d = rptObj.ui.charts.c3.donut(data, y_columns=[1], x_axis='g')
 s = rptObj.ui.charts.c3.scatter(data, y_columns=list(range(4)), x_axis='x')
+
+rptObj.ui.button("Click").click([
+  s.js.transform('bar'),
+  s.d3
+])
 
 #stanford = rptObj.ui.charts.c3.stanford(data, y_columns=list(range(4)), x_axis='x', epoch_col=0)
 

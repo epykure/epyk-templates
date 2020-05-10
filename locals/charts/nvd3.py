@@ -13,7 +13,7 @@ rptObj.body.set_background()
 data = config.getSeries(5, 40)
 data_rest = rptObj.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES, store_location=config.OUTPUT_TEMPS)
 
-scatter = rptObj.ui.charts.nvd3.scatter(data, y_columns=[1, 2, 3, 4], x_axis='x', title="Scatter chart")
+scatter = rptObj.ui.charts.nvd3.scatter(data, y_columns=[1, 2, 3, 4], x_axis='x')
 scatter.dom.showYAxis(False).showXAxis(False)
 
 records = [
@@ -51,13 +51,13 @@ plot_box.add_box(q1=1.05, q3=2.7, mean=3.365, median=1.3, minRegularValue=0.4, m
 plot_box.add_box(q1=1.05, q3=2.849999996, mean=3.4949999, median=1.5, minRegularValue=0.3, maxRegularValue=4.9, minOutlier=0.3, maxOutlier=4.9)
 
 
-multi = rptObj.ui.charts.nvd3.multi(data, y_columns=[1, 2], x_axis='x', title="multi")
-histo = rptObj.ui.charts.nvd3.histo(data, y_columns=[1, 2], x_axis='x', title='histo')
-area = rptObj.ui.charts.nvd3.area(data, y_columns=[3, 4], x_axis='x', title='Area')
+multi = rptObj.ui.charts.nvd3.multi(data, y_columns=[1, 2], x_axis='x')
+histo = rptObj.ui.charts.nvd3.histo(data, y_columns=[1, 2], x_axis='x')
+area = rptObj.ui.charts.nvd3.area(data, y_columns=[3, 4], x_axis='x')
 
-bar = rptObj.ui.charts.nvd3.bar(data, y_columns=[1], x_axis='x', title="Discrete bar")
-multibar = rptObj.ui.charts.nvd3.bar(data, y_columns=[1, 2, 3, 4], x_axis='x', title="Multi bar")
-hbar = rptObj.ui.charts.nvd3.hbar(data, y_columns=[1, 2, 3, 4], x_axis='g', title="Horizontal bar")
+bar = rptObj.ui.charts.nvd3.bar(data, y_columns=[1], x_axis='x')
+multibar = rptObj.ui.charts.nvd3.bar(data, y_columns=[1, 2, 3, 4], x_axis='x')
+hbar = rptObj.ui.charts.nvd3.hbar(data, y_columns=[1, 2, 3, 4], x_axis='g')
 
 line = rptObj.ui.charts.nvd3.line(data, y_columns=[1, 2, 3, 4], x_axis='x')
 cumul = rptObj.ui.charts.nvd3.line_cumulative(data, y_columns=[1, 2, 3, 4], x_axis='x')
@@ -65,9 +65,9 @@ line_focus = rptObj.ui.charts.nvd3.line_focus(data, y_columns=[1, 2, 3, 4], x_ax
 parallel_coordinates = rptObj.ui.charts.nvd3.parallel_coordinates(data, dimensions=[1, 2, 3, 4])
 parallel_coordinates.dom.lineTension(.2)
 
-pie = rptObj.ui.charts.nvd3.pie(data, y_column=1, x_axis='g')
-donut = rptObj.ui.charts.nvd3.donut(data, y_column=1, x_axis='g')
-donut_s = rptObj.ui.charts.nvd3.donut(data, y_column=1, x_axis='g')
+pie = rptObj.ui.charts.nvd3.pie(data, y_columns=[1], x_axis='g')
+donut = rptObj.ui.charts.nvd3.donut(data, y_columns=[1], x_axis='g')
+donut_s = rptObj.ui.charts.nvd3.donut(data, y_columns=[1], x_axis='g')
 donut_s.dom.padAngle(.08).cornerRadius(5)
 
 #
