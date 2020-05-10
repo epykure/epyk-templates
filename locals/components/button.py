@@ -335,7 +335,7 @@ rptObj.ui.buttons.zipfile("This is the data", "filename.txt")
 # b11 = rptObj.ui.button("test 11", icon="fab fa-python")
 #
 # # Buttons categories
-b12 = rptObj.ui.lists.buttons(["test 15", "test 13", "test 14"])
+#b12 = rptObj.ui.lists.buttons(["test 15", "test 13", "test 14"])
 # for i in b12:
 #   i.press(
 #     rptObj.js.console.log("test"),

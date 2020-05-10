@@ -11,7 +11,7 @@ import config
 rptObj = Report()
 rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
-rptObj.body.set_background()
+#rptObj.body.set_background()
 #rptObj.theme = ThemeBlue.LightBlue()
 
 #
@@ -24,21 +24,49 @@ data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=co
 headers = list(data_rest_2[0].keys())
 checks = rptObj.ui.lists.checks(headers, options={"checked": True})
 
+js_data = rptObj.data.js(data_rest_2)
+test = js_data.filterGroup("Test")
+
+c = rptObj.ui.select(['airline'])
+i = rptObj.ui.input("Aer Lingus")
+f = rptObj.ui.panels.filters(options={"visible": True})
+
 t1 = rptObj.ui.tables.tabulators.table(data_rest_2)
+
+i.enter([
+  f.dom.add(i.dom.content, c.dom.content),
+  rptObj.js.console.log(f.dom.content),
+  t1.build(test.match(f.dom.content))
+])
+
+
 t1.config.paginationSize = 10
 
 c2 = t1.get_column("incidents_85_99")
-c2.formatters.wrapper("progress", {"height": '6px'}, {'color': ['orange', 'green']})
+c2.formatters.wrapper("progress", {"height": '6px'}, {'color': ['red', 'orange', 'orange', 'green']})
 
 checks.click([
     rptObj.js.console.log(checks.dom.unselected),
     t1.js.hideColumna(checks.dom.unselected),
-    t1.js.showColumna(checks.dom.content)
+    t1.js.showColumna(checks.dom.content),
+    t1.js.addRow({"airline": 'olivier', 'incidents_85_99': 400})
 ])
 
 d = rptObj.ui.drawer()
+
 select_all = rptObj.ui.button("Select")
+select_all.click([
+  checks.dom.selectAll(),
+  t1.js.hideColumna(checks.dom.unselected),
+  t1.js.showColumna(checks.dom.content)
+])
+
 unselect_all = rptObj.ui.button("Unselect")
+unselect_all.click([
+  checks.dom.unSelectAll(),
+  t1.js.hideColumna(checks.dom.unselected),
+  t1.js.showColumna(checks.dom.content)
+])
 
 d.add_panel([
   rptObj.ui.titles.headline("Columns"),

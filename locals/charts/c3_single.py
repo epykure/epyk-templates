@@ -2,7 +2,6 @@
 import config
 
 from epyk.core.Page import Report
-from epyk.core.data import Jsdata
 
 rptObj = Report()
 
@@ -20,9 +19,9 @@ dataPoints2 = [
 
 rptObj.ui.input("Test")
 
-js_data_object = Jsdata(dataPoints2)
+js_data_object = rptObj.data.js(records=dataPoints2)
 
-c = rptObj.ui.charts.c3.line(js_data_object, y_columns=["y", 'y1'], x_axis='x') #dataPoints, y_columns=["y", 'y1'], x_axis='x')
+c = rptObj.ui.charts.c3.line(dataPoints2, y_columns=["y", 'y1'], x_axis='x') #dataPoints, y_columns=["y", 'y1'], x_axis='x')
 #c.label(0, "Test")
 
 rptObj.ui.button("reset").click([
@@ -38,7 +37,7 @@ dataPoints3 = [
   {'label': "mango", 'x': 0, 'y': 20, 'y1': 20, 'r': 10},
   {'label': "grape", 'x': 1, 'y': 18, 'y2': 20, 'r': 5}
 ]
-print(c.js.load(['test', 1, 15, 26, 89]).toStr())
+
 rptObj.ui.button("add").click([
   c.js.load(['test', 1, 15, 26, 89]),
   #c.js.render(),

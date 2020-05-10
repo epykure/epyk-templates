@@ -24,7 +24,7 @@ c5 = rptObj.ui.fields.checkbox(False, label="C5")
 
 # checks list
 data = [{"label": "python", "value": False}, {"label": "Java", "value": 5}]
-checks = rptObj.ui.lists.checklist(data)
+checks = rptObj.ui.lists.checks(data)
 
 c2.click([
   # Write the full details of C2

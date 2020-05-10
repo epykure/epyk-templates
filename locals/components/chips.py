@@ -38,7 +38,7 @@ icons[0].click([
 ])
 c.move()
 
-print( rptObj.imports().show(all=True))
+# print( rptObj.imports().show(all=True))
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
 
