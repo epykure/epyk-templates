@@ -4,6 +4,7 @@ import config
 from epyk.core.Page import Report
 
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 languages = [
   {"name": 'C', 'type': 'code', 'rating': 17.07, 'change': 12.82},

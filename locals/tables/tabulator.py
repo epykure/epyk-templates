@@ -15,17 +15,36 @@ rptObj.body.set_background()
 #rptObj.theme = ThemeBlue.LightBlue()
 
 #
-# rptObj.imports().setVersion("tabulator", "3.4.3")
+#rptObj.imports().setVersion("tabulator", "3.4.3")
 
 # rptObj.body.style.custom_class({'_attrs': {'text-align': 'center'}}, classname="tb-center")
 
-data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=r"C:\tmps")
-data_rest_2[0]['airline'] = 'fab fa-python'
+data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=config.OUTPUT_TEMPS)
+#data_rest_2[0]['airline'] = 'fab fa-python'
+headers = list(data_rest_2[0].keys())
+checks = rptObj.ui.lists.checks(headers, options={"checked": True})
 
 t1 = rptObj.ui.tables.tabulators.table(data_rest_2)
 t1.config.paginationSize = 10
+
 c2 = t1.get_column("incidents_85_99")
 c2.formatters.wrapper("progress", {"height": '6px'}, {'color': ['orange', 'green']})
+
+checks.click([
+    rptObj.js.console.log(checks.dom.unselected),
+    t1.js.hideColumna(checks.dom.unselected),
+    t1.js.showColumna(checks.dom.content)
+])
+
+d = rptObj.ui.drawer()
+select_all = rptObj.ui.button("Select")
+unselect_all = rptObj.ui.button("Unselect")
+
+d.add_panel([
+  rptObj.ui.titles.headline("Columns"),
+  select_all, unselect_all,
+  checks], [t1], display='block')
+
 # c2.formatters.custom('''
 #   function(cell, formatterParams){
 #     var cell = cell.getTable().modules.format.getFormatter('progress').call(cell.getTable().modules.format, cell, formatterParams);
