@@ -28,19 +28,7 @@ data_rest_1 = rptObj.py.requests.json(data_urls.PIVOTTABLE_DATA, store_location=
 
 # Create a table
 
-tb1 = rptObj.ui.tables.pivots.ui(languages, ['name'], ['type'])
-tb1.sub_total()
-
-rptObj.ui.navigation.pilcrow()
-
-tb2 = rptObj.ui.tables.pivots.plotly(data_rest_1, [], [])
-#tb2.renderers.treemap()
-#tb.aggregators.sum('change')
-#tb.aggregators.max( 'change')
-#tb.renderers.heatmap()
-
-#rptObj.ui.button("Click").click([
-#  tb.build(languages, options=tb.dom.options({'rows': ['type']}))
-#])
+tb1 = rptObj.ui.tables.pivots.c3(languages, ['name'], ['type'])
+tb1.renderers.c3.stacked()
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
