@@ -15,22 +15,28 @@ data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=r"
 
 #rptObj.style.
 t1 = rptObj.ui.tables.datatables.table(data_rest_1)
+t1_bis = rptObj.ui.tables.datatable(data_rest_1)
+
+
+rptObj.ui.grid([[t1, t1_bis]])
+
 # t1.config.fixedHeader.activate()
 # t1.config.fixedHeader.headerOffset = 100
 # t1.config.colReorder = True
 # t1.config.fixedColumns.leftColumns = 1
 #t1.config.rowsGroup = [5]
-t1.config.responsive.activate()
-t1.config.select.activate()
+#t1.config.responsive.activate()
+#t1.config.select.activate()
+
 #t1.config.scroller.activate()
 # t1.config.buttons = ['copy', 'csv', 'excel', 'pdf']
 #t1.config.rowGroup.activate()
 # t1.config.scrollX = True
 # t1.style.themes.nowrap()
 
-t2 = rptObj.ui.tables.datatables.table(data_rest_2)
+#t2 = rptObj.ui.tables.datatables.table(data_rest_2)
 #t2.config.autoFill.activate()
-t2.config.colReorder.activate()
+#t2.config.colReorder.activate()
 
 #t.style.no_class()
 #t.style.themes.bootstrap()

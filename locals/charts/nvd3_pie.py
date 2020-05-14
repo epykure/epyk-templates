@@ -20,11 +20,11 @@ dataPoints2 = [
 
 rptObj.ui.hidden("Test")
 
-c = rptObj.ui.charts.nvd3.bar(dataPoints, y_columns=["y"], x_axis='x')
+c = rptObj.ui.charts.nvd3.line(dataPoints, y_columns=["y"], x_axis='x')
 
-c.click([
-  rptObj.js.console.log("event", skip_data_convert=True)
-])
+# c.click([
+#   rptObj.js.console.log("event", skip_data_convert=True)
+# ])
 
 
 rptObj.ui.button("reset").click([

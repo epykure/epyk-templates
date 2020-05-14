@@ -28,10 +28,10 @@ chips = rptObj.ui.select(languages, column="type")
 #
 filters = rptObj.ui.panels.filters()
 
-filter = rptObj.data.js(records=languages).filterGroup("test")
-filter2 = rptObj.data.js(records=languages).filterGroup("test2")
+filter = rptObj.data.js.record(data=languages).filterGroup("test")
+filter2 = rptObj.data.js.record(data=languages).filterGroup("test2")
 
-c = rptObj.ui.charts.chartJs.bar(languages, y_columns=["rating", 'change'], x_axis='name')
+c = rptObj.ui.charts.chartJs.bubble(languages, y_columns=["rating", 'change'], x_axis='name')
 c.label(0, "Test")
 
 data = [{"label": "python", "value": False}, {"label": "Java", "value": 5}]

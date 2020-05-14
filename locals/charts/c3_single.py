@@ -19,7 +19,7 @@ dataPoints2 = [
 
 rptObj.ui.input("Test")
 
-js_data_object = rptObj.data.js(records=dataPoints2)
+js_data_object = rptObj.data.js.record(data=dataPoints2)
 
 c = rptObj.ui.charts.c3.line(dataPoints2, y_columns=["y", 'y1'], x_axis='x') #dataPoints, y_columns=["y", 'y1'], x_axis='x')
 #c.label(0, "Test")

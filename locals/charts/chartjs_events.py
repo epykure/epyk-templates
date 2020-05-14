@@ -19,7 +19,7 @@ languages = [
   {"name": 'R', 'type': 'script', 'rating': 1.85, 'change': 0.90},
 ]
 
-js_data = rptObj.data.js(records=languages)
+js_data = rptObj.data.js.record(data=languages)
 filter1 = js_data.filterGroup("filter1")
 
 select = rptObj.ui.select([

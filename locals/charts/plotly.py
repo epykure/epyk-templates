@@ -67,8 +67,7 @@ an.font.color = 'red'
 # shape.y1 = 1
 # shape.fillcolor = 'yellow'
 
-
-s3d = rptObj.ui.charts.plotly.scatter3d(data, y_columns=["y1", "y2"], x_columns=["x1", "x2"], z_columns=["z1", "z2"])
+s3d = rptObj.ui.charts.plotly.scatter3d(data, y_columns=["trial_1_theta", "trial_2_theta"], x_axis="trial_3_r", z_columns=["trial_1_r", "trial_2_r"])
 s3d.data.opacity = 0.5
 s3d.layout.grid_colors('white')
 s3d.layout.axis_colors('white')

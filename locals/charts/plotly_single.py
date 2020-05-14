@@ -20,7 +20,7 @@ dataPoints2 = [
 
 rptObj.ui.hidden("Test")
 
-c = rptObj.ui.charts.plotly.pie(dataPoints, y_columns=["y"], x_axis='x') # , text_column='text')
+c = rptObj.ui.charts.plotly.line(dataPoints, y_columns=["y"], x_axis='x') # , text_column='text')
 #c.label(0, "Test")
 
 rptObj.ui.button("reset").click([
@@ -42,6 +42,10 @@ rptObj.ui.button("reset").click([
   #c.js.render(),
 ])
 
+rptObj.ui.button("Add Trace").click([
+  c.js.addTraces([{"y": [2, 1, 2]}]),
+  #c.js.render(),
+])
 
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

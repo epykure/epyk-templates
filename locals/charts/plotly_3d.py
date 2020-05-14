@@ -20,7 +20,7 @@ dataPoints2 = [
 
 rptObj.ui.hidden("Test")
 
-c = rptObj.ui.charts.plotly.scatter3d(dataPoints, y_columns=["y"], x_columns=['x'], z_columns=["y1"])
+c = rptObj.ui.charts.plotly.surface(dataPoints, y_columns=["y"], x_axis='x', z_axis="y1")
 #c.label(0, "Test")
 
 rptObj.ui.button("reset").click([
