@@ -1,10 +1,9 @@
-
 import config
 
 from epyk.core.Page import Report
 
-
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 dataPoints = [
   {'x': 0, 'y': 10, 'y1': 10},
@@ -21,7 +20,6 @@ dataPoints2 = [
 rptObj.ui.hidden("Test")
 
 c = rptObj.ui.charts.c3.gauge(45)
-#c.label(0, "Test")
 
 rptObj.ui.button("reset").click([
   c.build(90) #dataPoints2),
@@ -41,7 +39,5 @@ rptObj.ui.button("reset").click([
   c.build(10),
   #c.js.render(),
 ])
-
-
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

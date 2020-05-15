@@ -6,6 +6,7 @@ import config
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 import random
 
@@ -23,7 +24,6 @@ def getSeries(count, size, negatives=0.1, missing=0.2):
       data[-1][c] = random.randint(0, 10000) / 100 * (-1 if neg[s] else 1)
   return data
 
-data_earth = rptObj.py.requests.csv(data_urls.DATA_EARTHQUAKE, store_location=config.OUTPUT_TEMPS)
 data_world = rptObj.py.requests.json(data_urls.WORLD_INDEX, store_location=config.OUTPUT_TEMPS)
 
 data = getSeries(5, 10)
@@ -35,7 +35,6 @@ line = rptObj.ui.charts.vis.line(data, y_columns=list(range(4)), x_axis='x')
 bar = rptObj.ui.charts.vis.bar(data, y_columns=list(range(4)), x_axis='x')
 scatter = rptObj.ui.charts.vis.scatter(data, y_columns=list(range(4)), x_axis='x')
 
-timeline = rptObj.ui.charts.vis.timeline(data_earth[:30], y_columns=["place"], x_axis='time')
 
 surface = rptObj.ui.charts.vis.surface(data, y_columns=[1, 2], x_axis='x', z_axis=0)
 line3d = rptObj.ui.charts.vis.line3d(data, y_columns=[1, 2], x_axis='x', z_axis=0)

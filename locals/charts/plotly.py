@@ -6,6 +6,7 @@ import config
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 rptObj.body.set_background()
 
 data_series = config.getSeries(5, 30)
@@ -67,22 +68,6 @@ an.font.color = 'red'
 # shape.y1 = 1
 # shape.fillcolor = 'yellow'
 
-s3d = rptObj.ui.charts.plotly.scatter3d(data, y_columns=["trial_1_theta", "trial_2_theta"], x_axis="trial_3_r", z_columns=["trial_1_r", "trial_2_r"])
-s3d.data.opacity = 0.5
-s3d.layout.grid_colors('white')
-s3d.layout.axis_colors('white')
-s3d.layout.no_background()
-
-
-pie = rptObj.ui.charts.plotly.pie()
-pie.data.values = [2, 3, 4, 4]
-pie.data.type = "pie"
-pie.data.textinfo = "label+percent"
-pie.data.textposition = "outside"
-pie.data.automargin = True
-pie.data.labels = ["Wages", "Operating expenses", "Cost of sales", "Insurance"]
-pie.layout.no_background()
-pie.data.outsidetextfont.color = 'white'
 
 line = rptObj.ui.charts.plotly.line()
 line.data.x = [19097, 18601, 15595, 13546, 12026, 7434, 5419]

@@ -6,6 +6,7 @@ import config
 
 # Create a basic report object
 rptObj = Report()
+rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 rptObj.body.set_background()
 
 # Input data
@@ -13,9 +14,7 @@ data = config.getSeries(5, 30)
 data_rest = rptObj.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES, store_location=config.OUTPUT_TEMPS)
 
 ts = rptObj.ui.charts.chartJs.timeseries(data_rest, y_columns=['AAPL.Open'], x_axis="Date")
-#ts.hover([
-#  rptObj.js.console.log(ts.js.value, skip_data_convert=True)
-#])
+
 yaxis = ts.options.scales.add_y_axis()
 yaxis.gridLines.display = True
 yaxis.gridLines.color = 'red'
@@ -30,10 +29,6 @@ xaxis = ts.options.scales.x_axes()
 xaxis.ticks.fontColor = 'white'
 xaxis.display = False
 ts.options.legend.labels.fontColor = 'white'
-
-
-# xaxis = ts.options.scales.add_x_axis()
-# xaxis.gridLines.display = False
 
 a = rptObj.ui.charts.chartJs.line(data, y_columns=[3, 4], x_axis='x')
 donut = rptObj.ui.charts.chartJs.donut(data[:5], y_columns=[2], x_axis='x')
