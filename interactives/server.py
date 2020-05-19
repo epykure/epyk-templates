@@ -25,6 +25,19 @@ def getSeries(count, size, negatives=0.1, missing=0.2):
   return data
 
 
+@app.route('/data_table', methods=['POST'])
+def data_table():
+  new_data = [
+    {"name": 'Perl', 'type': 'script', 'rating': 0.88, 'change': -0.51},
+    {"name": 'TypeScript', 'type': 'script', 'rating': 0.21, 'change': 0},
+    {"name": 'Rust', 'type': 'script', 'rating': 0.70, 'change': 0},
+  ]
+
+  new_row = {"name": 'MATLAB', 'type': 'script', 'rating': 1.27, 'change': 0.15}
+
+  return json.dumps({'content': new_data, 'columns': ['rating'], 'visible': ['change'], 'row': new_row})
+
+
 @app.route('/data_plotly_3d', methods=['POST'])
 def data_plotly_3d():
     data1, data2 = [], []
