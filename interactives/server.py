@@ -6,7 +6,6 @@ from flask import render_template_string
 from flask import Flask
 app = Flask(__name__)
 
-
 from epyk.core import data as chart_data
 
 
@@ -25,6 +24,19 @@ def getSeries(count, size, negatives=0.1, missing=0.2):
   return data
 
 
+@app.route('/data_datatable', methods=['POST'])
+def data_datatable():
+  new_data = [
+    {"name": 'Perl', 'type': 'script', 'rating': 0.88, 'change': -0.51},
+    {"name": 'TypeScript', 'type': 'script', 'rating': 0.21, 'change': 0},
+    {"name": 'Rust', 'type': 'script', 'rating': 0.70, 'change': 0},
+  ]
+
+  new_row = {"name": 'MATLAB', 'type': 'script', 'rating': 1.27, 'change': 0.15}
+  return json.dumps({'content': chart_data.datatable.table(new_data, ["name", 'script', 'rating', 'change']),
+                     'columns': ['rating'], 'visible': ['change'], 'row': new_row})
+
+
 @app.route('/data_table', methods=['POST'])
 def data_table():
   new_data = [
@@ -36,6 +48,19 @@ def data_table():
   new_row = {"name": 'MATLAB', 'type': 'script', 'rating': 1.27, 'change': 0.15}
 
   return json.dumps({'content': new_data, 'columns': ['rating'], 'visible': ['change'], 'row': new_row})
+
+
+@app.route('/data_table_plotly', methods=['POST'])
+def data_table_plotly():
+  new_data = [
+    {"name": 'Perl', 'type': 'script', 'rating': 0.88, 'change': -0.51},
+    {"name": 'TypeScript', 'type': 'script', 'rating': 0.21, 'change': 0},
+    {"name": 'Rust', 'type': 'script', 'rating': 0.70, 'change': 0},
+  ]
+
+  new_row = {"name": 'MATLAB', 'type': 'script', 'rating': 1.27, 'change': 0.15}
+
+  return json.dumps({'content': chart_data.plotly.table(new_data, ['name', 'type', 'rating']), 'columns': ['rating'], 'visible': ['change'], 'row': new_row})
 
 
 @app.route('/data_plotly_3d', methods=['POST'])
