@@ -24,6 +24,33 @@ def getSeries(count, size, negatives=0.1, missing=0.2):
   return data
 
 
+@app.route('/', methods=['GET'])
+def home():
+  """
+  Report creation on the fly in Flask
+  """
+  from epyk.core.Page import Report
+
+  rptObj = Report()
+  list = rptObj.ui.list()
+  for pyfile in os.listdir("reports"):
+    list.add_item(rptObj.ui.link(pyfile, url="/report/%s" % pyfile[:-3]).css({"padding": '2px 0', 'display': 'block'}))
+  return rptObj.outs.html()
+
+
+@app.route('/data_plotly_geo', methods=['POST'])
+def data_plotly_geo():
+  records = [
+    {'countries': 'FRA', 'size': random.randint(1, 50)},
+    {'countries': 'GBR', 'size': random.randint(1, 50)},
+    {'countries': 'DEU', 'size': random.randint(1, 50)},
+    {'countries': 'RUS', 'size': random.randint(1, 50)},
+    {'countries': 'ESP', 'size': random.randint(1, 50)},
+    {'countries': 'ITA', 'size': random.randint(1, 50)},
+  ]
+  return json.dumps(chart_data.plotly.choropleth(records, country_col='countries', size_col='size'))
+
+
 @app.route('/data_datatable', methods=['POST'])
 def data_datatable():
   new_data = [
