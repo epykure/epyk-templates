@@ -1,5 +1,6 @@
 
 from epyk.core.Page import Report
+from epyk.core.data import events
 
 import config
 
@@ -22,23 +23,26 @@ languages = [
 
 table = rptObj.ui.tables.tabulator(languages)
 
-table.on("dragover", ["event.preventDefault()"])
-
-table.on("drop", [
-  #rptObj.js.console.log('event.dataTransfer.getData("text").split("\\n")', skip_data_convert=True),
-  '''
-  var cols = ["name", 'type', 'rating', 'change'];
-  event.dataTransfer.getData("text").split("\\n").forEach(function(line){
-    var split = line.split("\\t") ;
-    var row = {};
-    cols.forEach(function(col, i){ row[col] = split[i] });
-    %s.addRow(row);
-  })
-  ''' % table.js.varId
-  #table.js.addRow(
-
-  #  {"name": 'SQL', 'type': 'script', 'rating': 2.09, 'change': -0.47}
-  #)
+table.drop([
+  table.build(events.data)
+  
 ])
+
+# table.on("drop", [
+#   #rptObj.js.console.log('event.dataTransfer.getData("text").split("\\n")', skip_data_convert=True),
+#   '''
+#   var cols = ["name", 'type', 'rating', 'change'];
+#   event.dataTransfer.getData("text").split("\\n").forEach(function(line){
+#     var split = line.split("\\t") ;
+#     var row = {};
+#     cols.forEach(function(col, i){ row[col] = split[i] });
+#     %s.addRow(row);
+#   })
+#   ''' % table.js.varId
+#   #table.js.addRow(
+#
+#   #  {"name": 'SQL', 'type': 'script', 'rating': 2.09, 'change': -0.47}
+#   #)
+# ])
 
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
