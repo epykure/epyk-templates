@@ -1,6 +1,10 @@
 
 from epyk.core.Page import Report
+
+#
 from epyk.core.data import events
+from epyk.core.data import loops
+from epyk.core.data import primitives
 
 import config
 
@@ -24,10 +28,18 @@ languages = [
 table = rptObj.ui.tables.tabulator(languages)
 
 table.drop([
-  table.build(events.data)
-  
+  events.event.dataTransfer.text.trim().split(r"\n").forEach([
+    loops.value.toString().trim().split(r"\t").setVar("split"),
+    primitives.list(["name", 'type', 'rating', 'change']).setVar("cols"),
+    primitives.dict({}, "row"),
+    primitives.list(name="cols").forEach([
+      primitives.dict(name="row").addItem(loops.value, primitives.list(name="split")[loops.i])
+    ]),
+    table.js.addRow(primitives.dict(name="row"))
+  ])
 ])
 
+# Javascript equivalent
 # table.on("drop", [
 #   #rptObj.js.console.log('event.dataTransfer.getData("text").split("\\n")', skip_data_convert=True),
 #   '''
