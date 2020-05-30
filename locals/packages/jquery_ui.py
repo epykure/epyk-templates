@@ -20,8 +20,8 @@ class MyBody(Html.Body):
     div[0].style.css.background_color = "grey"
     div[2].attr["class"].add("col-1")
     text = report.ui.text("text")
-    text.inReport = False
-    div.inReport = False
+    text.options.managed = False
+    div.options.managed = False
     self._html_content = "%s%s" % (div.html(), text.html())
     return self
 

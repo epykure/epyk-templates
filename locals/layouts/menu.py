@@ -88,7 +88,7 @@ for i in range(5):
     item.dom.by_name.css({"border-left": "1px solid %s" % rptObj.theme.greys[0], "color": rptObj.theme.colors[7]}).r,
     item.dom.css({"border-left": "1px solid %s" % rptObj.theme.success[1], "color": rptObj.theme.colors[-1]})
   ])
-  item.inReport = False
+  item.options.managed = False
   div + item
 
 

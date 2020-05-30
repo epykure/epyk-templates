@@ -12,7 +12,8 @@ Imports.extend("google-chart", [('loader.js',  'charts/')], version=None, cdnjs_
 # Create the bespoke HTML component
 class Chart(Html.Html):
   # Link this component to the external Javascript module
-  __reqJs = ["google-chart"]
+  requirements = ('google-chart', )
+  name = "New Google Chart"
 
   def __init__(self, report, vals, htmlCode=None, width=None, height=None, options=None, profile=None):
     super(Chart, self).__init__(report, vals, htmlCode=htmlCode, css_attrs={"width": width, "height": height})
