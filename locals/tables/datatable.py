@@ -10,8 +10,8 @@ rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 rptObj.body.set_background()
 
-data_rest_1 = rptObj.py.requests.csv(data_urls.DATA_EARTHQUAKE, store_location=r"C:\tmps")
-data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=r"C:\tmps")
+data_rest_1 = rptObj.py.requests.csv(data_urls.DATA_EARTHQUAKE, store_location=config.OUTPUT_TEMPS)
+data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=config.OUTPUT_TEMPS)
 
 #rptObj.style.
 t1 = rptObj.ui.tables.datatables.table(data_rest_1)

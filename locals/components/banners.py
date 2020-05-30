@@ -9,6 +9,7 @@ rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
 # Add a banner on top of the page
 top = rptObj.ui.banners.top("text")
+top.style.css.font_size = '40px'
 
 # Change the banner style
 top.style.css.height = 100

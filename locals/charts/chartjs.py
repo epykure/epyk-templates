@@ -31,6 +31,8 @@ xaxis.display = False
 ts.options.legend.labels.fontColor = 'white'
 
 a = rptObj.ui.charts.chartJs.line(data, y_columns=[3, 4], x_axis='x')
+
+
 donut = rptObj.ui.charts.chartJs.donut(data[:5], y_columns=[2], x_axis='x')
 p = rptObj.ui.charts.chartJs.pie(data[:5], y_columns=[2], x_axis='x')
 p.dataset().hoverBorderWidth = 10

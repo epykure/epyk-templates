@@ -24,7 +24,7 @@ languages = [
 ]
 
 
-data_rest_1 = rptObj.py.requests.json(data_urls.PIVOTTABLE_DATA, store_location=r"C:\tmps")
+data_rest_1 = rptObj.py.requests.json(data_urls.PIVOTTABLE_DATA, store_location=config.OUTPUT_TEMPS)
 
 # Create a table
 

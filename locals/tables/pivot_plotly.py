@@ -8,7 +8,7 @@ import config
 rptObj = Report()
 rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
-data_rest_1 = rptObj.py.requests.json(data_urls.PIVOTTABLE_DATA, store_location=r"C:\tmps")
+data_rest_1 = rptObj.py.requests.json(data_urls.PIVOTTABLE_DATA, store_location=config.OUTPUT_TEMPS)
 
 tb2 = rptObj.ui.tables.pivots.plotly(data_rest_1, [], [])
 
