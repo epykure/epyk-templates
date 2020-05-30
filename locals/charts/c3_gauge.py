@@ -3,7 +3,7 @@ import config
 from epyk.core.Page import Report
 
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev() # Change the Epyk logo
 
 dataPoints = [
   {'x': 0, 'y': 10, 'y1': 10},

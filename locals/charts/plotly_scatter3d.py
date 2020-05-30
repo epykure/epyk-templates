@@ -6,7 +6,7 @@ from epyk.tests import data_urls
 
 
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 data = rptObj.py.requests.csv(data_urls.PLOTLY_WEBGL_POLAR, store_location=config.OUTPUT_TEMPS)
 

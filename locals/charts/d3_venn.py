@@ -5,7 +5,7 @@ import config
 
 # Create a basic report object
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 scripts = ["https://cdnjs.cloudflare.com/ajax/libs/venn.js/0.2.20/venn.min.js"]
 

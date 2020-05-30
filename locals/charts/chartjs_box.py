@@ -3,6 +3,7 @@ import config
 from epyk.core.Page import Report
 
 rptObj = Report()
+rptObj.headers.dev()
 
 # https://codepen.io/sgratzl/pen/JxQVaZ?editors=0010
 

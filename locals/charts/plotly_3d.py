@@ -6,7 +6,7 @@ from epyk.tests import data_urls
 
 
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 dataPoints = [
   {'x': 0, 'y': 10, 'y1': 10},

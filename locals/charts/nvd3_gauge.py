@@ -5,7 +5,7 @@ from epyk.core.Page import Report
 
 
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 c = rptObj.ui.charts.nvd3.gauge(42)
 #

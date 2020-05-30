@@ -3,6 +3,7 @@ import config
 from epyk.core.Page import Report
 
 rptObj = Report()
+rptObj.headers.dev()
 
 languages = [
   {"name": 'C', 'type': 'code', 'rating': 17.07, 'change': 12.82},
