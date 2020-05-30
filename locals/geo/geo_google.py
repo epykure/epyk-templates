@@ -4,6 +4,7 @@ from epyk.core.Page import Report
 import config
 
 rptObj = Report()
+rptObj.headers.dev()
 
 #rptObj.ui.geo.maps()
 

@@ -5,7 +5,7 @@ from epyk.tests import data_urls
 import config
 
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 
 data_countries = rptObj.py.requests.csv(data_urls.PLOTLY_COUNTRIES, store_location=config.OUTPUT_TEMPS)
