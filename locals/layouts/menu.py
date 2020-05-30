@@ -6,7 +6,7 @@ from epyk.core.css.themes import ThemeDark
 
 # Create a basic report object
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 #rptObj.theme = ThemeDark.Grey()
 record = [{"text": "Lin 1", 'url': 'report_list.html'}, {"text": "Link 2"}]

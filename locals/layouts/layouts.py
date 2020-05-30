@@ -15,7 +15,7 @@ Defaults.BODY_CONTAINER = {"border": None}
 
 # Create a basic report object
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 rptObj.theme = ThemeDark.Dark()
 
