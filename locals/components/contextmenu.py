@@ -4,7 +4,7 @@ from epyk.core.Page import Report
 import config
 
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 #
 menu = rptObj.ui.contextual(["Super", 'next'])

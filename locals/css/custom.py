@@ -5,7 +5,7 @@ from epyk.core.Page import Report
 
 # Create a basic report object
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 # https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css
 rptObj.css.customFile("animate.min.css", path="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2")

@@ -3,6 +3,7 @@ from epyk.core.Page import Report
 import config
 
 rptObj = Report()
+rptObj.headers.dev()
 
 # Console component
 c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})

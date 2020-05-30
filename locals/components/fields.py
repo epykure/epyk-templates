@@ -5,7 +5,7 @@ from epyk.core.Page import Report
 
 # Create a basic report object
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 a = rptObj.ui.fields.select(["Apple", 'Orange'], label="test", helper="select fruit", options={"align": 'center'})#
 a.input.attr["data-live-search"] = "true"

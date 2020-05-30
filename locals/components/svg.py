@@ -5,7 +5,7 @@ import config
 
 # Create a basic report object
 rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+rptObj.headers.dev()
 
 # c = rptObj.ui.charts.svg.heart(w=100, h=200, fill="pink")
 # c[0].transform("transform", "rotate", "0 100 10", "360 100 100")
