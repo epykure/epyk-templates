@@ -118,15 +118,15 @@ rptObj.ui.images.badge("new", "Label", icon="fas fa-align-center").css({"border"
 emoji = rptObj.ui.images.emoji(rptObj.entities.html5_c.cap)
 
 button.click([
-  input.build("data", {"css": {"backgroundColor": input_color.dom.val[input_color.htmlId]['value']}}),
+  input.build("data", {"css": {"backgroundColor": input_color.dom.val[input_color.htmlCode]['value']}}),
   input.dom.empty(),
-  highlights.title.build(input_color.dom.val[input_color.htmlId]['value']),
+  highlights.title.build(input_color.dom.val[input_color.htmlCode]['value']),
   highlights.icon.build("fas fa-adjust"),
   img.build({"image": input_color.dom.content}), # 'Capture.PNG'
   rptObj.js.console.log(highlights.icon.dom.val),
   fieldset.build("ok"),
   emoji.build(rptObj.entities.html4.APL_OVERBAR),
-  text.build(input_color.dom.val[input_color.htmlId]['value'],
+  text.build(input_color.dom.val[input_color.htmlCode]['value'],
              {"reset": True, 'css': {"backgroundColor": 'yellow'}})
 ], profile=True)
 # rptObj.ui.texts.paragraph("This is a paragraph", helper="Paragraph helper")

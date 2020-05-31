@@ -82,7 +82,7 @@ div.style.css_margin_top = 5
 for i in range(5):
   item = rptObj.ui.div("Menu %s" % i).css({"padding": "1px 10px", "margin": "2px 0", "color": rptObj.theme.colors[7],
                                            "border-left": "1px solid %s" % rptObj.theme.greys[0]})
-  item.attr["name"] = div.htmlId
+  item.attr["name"] = div.htmlCode
   item.style.add_classes.div.background_hover()
   item.click([
     item.dom.by_name.css({"border-left": "1px solid %s" % rptObj.theme.greys[0], "color": rptObj.theme.colors[7]}).r,

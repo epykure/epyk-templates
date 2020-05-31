@@ -15,7 +15,7 @@ from epyk.core.js import Imports
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = None
+filter = None #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
 
 
 def process_folder(folder, results, main_folder=None):
@@ -62,6 +62,8 @@ for folder in os.listdir(os.path.join(cur_dir, 'locals')):
 process_folder('websites', results)
 process_folder('interactives', results)
 process_folder('dashboards', results)
+process_folder('web', results)
+
 
 if filter is not None:
   print("")
