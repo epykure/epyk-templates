@@ -1,10 +1,14 @@
 import json
 import os
+import sys
 import random
 
 from flask import render_template_string
 from flask import Flask
 app = Flask(__name__)
+
+cur_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(cur_dir, "..", "..", "epyk-ui"))
 
 from epyk.core import data as chart_data
 

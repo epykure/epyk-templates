@@ -1,7 +1,7 @@
 
 import os
 
-
+import config
 from epyk.core.Page import Report
 
 # Create a basic report object
@@ -34,4 +34,4 @@ rptObj.ui.button("Click").click([
     #table.js.addRow(rptObj.js.objects.data['row']),
   ])
 ])
-rptObj.outs.html_file(path="./../front_end", name=os.path.basename(__file__)[:-3])
+rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_INTERACTIVE, name=os.path.basename(__file__)[:-3])

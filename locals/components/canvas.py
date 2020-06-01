@@ -12,7 +12,7 @@ canvas = rptObj.ui.charts.canvas.new()
 
 #print(canvas.ctx.rotate(rptObj.js.math.PI * 80))
 
-rptObj.js.addOnLoad([
+rptObj.js.onReady([
   canvas.ctx.beginPath(),
   canvas.ctx.font("20px Georgia"),
   canvas.ctx.createLinearGradient(0, 0, canvas.dom.width, 0, "test").

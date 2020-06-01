@@ -16,6 +16,7 @@ Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
 filter = None #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
+category = None
 
 
 def process_folder(folder, results, main_folder=None):
@@ -53,16 +54,31 @@ def process_folder(folder, results, main_folder=None):
   print("Processing %s (%s / %s reports) in %s seconds" % (folder, count_run_scripts, count_scripts, time.time() - start))
 
 
-results = []
-for folder in os.listdir(os.path.join(cur_dir, 'locals')):
-  if os.path.isdir(os.path.join(cur_dir, 'locals', folder)) and folder != '__pycache__':
-    process_folder(folder, results, main_folder='locals')
+if category is None or category == 'locals':
+  results = []
+  for folder in os.listdir(os.path.join(cur_dir, 'locals')):
+    if os.path.isdir(os.path.join(cur_dir, 'locals', folder)) and folder != '__pycache__':
+      process_folder(folder, results, main_folder='locals')
 
 # Run other type of reports
-process_folder('websites', results)
-process_folder('interactives', results)
-process_folder('dashboards', results)
-process_folder('web', results)
+for cat in ['websites', 'dashboards', 'web']:
+  if category is None or category == cat:
+    print("")
+    print("processing - %s" % cat)
+    process_folder(cat, results)
+
+for cat in ['interactives']:
+  if category is None or category == cat:
+    print("")
+    print("processing - %s" % cat)
+    process_folder("reports", results, main_folder=cat)
+
+
+# if category is None or category == 'locals':
+# process_folder('websites', results)
+# process_folder('interactives', results)
+# process_folder('dashboards', results)
+# process_folder('web', results)
 
 
 if filter is not None:
