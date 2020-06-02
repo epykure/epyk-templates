@@ -18,6 +18,9 @@ Imports.STATIC_PATH = "./../../static"
 filter = None #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
 category = None
 
+SUCCESS = 0
+FAILURE = 0
+
 
 def process_folder(folder, results, main_folder=None):
   """
@@ -27,6 +30,8 @@ def process_folder(folder, results, main_folder=None):
 
   :return:
   """
+  global SUCCESS, FAILURE
+
   start, count_scripts, count_run_scripts = time.time(), 0, 0
   if main_folder is not None:
     script_path = os.path.join(cur_dir, main_folder, folder)
@@ -48,9 +53,11 @@ def process_folder(folder, results, main_folder=None):
           __import__("%s.%s" % (folder, script_name))
         results.append("%s.html" % os.path.join(config.OUTPUT_PATHS_LOCALS_HTML, config.OUT_FILENAME))
         count_run_scripts += 1
+        SUCCESS += 1
       except Exception as err:
         traceback.print_exception(*sys.exc_info())
         print("Error with: %s" % file)
+        FAILURE =+ 1
   print("Processing %s (%s / %s reports) in %s seconds" % (folder, count_run_scripts, count_scripts, time.time() - start))
 
 
@@ -86,3 +93,7 @@ if filter is not None:
   print("Reports location:")
   for report in results:
     print(report)
+
+print("")
+print("Success: %s" % SUCCESS)
+print("failure: %s" % FAILURE)
