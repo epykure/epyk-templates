@@ -10,6 +10,8 @@ app = Flask(__name__)
 cur_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(cur_dir, "..", "..", "epyk-ui"))
 
+from epyk.core import data as chart_data
+
 # TODO: Find a way to fix the issue with the import of: from epyk.core.data import models as chart_data
 
 
@@ -52,8 +54,6 @@ def data_plotly_geo():
     {'countries': 'ESP', 'size': random.randint(1, 50)},
     {'countries': 'ITA', 'size': random.randint(1, 50)},
   ]
-  from epyk.core.data import models as chart_data
-
   return json.dumps(chart_data.plotly.choropleth(records, country_col='countries', size_col='size'))
 
 
@@ -64,8 +64,6 @@ def data_datatable():
     {"name": 'TypeScript', 'type': 'script', 'rating': 0.21, 'change': 0},
     {"name": 'Rust', 'type': 'script', 'rating': 0.70, 'change': 0},
   ]
-  from epyk.core.data import models as chart_data
-
   new_row = {"name": 'MATLAB', 'type': 'script', 'rating': 1.27, 'change': 0.15}
   return json.dumps({'content': chart_data.datatable.table(new_data, ["name", 'script', 'rating', 'change']),
                      'columns': ['rating'], 'visible': ['change'], 'row': new_row})
@@ -93,9 +91,6 @@ def data_table_plotly():
   ]
 
   new_row = {"name": 'MATLAB', 'type': 'script', 'rating': 1.27, 'change': 0.15}
-
-  from epyk.core.data import models as chart_data
-
   return json.dumps({'content': chart_data.plotly.table(new_data, ['name', 'type', 'rating']), 'columns': ['rating'], 'visible': ['change'], 'row': new_row})
 
 
@@ -113,8 +108,6 @@ def data_plotly_3d():
 
 @app.route('/data_plotly', methods=['POST'])
 def data_plotly():
-  from epyk.core.data import models as chart_data
-
   values = getSeries(5, 100)
   result = chart_data.plotly.xy(values, [1, 2], 'x')
   result_bar = chart_data.plotly.xy(values, [3, 4, 5], 'g')
@@ -124,8 +117,6 @@ def data_plotly():
 
 @app.route('/data_nv', methods=['POST'])
 def data_nvd3():
-  from epyk.core.data import models as chart_data
-
   values = getSeries(5, 100)
   result = chart_data.nvd3.xy(values, [1, 2, 3], 'x')
   result_bar = chart_data.nvd3.labely(values, [3, 4, 5], 'g')
@@ -135,8 +126,6 @@ def data_nvd3():
 
 @app.route('/data_chartjs', methods=['POST'])
 def data_chartJs():
-  from epyk.core.data import models as chart_data
-
   values = getSeries(5, 100)
   result = chart_data.chartJs.xyz(values, [1, 2], 'x')
   result_bar = chart_data.chartJs.y(values, [3, 4, 5], 'g')
@@ -146,8 +135,6 @@ def data_chartJs():
 
 @app.route('/data_c3', methods=['POST'])
 def data_c3():
-  from epyk.core.data import models as chart_data
-
   values = getSeries(5, 30)
   result = chart_data.c3.y(values, [1, 2], 'x')
   result_bar = chart_data.c3.y(values, [3, 4, 1], 'g')
@@ -157,8 +144,6 @@ def data_c3():
 
 @app.route('/report/<file_name>')
 def report(file_name):
-  from epyk.core.data import models as chart_data
-
   html_content = open(os.path.join('front_end', '%s.html' % file_name)).read()
   return render_template_string(html_content, title='Projects')
 
