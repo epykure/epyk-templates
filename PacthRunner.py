@@ -15,7 +15,7 @@ from epyk.core.js import Imports
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = None #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
+filter = 'js_selector' #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
 category = None
 
 SUCCESS = 0
@@ -58,7 +58,8 @@ def process_folder(folder, results, main_folder=None):
         traceback.print_exception(*sys.exc_info())
         print("Error with: %s" % file)
         FAILURE =+ 1
-  print("Processing %s (%s / %s reports) in %s seconds" % (folder, count_run_scripts, count_scripts, time.time() - start))
+  if filter is None:
+    print("Processing %s (%s / %s reports) in %s seconds" % (folder, count_run_scripts, count_scripts, time.time() - start))
 
 
 if category is None or category == 'locals':
@@ -70,14 +71,16 @@ if category is None or category == 'locals':
 # Run other type of reports
 for cat in ['websites', 'dashboards', 'web']:
   if category is None or category == cat:
-    print("")
-    print("processing - %s" % cat)
+    if filter is None:
+      print("")
+      print("processing - %s" % cat)
     process_folder(cat, results)
 
 for cat in ['interactives']:
   if category is None or category == cat:
-    print("")
-    print("processing - %s" % cat)
+    if filter is None:
+      print("")
+      print("processing - %s" % cat)
     process_folder("reports", results, main_folder=cat)
 
 
@@ -89,8 +92,9 @@ for cat in ['interactives']:
 
 
 if filter is not None:
-  print("")
-  print("Reports location:")
+  if filter is None:
+    print("")
+    print("Reports location:")
   for report in results:
     print(report)
 
