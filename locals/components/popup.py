@@ -2,7 +2,7 @@
 from epyk.core.Page import Report
 
 # Using data and JavaScript shortcuts
-from epyk.core.js import General
+from epyk.core.js import std
 from epyk.core.data import events
 
 import config

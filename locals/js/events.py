@@ -2,7 +2,7 @@
 import config
 
 from epyk.core.Page import Report
-from epyk.core.js import General
+from epyk.core.js import std
 
 
 # Create a basic report object
@@ -16,7 +16,7 @@ rptObj.ui.title("Events on the page", level=3)
 rptObj.ui.text("Press enter to display hello World")
 
 # Add keyup event to the page itself
-rptObj.js.keyup.enter(General.alert('Hello World'))
+rptObj.js.keyup.enter(std.alert('Hello World'))
 
 # Add a title to the report
 rptObj.ui.title("Events on a component", level=3)
