@@ -11,9 +11,9 @@ rptObj = Report()
 rptObj.headers.dev()
 
 socket = rptObj.js.socketio()
+socket.connect(url="http://127.0.0.1", port=5010, namespace='test')
 
 rptObj.body.onReady([
-  socket.connect(url="http://127.0.0.1", port=5010, namespace='test'),
   socket.on('my response', [
     rptObj.js.console.log("Ok")
   ])

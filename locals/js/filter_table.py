@@ -4,8 +4,6 @@ import config
 from epyk.core.Page import Report
 from epyk.core.data.Data import DataJs
 
-from epyk.core.js import expr
-from epyk.core.js import std
 
 # Create a basic report object
 rptObj = Report()
