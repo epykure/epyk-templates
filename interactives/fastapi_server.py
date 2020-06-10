@@ -52,7 +52,3 @@ def read_item(file_name):
 async def data(request: Request):
   data = await request.json()
   return data
-
-@sio.on('disconnect')
-def test_disconnect(sid):
-    print('Client disconnected')
