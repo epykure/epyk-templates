@@ -42,6 +42,7 @@ def home():
     list.add_item(rptObj.ui.link(pyfile, url="/report/%s" % pyfile[:-3]).css({"padding": '2px 0', 'display': 'block'}))
   return rptObj.outs.html()
 
+
 @app.get("/report/{file_name}", response_class=HTMLResponse)
 def read_item(file_name):
   html_content = open(os.path.join('front_end', '%s.html' % file_name)).read()
