@@ -2,15 +2,17 @@
 import config
 
 from epyk.core.Page import Report
+
+from epyk.core.data import events
 from epyk.core.data import datamap
 
-from epyk.tests import data_urls
 
+# Create a basic report object
 rptObj = Report()
 rptObj.headers.dev()
 
-data_earth = rptObj.py.requests.csv(data_urls.DATA_EARTHQUAKE, store_location=config.OUTPUT_TEMPS)
-timeline = rptObj.ui.charts.vis.timeline(data_earth[:30], content="place", start='time')
+
+side = rptObj.ui.navigation.side()
 
 data = [
     {"id": 0, "group": 0, "content": 'item 0', "start": "2020-06-29", 'type': 'point'},
@@ -29,19 +31,41 @@ groups = [
   {"id": 0, 'content': 'test 0'},
 ]
 
+rptObj.ui.titles.head("Time")
+
+col = rptObj.ui.col([
+  rptObj.ui.fields.input(label="Comment", htmlCode="content"),
+  rptObj.ui.fields.select(['background', 'range', 'box', 'point'], label="Categort", htmlCode="type"),
+  rptObj.ui.date(label="Start Date", htmlCode="start"),
+  rptObj.ui.date(label="End Date", htmlCode="end"),
+  rptObj.ui.button("test", htmlCode="button")
+])
+
+dt = rptObj.ui.date(width=(220, 'px'), options={"inline": True})
+
+rptObj.ui.row([dt, col])
+
 timeline2 = rptObj.ui.charts.vis.timeline(data, content="content", start='start', end="end", type="type", group="group", options={"type": 'box'})
 timeline2.options.stack = True
 timeline2.setGroups(groups)
 
-content = rptObj.ui.fields.input(label="Comment")
-category = rptObj.ui.fields.select(['background', 'range', 'box', 'point'], label="Categort")
-start = rptObj.ui.date(label="Start Date")
-end = rptObj.ui.date(label="End Date")
-
-rptObj.ui.toggle({"off": 'Me', 'on': "Team"})
-
-rptObj.ui.button("test").click([
-  timeline2.js.addItem(datamap().add(start.input, 'start').add(end.input, 'end').add(category, 'type').add(content, 'content').attrs({"group": 3})),
-  timeline.js.fit()
+rptObj.components['button'].click([
+  timeline2.js.addItem(datamap(rptObj.get_components(['content', 'type', 'start', 'end'])).attrs({"group": 3})),
+  timeline2.js.fit()
 ])
+
+
+scatter = rptObj.ui.charts.chartJs.bar([])
+pie = rptObj.ui.charts.chartJs.pie([])
+
+rptObj.ui.row([scatter, pie])
+
+dt.select([
+  rptObj.js.post("http://127.0.0.1:8000/data", jsData={"test": 4557}).onSuccess([
+    scatter.build(events.data['chart']),
+    pie.build(events.data['pie']),
+    rptObj.js.console.log("data", skip_data_convert=True)
+  ]),
+])
+
 rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

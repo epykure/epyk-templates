@@ -2,6 +2,7 @@
 import os
 import sys
 import random
+import config
 
 from flask import Flask, render_template_string
 from flask_socketio import SocketIO, emit
@@ -49,8 +50,8 @@ def home():
 
 @app.route('/report/<file_name>')
 def report(file_name):
-    html_content = open(os.path.join('front_end', '%s.html' % file_name)).read()
-    return render_template_string(html_content, title='Projects')
+  html_content = open(os.path.join('front_end', '%s.html' % file_name)).read()
+  return render_template_string(html_content, title='Projects')
 
 
 # Dedicated Socket Entry points
@@ -88,4 +89,4 @@ def new_news(message):
 
 
 if __name__ == '__main__':
-    socketio.run(app, port=5010, debug=True)
+    socketio.run(app, host=config.SERVER_DATA_HOST,  port=config.SERVER_DATA_PORT, debug=True)

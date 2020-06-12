@@ -1,6 +1,9 @@
 
 import os
 import sys
+import uvicorn
+
+import config
 
 from fastapi import FastAPI, Request
 
@@ -12,8 +15,8 @@ app = FastAPI(debug=True)
 
 origins = [
     "*",
+    "http://127.0.0.1",
     "http://localhost",
-    "http://localhost:8080",
 ]
 
 app.add_middleware(
@@ -49,7 +52,36 @@ def read_item(file_name):
   return html_content
 
 
+@app.post("/file")
+async def file(request: Request):
+  import json
+
+  data = await request.form()
+  content = []
+  for pyFile in data.values():
+    print(pyFile.filename)
+    content = json.loads(await pyFile.read())
+    print(content)
+    print(list(content[0].keys()))
+    return {"cols": content}
+
+
 @app.post("/data")
 async def data(request: Request):
+  from epyk.core import data as chart_data
+
   data = await request.json()
-  return data
+  result = chart_data.chartJs.xyz([
+    {"x": 1, 1: 1, 2: 2},
+    {"x": 2, 1: 1, 2: 2},
+  ], [1, 2], 'x')
+  pie_data = chart_data.chartJs.y([
+    {"x": 1, 1: 1, 2: 2},
+    {"x": 2, 1: 2, 2: 2},
+  ], [1], 'x')
+
+  return {"chart": result, 'pie': pie_data}
+
+
+if __name__ == '__main__':
+  uvicorn.run("fastapi_server:app", host=config.SERVER_DATA_HOST, port=config.SERVER_DATA_PORT, reload=True)

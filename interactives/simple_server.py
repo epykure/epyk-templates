@@ -2,6 +2,7 @@ import json
 import os
 import sys
 import random
+import config
 
 from flask import render_template_string
 from flask import Flask
@@ -147,3 +148,7 @@ def report(file_name):
   html_content = open(os.path.join('front_end', '%s.html' % file_name)).read()
   return render_template_string(html_content, title='Projects')
 
+
+if __name__ == '__main__':
+  Flask.run(app, host=config.SERVER_DATA_HOST, port=config.SERVER_DATA_PORT, debug=True)
+  

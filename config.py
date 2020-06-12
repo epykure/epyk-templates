@@ -17,6 +17,12 @@ OUTPUT_PATHS_LOCALS_INTERACTIVE = r"%s\interactives\front_end" % TESTS_PATH
 OUTPUT_TEMPS = r"C:\tmps"
 OUT_FILENAME = 'report_example'
 
+SERVER_DATA_HOST = '127.0.0.1'
+SERVER_DATA_PORT = 8080
+
+SERVER_SOCKET_HOST = "127.0.0.1"
+SERVER_SOCKET_PORT = 5000
+
 #
 FAVICON_URL = r"https://raw.githubusercontent.com/epykure/epyk-templates/master/static/images/logo.ico"
 IMG_PATH = "https://raw.githubusercontent.com/epykure/epyk-ui/master/epyk/static/images"

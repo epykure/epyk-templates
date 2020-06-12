@@ -10,13 +10,13 @@ from epyk.core.Page import Report
 rptObj = Report()
 rptObj.headers.dev()
 
+# Create the server configuration on the JavaScript Side
+server = rptObj.data.js.server(config.SERVER_SOCKET_HOST, config.SERVER_SOCKET_PORT).addNamespace('test', alias="name")
 socket = rptObj.js.socketio()
-socket.connect(url="http://127.0.0.1", port=5010, namespace='test')
+socket.connect(from_config=server.getNamespace('name'))
 
-rptObj.body.onReady([
-  socket.on('my response', [
-    rptObj.js.console.log("Ok")
-  ])
+socket.on('my response', [
+  rptObj.js.console.log("Ok")
 ])
 
 #
