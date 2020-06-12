@@ -151,4 +151,3 @@ def report(file_name):
 
 if __name__ == '__main__':
   Flask.run(app, host=config.SERVER_DATA_HOST, port=config.SERVER_DATA_PORT, debug=True)
-  

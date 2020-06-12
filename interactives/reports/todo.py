@@ -27,7 +27,7 @@ comments.subscribe(socket, 'chat')
 danger = rptObj.ui.network.danger()
 danger.subscribe(socket, 'chat')
 
-room = rptObj.ui.network.room()
+room = rptObj.ui.network.room("")
 
 chat = rptObj.ui.network.chat("chat_example")
 
