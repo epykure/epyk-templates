@@ -19,7 +19,9 @@ This repository will only demonstrate how to use Epyk in the Python Ecosystem.
 The Interactive category will require some external Python package to be run.
 install and details should be fully explained in the corresponding scripts.
 
-![](./static/images/interactive.PNG)
+<div align="center" >
+    <img src="https://github.com/epykure/epyk-templates/blob/master/static/images/interactive.PNG?raw=true">
+</div>
 
 Any reports in the web category need to be integrated to a External web framework in order to be able to see the result.
 
@@ -59,5 +61,9 @@ page.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 ```
 
 Those reports are used as Unit Test for the framework so do not hesitate to propose new ones to help on improving the release management.
+
+More details concerning Epyk project are available on the [official Github repository](https://github.com/epykure/epyk-ui) or on
+the [Jupyter Notebooks](https://nbviewer.jupyter.org/github/epykure/epyk-templates-notebooks/blob/master/index.ipynb)
+
 
 Please let us know your comments or your experience with the framework.
