@@ -12,6 +12,15 @@ Those reports can used directly on your computer by downloading the project.
 Repo Structure
 ==============
 
+![](./static/images/structure.PNG)
+
+This repository will only demonstrate how to use Epyk in the Python Ecosystem.
+
+The Interactive category will require some external Python package to be run.
+install and details should be fully explained in the corresponding scripts.
+
+
+Any reports in the web category need to be integrated to a External web framework in order to be able to see the result.
 
 Usage
 =====
@@ -28,7 +37,7 @@ It is possible to only run few reports by changing the below variable.
 
 
 ```py
-# To reduce the scope of filters to generate
+# To reduce the scope of reports to build
 filter = None # 'data_'
 category = None
 ```
