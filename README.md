@@ -19,6 +19,7 @@ This repository will only demonstrate how to use Epyk in the Python Ecosystem.
 The Interactive category will require some external Python package to be run.
 install and details should be fully explained in the corresponding scripts.
 
+![](./static/images/interactive.PNG)
 
 Any reports in the web category need to be integrated to a External web framework in order to be able to see the result.
 
