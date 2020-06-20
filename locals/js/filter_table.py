@@ -1,13 +1,11 @@
 
-import config
-
 from epyk.core.Page import Report
 from epyk.core.data.Data import DataJs
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+page = Report()
+page.headers.dev()
 
 languages = [
   {"name": 'C', 'type': 'code', 'rating': 17.07, 'change': 12.82},
@@ -24,13 +22,12 @@ languages = [
 
 filter_column = "type"
 
-select = rptObj.ui.select(languages, column=filter_column)
-table = rptObj.ui.tables.tabulator(languages)
+select = page.ui.select(languages, column=filter_column)
+table = page.ui.tables.tabulator(languages)
 
-filter_data = DataJs(rptObj).record(data=languages)
+filter_data = DataJs(page).record(data=languages)
 
 select.change([
   table.build(filter_data.filterGroup("test").equal(filter_column, select.dom.content))
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

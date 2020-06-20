@@ -1,16 +1,15 @@
 
-import config
-
 from epyk.core.Page import Report
 from epyk.core.data import datamap
 
 from epyk.tests import data_urls
 
-rptObj = Report()
-rptObj.headers.dev()
 
-data_earth = rptObj.py.requests.csv(data_urls.DATA_EARTHQUAKE, store_location=config.OUTPUT_TEMPS)
-timeline = rptObj.ui.charts.vis.timeline(data_earth[:30], content="place", start='time')
+page = Report()
+page.headers.dev()
+
+data_earth = page.py.requests.csv(data_urls.DATA_EARTHQUAKE)
+timeline = page.ui.charts.vis.timeline(data_earth[:30], content="place", start='time')
 
 data = [
     {"id": 0, "group": 0, "content": 'item 0', "start": "2020-06-29", 'type': 'point'},
@@ -29,19 +28,18 @@ groups = [
   {"id": 0, 'content': 'test 0'},
 ]
 
-timeline2 = rptObj.ui.charts.vis.timeline(data, content="content", start='start', end="end", type="type", group="group", options={"type": 'box'})
+timeline2 = page.ui.charts.vis.timeline(data, content="content", start='start', end="end", type="type", group="group", options={"type": 'box'})
 timeline2.options.stack = True
 timeline2.setGroups(groups)
 
-content = rptObj.ui.fields.input(label="Comment")
-category = rptObj.ui.fields.select(['background', 'range', 'box', 'point'], label="Categort")
-start = rptObj.ui.date(label="Start Date")
-end = rptObj.ui.date(label="End Date")
+content = page.ui.fields.input(label="Comment")
+category = page.ui.fields.select(['background', 'range', 'box', 'point'], label="Categort")
+start = page.ui.date(label="Start Date")
+end = page.ui.date(label="End Date")
 
-rptObj.ui.toggle({"off": 'Me', 'on': "Team"})
+page.ui.toggle({"off": 'Me', 'on': "Team"})
 
-rptObj.ui.button("test").click([
+page.ui.button("test").click([
   timeline2.js.addItem(datamap().add(start.input, 'start').add(end.input, 'end').add(category, 'type').add(content, 'content').attrs({"group": 3})),
   timeline.js.fit()
 ])
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

@@ -1,16 +1,14 @@
+
 from epyk.core.Page import Report#
 
-import config
+page = Report()
+page.body.style.css.padding = "0 70px"
 
-rptObj = Report()
-rptObj.body.style.css.padding = "0 70px"
+page.ui.navbar(title="Epyk")
 
-rptObj.ui.navbar(title="Epyk")
-
-rptObj.ui.text("epykure / epyk-ui")
-tab = rptObj.ui.panels.tabs()
+page.ui.text("epykure / epyk-ui")
+tab = page.ui.panels.tabs()
 
 for i in range(5):
-  tab.add_panel("Panel %s" % i, rptObj.ui.text("test %s" % i))
+  tab.add_panel("Panel %s" % i, page.ui.text("test %s" % i))
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

@@ -1,23 +1,22 @@
 
-import config
-
 from epyk.core.Page import Report
 from epyk.core.js import std
 
+
 # Create a basic report object
-rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+page = Report()
+page.headers.dev()
 
-button1 = rptObj.ui.button("Button 1")
-button2 = rptObj.ui.button("Button 1")
-button3 =rptObj.ui.button("Button 1")
+button1 = page.ui.button("Button 1")
+button2 = page.ui.button("Button 1")
+button3 =page.ui.button("Button 1")
 
 
-div1 = rptObj.ui.div("div 1")
-div2 = rptObj.ui.div("div 2")
-div3 = rptObj.ui.div("div 3")
+div1 = page.ui.div("div 1")
+div2 = page.ui.div("div 2")
+div3 = page.ui.div("div 3")
 
-div = rptObj.ui.div([div1, div2, div3])
+div = page.ui.div([div1, div2, div3])
 
 
 button1.click([
@@ -35,5 +34,3 @@ button3.click([
   std.querySelector(std.selector(div3)).css({"display": 'block'})
 ])
 
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

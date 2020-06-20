@@ -1,73 +1,72 @@
 
 from epyk.core.Page import Report
 
-import config
+from epyk.tests import mocks
 
 
-rptObj = Report()
-rptObj.headers.dev()
-rptObj.body.set_background()
+page = Report()
+page.headers.dev()
+page.body.set_background()
 
 # Create a Javascript Crossfilter object
-data = config.getSeries(5, 30)
-crossfilter = rptObj.js.data.crossfilter(data, "test")
+data = mocks.getSeries(5, 30)
+crossfilter = page.js.data.crossfilter(data, "test")
 dimension = crossfilter.dimension([('x', int)], 'test_dim')
 group = dimension.group('group').reduceSum(1)
 
 # Write the object to the Javascript page
-rptObj.body.onLoad([
+page.body.onLoad([
   crossfilter, dimension, group
 ])
 
 # Create a DC line chart and add crossfilter definition
-line1 = rptObj.ui.charts.dc.line() # data, y_columns=[1, 2], x_axis='x'
+line1 = page.ui.charts.dc.line() # data, y_columns=[1, 2], x_axis='x'
 line1.crossFilter(dimension, group)
 
 # Create a DC line chart and add crossfilter definition
-pie2 = rptObj.ui.charts.dc.pie(height=(150, "px")) # data, y_columns=[1, 2], x_axis='x'
+pie2 = page.ui.charts.dc.pie(height=(150, "px")) # data, y_columns=[1, 2], x_axis='x'
 pie2.crossFilter(dimension, group)
 
 # Create a DC line chart and add crossfilter definition
-pie3 = rptObj.ui.charts.dc.bar(height=(150, "px")) # data, y_columns=[1, 2], x_axis='x'
+pie3 = page.ui.charts.dc.bar(height=(150, "px")) # data, y_columns=[1, 2], x_axis='x'
 pie3.crossFilter(dimension, group)
 
 #
-data = config.getSeries(5, 30)
-line = rptObj.ui.charts.dc.line(data, y_columns=[1, 2], x_axis='x')
-step = rptObj.ui.charts.dc.step(data, y_columns=[1, 2], x_axis='x')
-bar = rptObj.ui.charts.dc.bar(data, y_columns=[3, 4], x_axis='x')
-hbar = rptObj.ui.charts.dc.hbar(data[:10], y_column=4, x_axis='x')
-pie = rptObj.ui.charts.dc.pie(data[:5], y_column=3, x_axis='x')
-scatter = rptObj.ui.charts.dc.scatter(data, y_columns=[2, 4], x_axis='x')
-bubble = rptObj.ui.charts.dc.bubble(data, y_columns=3, x_axis='x', r_axis=4, options={'statc_factor': '/10'})
+data = mocks.getSeries(5, 30)
+line = page.ui.charts.dc.line(data, y_columns=[1, 2], x_axis='x')
+step = page.ui.charts.dc.step(data, y_columns=[1, 2], x_axis='x')
+bar = page.ui.charts.dc.bar(data, y_columns=[3, 4], x_axis='x')
+hbar = page.ui.charts.dc.hbar(data[:10], y_column=4, x_axis='x')
+pie = page.ui.charts.dc.pie(data[:5], y_column=3, x_axis='x')
+scatter = page.ui.charts.dc.scatter(data, y_columns=[2, 4], x_axis='x')
+bubble = page.ui.charts.dc.bubble(data, y_columns=3, x_axis='x', r_axis=4, options={'statc_factor': '/10'})
 
 # Report layout
-rptObj.ui.title("DC Charts")
-rptObj.body.style.css.padding = "0 10px"
+page.ui.title("DC Charts")
+page.body.style.css.padding = "0 10px"
 
 # Report grid
-rptObj.ui.grid([
-  [rptObj.ui.col([
-      rptObj.ui.title("DC Line chart", level=4),
-      rptObj.ui.text("Example of a "),
+page.ui.grid([
+  [page.ui.col([
+      page.ui.title("DC Line chart", level=4),
+      page.ui.text("Example of a "),
       line1
    ]),
-   rptObj.ui.col([
-     rptObj.ui.title("DC Line chart", level=4),
-     rptObj.ui.row([
-       rptObj.ui.text("Example of a "),
+   page.ui.col([
+     page.ui.title("DC Line chart", level=4),
+     page.ui.row([
+       page.ui.text("Example of a "),
        pie2
      ]),
-     rptObj.ui.row([
+     page.ui.row([
        pie3,
-       rptObj.ui.text("Example of a ")
+       page.ui.text("Example of a ")
      ])
    ])
   ],
-  [rptObj.ui.title("Bespoke Examples", level=4).css({"color": 'black'})],
+  [page.ui.title("Bespoke Examples", level=4).css({"color": 'black'})],
   [line, step, scatter],
   [bar, hbar],
   [bubble, pie],
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

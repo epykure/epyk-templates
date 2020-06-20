@@ -1,19 +1,17 @@
 
 from epyk.core.Page import Report
+
 from epyk.tests import data_urls
 
-import config
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-rptObj.body.set_background()
-rptObj.imports().google_products(['tables'])
+page.body.set_background()
+page.imports().google_products(['tables'])
 
-data_rest_1 = rptObj.py.requests.csv(data_urls.DATA_EARTHQUAKE, store_location=config.OUTPUT_TEMPS)
+data_rest_1 = page.py.requests.csv(data_urls.DATA_EARTHQUAKE)
 
-t1 = rptObj.ui.tables.google.table(data_rest_1)
+t1 = page.ui.tables.google.table(data_rest_1)
 
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

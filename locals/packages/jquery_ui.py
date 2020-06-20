@@ -1,7 +1,6 @@
 
 from epyk.core.Page import Report
 from epyk.core.html import Html
-import config
 
 
 class MyBody(Html.Body):
@@ -27,27 +26,26 @@ class MyBody(Html.Body):
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-rptObj.body = MyBody
+page.body = MyBody
 
-p = rptObj.ui.sliders.progressbar(30)
-rptObj.ui.date()
-t = rptObj.ui.fields.today()
+p = page.ui.sliders.progressbar(30)
+page.ui.date()
+t = page.ui.fields.today()
 #t.selectable(["2019-09-01", "2019-09-06"])
-ti = rptObj.ui.fields.now()
-# s = rptObj.ui.slider(recordSet=[1, 2, 3, 4, 5, 6, 7])
+ti = page.ui.fields.now()
+# s = page.ui.slider(recordSet=[1, 2, 3, 4, 5, 6, 7])
 
-b = rptObj.ui.button("Get")
+b = page.ui.button("Get")
 
 b.click([
-#  rptObj.js.alert(s.dom.inViewPort),
-  #rptObj.js.alert(rptObj.js.viewHeight),
-  #rptObj.js.alert(t.dom.content),
-  #rptObj.js.alert(p.dom.content),
-  #rptObj.js.alert(s.dom.content),
-  #rptObj.js.alert(ti.input.dom.content),
+#  page.js.alert(s.dom.inViewPort),
+  #page.js.alert(page.js.viewHeight),
+  #page.js.alert(t.dom.content),
+  #page.js.alert(p.dom.content),
+  #page.js.alert(s.dom.content),
+  #page.js.alert(ti.input.dom.content),
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

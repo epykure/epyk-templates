@@ -1,11 +1,10 @@
 
 from epyk.core.Page import Report
 
-import config
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 data = [
   {'x': 200, "y": 10, 'size': 50, 'radius': 5},
@@ -13,7 +12,7 @@ data = [
   {'x': 20, "y": 100, 'size': 500, 'radius': 50},
 ]
 
-chart = rptObj.ui.charts.d3.script('bubble', data=data)
+chart = page.ui.charts.d3.script('bubble', data=data)
 chart.loader('''
   const width = 940;
   const height = 500;
@@ -85,4 +84,3 @@ chart.loader('''
     .restart();
 ''')
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

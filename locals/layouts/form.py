@@ -1,54 +1,51 @@
 
 from epyk.core.Page import Report
-import config
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 
-# rptObj.ui.forms.inputs([
+# page.ui.forms.inputs([
 #   {"label": "name", "htmlCode": "input"},
 #   {"label": "name 2", "htmlCode": "input2"},
 # ]) # , "http://127.0.0.1:5000", "POST"
 
-t = rptObj.ui.text("youpi").editable()
-#r = rptObj.ui.select([
+t = page.ui.text("youpi").editable()
+#r = page.ui.select([
 #  {"name": 'Test', 'value': "false"},
 #  {"name": 'Test 2', 'value': "true"},
 #])
 
-#rptObj.ui.button("Test").click([
-#  rptObj.js.console.log(r.dom.val),
+#page.ui.button("Test").click([
+#  page.js.console.log(r.dom.val),
 #  t.dom.contentEditable(r.dom.content)
 #])
 
-#print(rptObj.ui.text("youpi").dom.contentEditable(True))
-#rptObj.ui.forms.date("http://127.0.0.1:5000", "POST")
-#rptObj.ui.forms.dates("http://127.0.0.1:5000", "POST")
-b = rptObj.ui.button("Run").css({"width": "100px"})
+#print(page.ui.text("youpi").dom.contentEditable(True))
+#page.ui.forms.date("http://127.0.0.1:5000", "POST")
+#page.ui.forms.dates("http://127.0.0.1:5000", "POST")
+b = page.ui.button("Run").css({"width": "100px"})
 
-#s = rptObj.ui.select(["A", "B"])
-n = rptObj.ui.layouts.new_line()
+#s = page.ui.select(["A", "B"])
+n = page.ui.layouts.new_line()
 #s.set_attrs({"name": "ok"})
-#f = rptObj.ui.layouts.form([n])
+#f = page.ui.layouts.form([n])
 #f += f.submit
 
 b.click([
-  rptObj.js.console.log(rptObj.js.objects.mouseEvent.offsetX),
-  rptObj.js.console.log(rptObj.js.objects.mouseEvent.getField("type"))
+  page.js.console.log(page.js.objects.mouseEvent.offsetX),
+  page.js.console.log(page.js.objects.mouseEvent.getField("type"))
 ])
 
-#popup = rptObj.ui.layouts.popup(rptObj.ui.title('Test'), color="red")
-#popup + rptObj.ui.texts.paragraph('Test')
+#popup = page.ui.layouts.popup(page.ui.title('Test'), color="red")
+#popup + page.ui.texts.paragraph('Test')
 
-# rptObj.ui.forms.input("")
+# page.ui.forms.input("")
 
-# popup = rptObj.ui.layouts.popup(rptObj.ui.title('Test'), color="red")
-# popup + rptObj.ui.texts.paragraph('Test')
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
+# popup = page.ui.layouts.popup(page.ui.title('Test'), color="red")
+# popup + page.ui.texts.paragraph('Test')
 
 
-# rptObj.py.requests.http_server(5000)
+# page.py.requests.http_server(5000)

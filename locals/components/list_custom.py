@@ -1,11 +1,10 @@
-from epyk.core.Page import Report
 
-import config
+from epyk.core.Page import Report
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # Stepper data
 records = []
@@ -13,7 +12,7 @@ for i in range(6):
   records.append({'text': 'test %s' % i, 'color': 'red', 'icon': 'fas fa-bolt'})
 
 # Create a stepper
-lt = rptObj.ui.lists.items(records)
+lt = page.ui.lists.items(records)
 lt.add_type("bespoke", '''
 var item = document.createElement("DIV"); 
 
@@ -33,6 +32,3 @@ if(options.click != null){
   item.onclick = function(event){ var value = this.innerHTML; options.click(event, value) }};
 if(typeof data === 'object'){ span.innerHTML = data.text} else { span.innerHTML = data }
 ''', dependencies=['font-awesome'])
-
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

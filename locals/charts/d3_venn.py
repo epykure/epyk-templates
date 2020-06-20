@@ -1,11 +1,10 @@
 
 from epyk.core.Page import Report
 
-import config
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 scripts = ["https://cdnjs.cloudflare.com/ajax/libs/venn.js/0.2.20/venn.min.js"]
 
@@ -19,7 +18,7 @@ data = [
   {'sets': ["Audio", "Direct Buy", "Branded Takeover"], 'figure': 1.08, 'label': "Audio, Direct Buy, and Branded Takeover", 'size': 1.08}
   ];
 
-chart = rptObj.ui.charts.d3.script('venn', scripts, data, dependencies=['d3-selection'])
+chart = page.ui.charts.d3.script('venn', scripts, data, dependencies=['d3-selection'])
 chart.loader('''
 var chart = venn.VennDiagram().width(500).height(400);
 
@@ -46,4 +45,4 @@ selection.select("path").style("stroke-width", 3).style("fill-opacity", d.sets.l
       selection.select("path").style("stroke-width", 3).style("fill-opacity", d.sets.length == 1 ? .8 : 0).style("stroke-opacity", 1);
   });
 ''')
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
+

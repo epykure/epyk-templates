@@ -1,19 +1,20 @@
 
 from epyk.core.Page import Report
-from epyk.tests import data_urls
 
-import config
+from epyk.tests import data_urls
+from epyk.tests import mocks
+
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev() # Change the Epyk logo
-rptObj.body.set_background()
+page = Report()
+page.headers.dev() # Change the Epyk logo
+page.body.set_background()
 
 # Input data
-data = config.getSeries(5, 30)
-data_rest = rptObj.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES, store_location=config.OUTPUT_TEMPS)
+data = mocks.getSeries(5, 30)
+data_rest = page.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES)
 
-ts = rptObj.ui.charts.chartJs.timeseries(data_rest, y_columns=['AAPL.Open'], x_axis="Date")
+ts = page.ui.charts.chartJs.timeseries(data_rest, y_columns=['AAPL.Open'], x_axis="Date")
 
 yaxis = ts.options.scales.add_y_axis()
 yaxis.gridLines.display = True
@@ -30,71 +31,68 @@ xaxis.ticks.fontColor = 'white'
 xaxis.display = False
 ts.options.legend.labels.fontColor = 'white'
 
-a = rptObj.ui.charts.chartJs.line(data, y_columns=[3, 4], x_axis='x')
+a = page.ui.charts.chartJs.line(data, y_columns=[3, 4], x_axis='x')
 
 
-donut = rptObj.ui.charts.chartJs.donut(data[:5], y_columns=[2], x_axis='x')
-p = rptObj.ui.charts.chartJs.pie(data[:5], y_columns=[2], x_axis='x')
+donut = page.ui.charts.chartJs.donut(data[:5], y_columns=[2], x_axis='x')
+p = page.ui.charts.chartJs.pie(data[:5], y_columns=[2], x_axis='x')
 p.dataset().hoverBorderWidth = 10
 p.click([
   p.js.reset()
 ])
 
-rptObj.ui.button("Click").click([
+page.ui.button("Click").click([
   p.js.update(),
 
 ])
 
-r = rptObj.ui.charts.chartJs.radar(data[:5], y_columns=[2, 3, 4], x_axis='x')
+r = page.ui.charts.chartJs.radar(data[:5], y_columns=[2, 3, 4], x_axis='x')
 r.options.legend.labels.fontColor = 'white'
 r.click([
-  rptObj.js.alert("event", skip_data_convert=True)
+  page.js.alert("event", skip_data_convert=True)
 ])
-polar = rptObj.ui.charts.chartJs.polar(data[:5], y_columns=[1], x_axis='x')
+polar = page.ui.charts.chartJs.polar(data[:5], y_columns=[1], x_axis='x')
 polar.options.add_title("Title", color="red")
 #polar.click([
-#  rptObj.js.console.log(polar.js.value)
+#  page.js.console.log(polar.js.value)
 #])
 polar.options.legend.labels.fontColor = 'white'
 for d in polar.datasets:
   d.borderWidth = 0
 
-li = rptObj.ui.charts.chartJs.line(data, y_columns=list(range(4)), x_axis='x')
-l = rptObj.ui.charts.chartJs.step(data, y_columns=list(range(4)), x_axis='x')
+li = page.ui.charts.chartJs.line(data, y_columns=list(range(4)), x_axis='x')
+l = page.ui.charts.chartJs.step(data, y_columns=list(range(4)), x_axis='x')
 l.options.showLines = True
 # l.options.scales.y_axis().ticks.max = 5
 # l.options.scales.y_axis().ticks.min = 5
 #l.options.scales.xAxes.ticks.min = 0
 
-bu = rptObj.ui.charts.chartJs.bubble(data, y_columns=list(range(4)), x_axis='x', r_values=['r'])
+bu = page.ui.charts.chartJs.bubble(data, y_columns=list(range(4)), x_axis='x', r_values=['r'])
 bu.click([
-  rptObj.js.console.log(bu.js.value)
+  page.js.console.log(bu.js.value)
 ])
 
-s = rptObj.ui.charts.chartJs.scatter(data, y_columns=list(range(4)), x_axis='x')
+s = page.ui.charts.chartJs.scatter(data, y_columns=list(range(4)), x_axis='x')
 s.click([
-  rptObj.js.console.log(s.js.value)
+  page.js.console.log(s.js.value)
 ])
 
-h = rptObj.ui.charts.chartJs.hbar(data[:5], y_columns=list(range(4)), x_axis='x')
+h = page.ui.charts.chartJs.hbar(data[:5], y_columns=list(range(4)), x_axis='x')
 h.click([
-  rptObj.js.console.log(h.js.value)
+  page.js.console.log(h.js.value)
 ])
 
-#b = rptObj.ui.charts.chartJs.bar(data, y_columns=[1, 2, 3], x_axis='x')
+#b = page.ui.charts.chartJs.bar(data, y_columns=[1, 2, 3], x_axis='x')
 # b.add_dataset([2, 3, 4, 5, 6])
 
-rptObj.ui.grid([
+page.ui.grid([
   [ts, r, li, polar],
 #  [bu, b, h, a],
   [p, l, s, donut]
 ])
 
-rptObj.ui.button("test").click([
+page.ui.button("test").click([
 
 ])
 
-rptObj.ui.tables.tabulators.table()
-
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
+page.ui.tables.tabulators.table()

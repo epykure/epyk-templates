@@ -1,25 +1,24 @@
 
 from epyk.core.Page import Report
 
-import config
 
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+c = page.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 # #
 data = [{"label": 'test', 'items': [{"label": 'child 1', 'color': 'red'}]}]
 #
 # #
-#tree1 = rptObj.ui.lists.tree(data)
+#tree1 = page.ui.lists.tree(data)
 #
 # #
-# tree2 = rptObj.ui.trees.tree(data)
+# tree2 = page.ui.trees.tree(data)
 #
 # #
-# tree3 = rptObj.ui.trees.inputs(data)
+# tree3 = page.ui.trees.inputs(data)
 
 #
 data2 = [
@@ -44,23 +43,22 @@ data2 = [
 ]
 
 #
-tree2 = rptObj.ui.trees.tree(data2)
+tree2 = page.ui.trees.tree(data2)
 
 #
-#tree4 = rptObj.ui.lists.dropdown(data2, text="Button", height=(50, "px"))
+#tree4 = page.ui.lists.dropdown(data2, text="Button", height=(50, "px"))
 
-#tree5 = rptObj.ui.buttons.menu(["A", "B", "C"])
+#tree5 = page.ui.buttons.menu(["A", "B", "C"])
 
 # tree5[0].on('click', [
-#   rptObj.js.alert("Ok"),
+#   page.js.alert("Ok"),
 #   tree5[1].js.set_url("https://stackoverflow.com/questions/5220852/anyway-to-change-href-of-link-with-no-id-and-no-jquery")
 # ])
 
 #
-#rptObj.ui.button("click").click([
+#page.ui.button("click").click([
   #c.write(tree5[1].js.set_text("Test"))
 #])
 
 #c.move()
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

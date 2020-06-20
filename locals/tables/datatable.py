@@ -1,24 +1,24 @@
 
 from epyk.core.Page import Report
+
 from epyk.tests import data_urls
 
-import config
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-rptObj.body.set_background()
+page.body.set_background()
 
-data_rest_1 = rptObj.py.requests.csv(data_urls.DATA_EARTHQUAKE, store_location=config.OUTPUT_TEMPS)
-data_rest_2 = rptObj.py.requests.csv(data_urls.AIRLINE_SAFETY, store_location=config.OUTPUT_TEMPS)
+data_rest_1 = page.py.requests.csv(data_urls.DATA_EARTHQUAKE)
+data_rest_2 = page.py.requests.csv(data_urls.AIRLINE_SAFETY)
 
-#rptObj.style.
-t1 = rptObj.ui.tables.datatables.table(data_rest_1)
-t1_bis = rptObj.ui.tables.datatable(data_rest_1)
+#page.style.
+t1 = page.ui.tables.datatables.table(data_rest_1)
+t1_bis = page.ui.tables.datatable(data_rest_1)
 
 
-rptObj.ui.grid([[t1, t1_bis]])
+page.ui.grid([[t1, t1_bis]])
 
 # t1.config.fixedHeader.activate()
 # t1.config.fixedHeader.headerOffset = 100
@@ -34,7 +34,7 @@ rptObj.ui.grid([[t1, t1_bis]])
 # t1.config.scrollX = True
 # t1.style.themes.nowrap()
 
-#t2 = rptObj.ui.tables.datatables.table(data_rest_2)
+#t2 = page.ui.tables.datatables.table(data_rest_2)
 #t2.config.autoFill.activate()
 #t2.config.colReorder.activate()
 
@@ -42,5 +42,3 @@ rptObj.ui.grid([[t1, t1_bis]])
 #t.style.themes.bootstrap()
 #t.get_column("airline")
 #t.config.ajax = "./sources/arrays.txt"
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

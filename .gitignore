@@ -41,10 +41,8 @@ ehthumbs.db
 Thumbs.db
 
 # Ignore test outs results
-*/tests/outs/*
-*/outs/html*
-*outs/html*
-*outs/ts*
+outs/html/*
+outs/ts/*
 *interactives/front_end*
 
 # Ignore build results

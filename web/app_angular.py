@@ -1,17 +1,21 @@
 
 import config
 
-from epyk.web import angular
+from epyk.core.Page import Report
 
-app = angular.Angular(app_path=config.OUTPUT_PATHS_LOCALS_TS, name="angular")
+# Create a basic report object
+page = Report()
 
-page = app.page()
-page.components.button("test")
+page.ui.text("#This is a text", options={"markdown": True})
+page.ui.button("This is a test").click([
+  page.js.alert("test")
+])
 
 #page.components.chart({'values': [10, 5, 2, 5], 'type': 'line', 'labels': ["A", "B", "C", "D"]})
 #page.components.chart({'values': [10, 10, 60, 5], 'type': 'scatter', 'labels': ["A", "B", "C", "D"]})
 
-app.publish()
+
+page.outs.publish(server="angular", app_path=config.OUTPUT_PATHS_LOCALS_TS, module=config.OUT_FILENAME, selector='app-root')
 
 #route = app.route
 #route.add(component="AppTest", alias="test", path="./pr/app.component_test_new")

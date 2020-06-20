@@ -1,27 +1,23 @@
 
-import os
 import random
 
-import config
 from epyk.core.Page import Report
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 data = []
 for j in range(15):
   data.append( [random.randint(0, 10) for i in range(6)] )
 
-button = rptObj.ui.button("test")
-p_map = rptObj.ui.charts.plotly.maps([data])
+button = page.ui.button("test")
+p_map = page.ui.charts.plotly.maps([data])
 p_map.data.contours.z.project.z = True
 
 button.click([
-  rptObj.js.post("/data_plotly_3d").onSuccess([
-    p_map.build(rptObj.js.objects.data),
+  page.js.post("/data_plotly_3d").onSuccess([
+    p_map.build(page.js.objects.data),
   ]),
 ])
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_INTERACTIVE, name=os.path.basename(__file__)[:-3])

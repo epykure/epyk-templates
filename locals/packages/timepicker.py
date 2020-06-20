@@ -1,20 +1,19 @@
 
 from epyk.core.Page import Report
 
-import config
 
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+c = page.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 # Create two default rimepicker with different dates
-first = rptObj.ui.fields.now(label="timestamp", color="red", helper="This is the report timestamp")
-current = rptObj.ui.fields.now(label="Time field", deltatime=-60)
+first = page.ui.fields.now(label="timestamp", color="red", helper="This is the report timestamp")
+current = page.ui.fields.now(label="Time field", deltatime=-60)
 
 # Create a bespoke one with a fixed time
-morning = rptObj.ui.fields.time("8:13:00", label="Time field")
+morning = page.ui.fields.time("8:13:00", label="Time field")
 morning.options.interval = 60
 
 # Add event when the timepciker object change
@@ -23,7 +22,7 @@ morning.change([
 ])
 
 # Add button to retrieve the value of the different timepcickers
-rptObj.ui.button("Click").click([
+page.ui.button("Click").click([
   c.dom.write(current.input.dom.content),
   c.dom.write(first.input.dom.val, stringify=True),
   first.input.js.value("9:00:00"),
@@ -32,4 +31,3 @@ rptObj.ui.button("Click").click([
 
 c.move()
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

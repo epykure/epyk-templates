@@ -1,25 +1,24 @@
 
 from epyk.core.Page import Report
-from epyk.tests import data_urls
 
-import config
+from epyk.tests import data_urls
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+c = page.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 #
-data = rptObj.py.requests.csv(data_urls.AIRPORT_TRAFFIC, store_location=config.OUTPUT_TEMPS)
+data = page.py.requests.csv(data_urls.AIRPORT_TRAFFIC)
 
-select = rptObj.ui.select(data, column="airport")
+select = page.ui.select(data, column="airport")
 select.options.showTick = True
 select.options.title = "Select title"
 
-multi = rptObj.ui.select(data, column="city", multiple=True)
+multi = page.ui.select(data, column="city", multiple=True)
 multi.options.actionsBox = False
 multi.options.header = "Test Select"
 multi.options.selectOnTab = True
@@ -30,7 +29,7 @@ lookupData = {"Akron-Canton Regional": [
   {"value": "A", 'text': "Example 1"},
   {"value": "B", 'text': "Example 2"}
 ]}
-select2 = rptObj.ui.lookup(lookupData)
+select2 = page.ui.lookup(lookupData)
 
 # Even on a select change
 select.change([
@@ -55,17 +54,17 @@ select2.change([
 
 # Show the selected value of the component
 # The selected value will be the value and not the text visible
-rptObj.ui.button("Get Multi Select").click([
+page.ui.button("Get Multi Select").click([
   c.dom.write(multi.dom.content),
 ])
 
 # Set the selection to two items
-rptObj.ui.button("Set Chicago and Asheville").click([
+page.ui.button("Set Chicago and Asheville").click([
   multi.js.val(['Chicago', 'Asheville'])
 ])
 
 # Button event to transform selects
-rptObj.ui.button("Remove Chicago").click([
+page.ui.button("Remove Chicago").click([
   # Change the style of an item in the select
   multi.js.item("Chicago").css({"color": 'orange'}),
   multi.js.refresh(),
@@ -76,5 +75,3 @@ rptObj.ui.button("Remove Chicago").click([
 ])
 
 c.move()
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

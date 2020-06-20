@@ -1,14 +1,13 @@
 
-import config
-
 from epyk.core.Page import Report
 
+
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # Create a grid
-grid1 = rptObj.ui.grid()
+grid1 = page.ui.grid()
 
 # Change the style of the main container
 grid1.style.css.border = "1px solid black"
@@ -54,7 +53,7 @@ for c in grid1[1]:
 # Add event
 grid1[1][0].click([
   #
-  rptObj.js.console.log(grid1[1][0].val[0].dom.content),
+  page.js.console.log(grid1[1][0].val[0].dom.content),
   # Hide row
   grid1[0].dom.toggle(),
   # Change value of row
@@ -62,13 +61,13 @@ grid1[1][0].click([
 ])
 
 # create a container with a row and columns
-col2 = rptObj.ui.col([
-  rptObj.ui.div("Text 1"),
-  rptObj.ui.div("Text 2"),
+col2 = page.ui.col([
+  page.ui.div("Text 1"),
+  page.ui.div("Text 2"),
 ])
 
-text = rptObj.ui.div("Text 3")
-grid2 = rptObj.ui.grid([
+text = page.ui.div("Text 3")
+grid2 = page.ui.grid([
   [text, col2]
 ]).css({"border": '1px solid black'})
 
@@ -76,8 +75,6 @@ grid2 = rptObj.ui.grid([
 grid2[0][0].style.css.background = 'green'
 
 # hide colon (and rescale)
-rptObj.ui.button("Toggle Panel").click([
+page.ui.button("Toggle Panel").click([
   grid2.dom.togglePanel(1)
 ])
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

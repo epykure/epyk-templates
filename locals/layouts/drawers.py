@@ -6,16 +6,14 @@ from epyk.core.js import std
 from epyk.core.js import expr
 
 
-import config
-
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-menu1 = rptObj.ui.div("menu 1", htmlCode="test_menu_1")
-menu2 = rptObj.ui.div("menu2", htmlCode="test_menu_2")
+menu1 = page.ui.div("menu 1", htmlCode="test_menu_1")
+menu2 = page.ui.div("menu2", htmlCode="test_menu_2")
 
-menus = rptObj.ui.div([menu1, menu2])
+menus = page.ui.div([menu1, menu2])
 menus.style.css.height = 0
 menus.style.css.top = 0
 menus.style.css.padding_bottom = 10
@@ -24,12 +22,12 @@ menus.style.css.position = 'fixed'
 for c in menus.components.values():
   c.style.css.display = False
 
-divA = rptObj.ui.text("Test 1")
-divB = rptObj.ui.text("Test 2")
+divA = page.ui.text("Test 1")
+divB = page.ui.text("Test 2")
 
 menu_mapping = {divA: menu1, divB: menu2}
 
-div = rptObj.ui.div([divA, divB], options={'inline': True})
+div = page.ui.div([divA, divB], options={'inline': True})
 for c in div.components.values():
   c.style.css.padding = "0 5px"
 
@@ -54,5 +52,3 @@ for menu_item, panel in menu_mapping.items():
     std.querySelector(std.selector(panel)).css({'display': 'block'})
   ])
 
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

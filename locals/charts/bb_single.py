@@ -1,10 +1,9 @@
 
-import config
-
 from epyk.core.Page import Report
 
-rptObj = Report()
-rptObj.headers.dev() # Change the Epyk logo
+
+page = Report()
+page.headers.dev() # Change the Epyk logo
 
 dataPoints = [
   {'x': 0, 'y': 10, 'y1': 10},
@@ -18,17 +17,17 @@ dataPoints2 = [
   {'label': "grape", 'x': 1, 'y': 28, 'y1': 0}
 ]
 
-rptObj.ui.hidden("Test")
+page.ui.hidden("Test")
 
-c = rptObj.ui.charts.billboard.stacked(dataPoints, y_columns=["y", 'y1'], x_axis='x')
+c = page.ui.charts.billboard.stacked(dataPoints, y_columns=["y", 'y1'], x_axis='x')
 
-rptObj.ui.button("reset").click([
+page.ui.button("reset").click([
   c.build(dataPoints2),
   #c.js.render(),
 ])
 
 c.click([
-  rptObj.js.console.log(c.js.value),
+  page.js.console.log(c.js.value),
 ])
 
 dataPoints3 = [
@@ -36,9 +35,8 @@ dataPoints3 = [
   {'label': "grape", 'x': 1, 'y': 18, 'y2': 20, 'r': 5}
 ]
 
-rptObj.ui.button("reset").click([
+page.ui.button("reset").click([
   c.build(dataPoints3),
   #c.js.render(),
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

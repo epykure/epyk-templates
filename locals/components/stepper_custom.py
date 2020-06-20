@@ -1,11 +1,10 @@
-from epyk.core.Page import Report
 
-import config
+from epyk.core.Page import Report
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # Stepper data
 records = []
@@ -13,7 +12,7 @@ for i in range(6):
   records.append({'status': 'success', "tooltip": "test", 'value': 'test', 'title': 'Ok %s' % i, 'label': 'Label %s' % i},)
 
 # Create a stepper
-sp = rptObj.ui.stepper(records)
+sp = page.ui.stepper(records)
 sp.options.line = False
 
 # Add a new shape to the list of existing ones
@@ -47,11 +46,9 @@ svg.appendChild(newText)
 
 ''')
 
-rptObj.ui.button("Test").click([
+page.ui.button("Test").click([
   sp.dom[0].rectangle(),
   sp.dom[1].triangle(),
   sp.dom[2].circle(),
   sp.dom[3].arrow(),
 ])
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

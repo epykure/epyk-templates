@@ -1,11 +1,10 @@
 
 from epyk.core.Page import Report
 
-import config
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 data = [
   {"value": 'value', 'items': [
@@ -16,8 +15,8 @@ data = [
   ]}
 ]
 
-d = rptObj.ui.lists.dropdown(data)
+d = page.ui.lists.dropdown(data)
 d.click([
-  rptObj.js.console.log(rptObj.js.objects.value)
+  page.js.console.log(page.js.objects.value)
 ])
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
+

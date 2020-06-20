@@ -1,12 +1,11 @@
 
-import config
-
 from epyk.core.Page import Report
+
 from epyk.tests import data_urls
 
 
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 dataPoints = [
   {'x': 0, 'y': 10, 'y1': 10},
@@ -20,23 +19,23 @@ dataPoints2 = [
   {'label': "grape", 'x1': 1, 'y1': 28, 'z1': 0}
 ]
 
-rptObj.ui.hidden("Test")
+page.ui.hidden("Test")
 
 
-data_rest = rptObj.py.requests.csv(data_urls.PLOTLY_3D, store_location=config.OUTPUT_TEMPS)
+data_rest = page.py.requests.csv(data_urls.PLOTLY_3D)
 
-c1 = rptObj.ui._3d.plotly.ribbon(data_rest, y_columns=["y1"], x_axis='x1', z_axis="z1")
-c2 = rptObj.ui._3d.plotly.surface(data_rest, y_columns=["y2"], x_axis='x2', z_axis="z2")
+c1 = page.ui._3d.plotly.ribbon(data_rest, y_columns=["y1"], x_axis='x1', z_axis="z1")
+c2 = page.ui._3d.plotly.surface(data_rest, y_columns=["y2"], x_axis='x2', z_axis="z2")
 
-rptObj.ui.row([c1, c2])
+page.ui.row([c1, c2])
 
-rptObj.ui.button("reset 1").click([
+page.ui.button("reset 1").click([
   c1.build(dataPoints2),
   #c.js.render(),
 ])
 
 c1.click([
-  #rptObj.js.console.log(c.js.value)
+  #page.js.console.log(c.js.value)
 ])
 
 dataPoints3 = [
@@ -45,11 +44,8 @@ dataPoints3 = [
 ]
 
 
-rptObj.ui.button("reset 2").click([
-  c2.build(rptObj.data.plotly.surface(data_rest, y_columns=["y1"], x_axis="x1", z_axis="z1") ),
+page.ui.button("reset 2").click([
+  c2.build(page.data.plotly.surface(data_rest, y_columns=["y1"], x_axis="x1", z_axis="z1") ),
   #c.js.render(),
 ])
 
-
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

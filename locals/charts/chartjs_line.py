@@ -1,82 +1,69 @@
 
-import config
-
 from epyk.core.Page import Report
 
-rptObj = Report()
-rptObj.headers.dev()
-
-languages = [
-  {"name": 'C', 'type': 'code', 'rating': 17.07, 'change': 12.82},
-  {"name": 'Java', 'type': 'code', 'rating': 16.28, 'change': 0.28},
-  {"name": 'Python', 'type': 'script', 'rating': 9.12, 'change': 1.29},
-  {"name": 'C++', 'type': 'code', 'rating': 6.13, 'change': -1.97},
-  {"name": 'C#', 'type': 'code', 'rating': 4.29, 'change': 0.3},
-  {"name": 'Visual Basic', 'type': 'script', 'rating': 4.18, 'change': -1.01},
-  {"name": 'JavaScript', 'type': 'script', 'rating': 2.68, 'change': -0.01},
-  {"name": 'PHP', 'type': 'script', 'rating': 2.49, 'change': 0},
-  {"name": 'SQL', 'type': 'script', 'rating': 2.09, 'change': -0.47},
-  {"name": 'R', 'type': 'script', 'rating': 1.85, 'change': 0.90},
-]
+from epyk.tests import mocks
 
 
-rptObj.ui.hidden("Test")
+page = Report()
+page.headers.dev()
 
-input = rptObj.ui.input()
-chips = rptObj.ui.select(languages, column="type")
+page.ui.hidden("Test")
+
+input = page.ui.input()
+chips = page.ui.select(mocks.languages, column="type")
 
 #
-filters = rptObj.ui.panels.filters()
+filters = page.ui.panels.filters()
 
-filter = rptObj.data.js.record(data=languages).filterGroup("test")
-filter2 = rptObj.data.js.record(data=languages).filterGroup("test2")
+filter = page.data.js.record(data=mocks.languages).filterGroup("test")
+filter2 = page.data.js.record(data=mocks.languages).filterGroup("test2")
 
-c = rptObj.ui.charts.chartJs.bubble(languages, y_columns=["rating", 'change'], x_axis='name')
+c = page.ui.charts.chartJs.bubble(mocks.languages, y_columns=["rating", 'change'], x_axis='name')
 c.label(0, "Test")
 
 data = [{"label": "python", "value": False}, {"label": "Java", "value": 5}]
-checks1 = rptObj.ui.lists.checks(data)
+checks1 = page.ui.lists.checks(data)
 
-checks2 = rptObj.ui.lists.checks(languages, column="name", options={"checked": True})
+checks2 = page.ui.lists.checks(mocks.languages, column="name", options={"checked": True})
 
 checks2.click([
-  rptObj.js.console.log(rptObj.js.objects.value),
+  page.js.console.log(page.js.objects.value),
   c.build(filter.includes('name', checks2.dom.content)),
-  #rptObj.js.console.log(rptObj.js.objects.value),
-  #c.build(filter.equal('name', rptObj.js.objects.value)),
+  #page.js.console.log(page.js.objects.value),
+  #c.build(filter.equal('name', page.js.objects.value)),
 ])
 
-rptObj.ui.button("Test").click([
-  rptObj.js.console.log(checks1.dom.content),
-  rptObj.js.console.log(checks2.dom.content),
+page.ui.button("Test").click([
+  page.js.console.log(checks1.dom.content),
+  page.js.console.log(checks2.dom.content),
 ])
 
-d = rptObj.ui.drawer()
+d = page.ui.drawer()
 
-select_all = rptObj.ui.button("Select")
+select_all = page.ui.button("Select")
 select_all.click([
   checks2.dom.selectAll(),
   c.build(filter.includes('name', checks2.dom.content)),
 ])
 
-unselect_all = rptObj.ui.button("UnSelect")
+unselect_all = page.ui.button("UnSelect")
 unselect_all.click([
   checks2.dom.unSelectAll(),
   c.build(filter.includes('name', checks2.dom.content, empty_all=False)),
 ])
 
 d.add_panel([
-  rptObj.ui.titles.headline("Columns"),
+  page.ui.titles.headline("Columns"),
   select_all, unselect_all,
   checks2], [c], display='block')
 
 #chips.delete([
-  #rptObj.js.console.log(chips.dom.values()),
+  #page.js.console.log(chips.dom.values()),
 #  c.build(filter.includes('label', chips.dom.values())),
 #])
 
 chips.change([
-  #rptObj.js.console.log(chips.dom.values()),
+  #page.js.console.log(chips.dom.values()),
   c.build(filter.equal('name', input.dom.content)),
   c.build(filter.equal('type', chips.dom.content)),
 ])
@@ -88,12 +75,12 @@ input.enter([
 
 ])
 
-rptObj.ui.button("reset").click([
+page.ui.button("reset").click([
   c.build(filter.equal('label', input.dom.content)),
   #c.js.render(),
 ])
 
-rptObj.ui.button("add").click([
+page.ui.button("add").click([
   #c.js.add('point', {'Test': 28}),
   #c.js.update(),
   c.js.remove(0, ["Test"]),
@@ -104,7 +91,7 @@ rptObj.ui.button("add").click([
 ])
 
 c.click([
-  rptObj.js.console.log(c.js.content)
+  page.js.console.log(c.js.content)
 ])
 
 dataPoints3 = [
@@ -112,10 +99,9 @@ dataPoints3 = [
   {'label': "grape", 'x': 1, 'y': 18, 'y2': 20, 'r': 5}
 ]
 
-rptObj.ui.button("reset").click([
+page.ui.button("reset").click([
   c.build(dataPoints3),
   #c.build(dataPoints3, options={'z_columns': ['r']}),
   #c.js.render(),
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

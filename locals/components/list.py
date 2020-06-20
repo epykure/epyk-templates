@@ -1,40 +1,40 @@
 
-import config
 
 from epyk.core.Page import Report
 from epyk.core.html import Defaults
 from epyk.core.css.themes import ThemeDark
 
+
 Defaults.TEXTS_SPAN_WIDTH = None
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 
-rptObj.ui.titles.head("Test")
-rptObj.ui.titles.headline("Test")
-rptObj.ui.titles.rubric("Test")
-rptObj.ui.titles.underline("Test")
-rptObj.ui.titles.caption("Test")
-rptObj.ui.text("Test")
+page.ui.titles.head("Test")
+page.ui.titles.headline("Test")
+page.ui.titles.rubric("Test")
+page.ui.titles.underline("Test")
+page.ui.titles.caption("Test")
+page.ui.text("Test")
 
-input = rptObj.ui.input()
+input = page.ui.input()
 
-i = rptObj.ui.lists.badges([
+i = page.ui.lists.badges([
   {"text": 'text', 'icon': 'fas fa-times', 'checked': True, 'value': 8},
   {"text": 'text', 'icon': 'fas fa-times', 'checked': True, 'value': 5},
 ], options={"badge": {"background": 'green'}})
 i.click([
-  rptObj.js.console.log(i.dom.content),
+  page.js.console.log(i.dom.content),
 ])
 
-c = rptObj.ui.lists.items([
+c = page.ui.lists.items([
   {"text": 'value 1', 'icon': 'fas fa-times', 'checked': True, 'value': 8000},
   {"text": 'value 1', 'icon': 'fas fa-times', 'checked': True, 'value': 50000},
 ], options={"style": {"background": 'green'}})
 
-rptObj.jsImports.add("accounting")
+page.jsImports.add("accounting")
 c.add_type('number', '''
 var item = document.createElement("DIV");
 item.setAttribute('name', 'value'); item.setAttribute('data-valid', true);
@@ -51,38 +51,38 @@ input.enter([
   i.dom.add({"text": input.dom.content, "checked": True}),
 ])
 
-rptObj.ui.button("Get").click([
-  rptObj.js.console.log(i.dom.content),
+page.ui.button("Get").click([
+  page.js.console.log(i.dom.content),
 ])
-# input = rptObj.ui.input()
-# tags = rptObj.ui.lists.chips(["ok", 'Test'])
+# input = page.ui.input()
+# tags = page.ui.lists.chips(["ok", 'Test'])
 #
-# rptObj.ui.button("Click").click([
-#   rptObj.js.console.log( tags.dom.content )
+# page.ui.button("Click").click([
+#   page.js.console.log( tags.dom.content )
 #   #tags.dom.add("Youpi")
 # ])
 #
 #
-# rptObj.ui.button("Add").click([
+# page.ui.button("Add").click([
 #   tags.dom.add(input.dom.content)
 # ])
 #
-# rptObj.ui.button("Toggle Display").click([
+# page.ui.button("Toggle Display").click([
 #   tags.dom.toggle(),
 #   #tags.dom.add("Youpi")
 # ])
 #
 #
-# rptObj.ui.button("Remove").click([
+# page.ui.button("Remove").click([
 #   tags.dom.remove(input.dom.content),
 #   #tags.dom.add("Youpi")
 # ])
 
 
-#rptObj.theme = ThemeDark.Dark()
+#page.theme = ThemeDark.Dark()
 
 # Console component
-# c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+# c = page.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 #
 # data = [{"label": 'test', 'items': [
 #   {"label": 'child 1', 'color': 'red'},
@@ -93,20 +93,20 @@ rptObj.ui.button("Get").click([
 #
 # ]}]
 #
-# rptObj.ui.lists.numbers(["A", "B"])
-# rptObj.ui.lists.alpha(["A", "B"])
+# page.ui.lists.numbers(["A", "B"])
+# page.ui.lists.alpha(["A", "B"])
 #
-# t = rptObj.ui.lists.dropdown(data)
+# t = page.ui.lists.dropdown(data)
 # t.options.expanded = False
 # #t.level(1)
 #
 #
-# rptObj.ui.lists.tags(["ok", 'Test'])
+# page.ui.lists.tags(["ok", 'Test'])
 
 
 #
 #
-# rptObj.js.addOnReady([
+# page.js.addOnReady([
 #   s.input.dom.ajaxSelectPicker({"ajax": {
 #     #"beforeSend": "function(){console.log(%s)}()" % s.input.dom.content,
 #     #"url": 'function(element){return "https://jsonplaceholder.typicode.com/posts/"}(this)' % s.input.dom.search,
@@ -119,27 +119,27 @@ rptObj.ui.button("Get").click([
 #     "emptyTitle": "Select and Begin Typing"}})
 # ])
 
-# rptObj.ui.button("test").click([
-#   rptObj.js.window.toggleInterval(rptObj.js.console.log('ok'), 'test', 400),
+# page.ui.button("test").click([
+#   page.js.window.toggleInterval(page.js.console.log('ok'), 'test', 400),
 # ])
 #
 #
-# s = rptObj.ui.select(["A", "B", "C"], label="label", selected="C", multiple=True,
+# s = page.ui.select(["A", "B", "C"], label="label", selected="C", multiple=True,
 #                       options={"title": "ttle", 'showTick': True, 'maxOptions': 2})
 # s.selected = "B"
 # s.change(c.write(s.dom.content))
 
 #
-# l2 = rptObj.ui.list(range(10))
+# l2 = page.ui.list(range(10))
 #
 # #
-# l3 = rptObj.ui.list(range(10)).css({"color": "red"})
+# l3 = page.ui.list(range(10)).css({"color": "red"})
 #
 
 #
 # l2.add_item(l3)[-1].val.css({"margin": "2px 10px"})
 #
-# #l2[-1].set_html_content(rptObj.ui.texts.span(l2[-1].val))
+# #l2[-1].set_html_content(page.ui.texts.span(l2[-1].val))
 # l2[-1].add_label("test")
 # l2[-1].add_icon("fas fa-folder")
 
@@ -159,7 +159,7 @@ rptObj.ui.button("Get").click([
 # #l.set_items_format(icon="fas fa-archive")
 #
 #
-# l = rptObj.ui.lists.categories(["AWW", "B"])
+# l = page.ui.lists.categories(["AWW", "B"])
 # l.add_list(["D", "E"], category="Test")
 # for i in l:
 #   for u in i:
@@ -167,19 +167,18 @@ rptObj.ui.button("Get").click([
 #
 #
 # data = [{"label": "python", "value": False}, {"label": "Java", "value": 5}]
-# checks = rptObj.ui.lists.checklist(data)
+# checks = page.ui.lists.checklist(data)
 # #
-# rptObj.ui.button("Test").click([
+# page.ui.button("Test").click([
 #   checks.items[1].dom.toggle()
 # ])
 #
 #
-# bs = rptObj.ui.lists.buttons(["Button", "Button 2", "Button 3"])
-# bs = rptObj.ui.buttons.buttons(["Button", "Button 2", "Button 3"])
+# bs = page.ui.lists.buttons(["Button", "Button 2", "Button 3"])
+# bs = page.ui.buttons.buttons(["Button", "Button 2", "Button 3"])
 # print(bs[2].content)
 # bs[2].click([
-#   rptObj.js.alert(bs[2].dom.content)
+#   page.js.alert(bs[2].dom.content)
 # ])
 #
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

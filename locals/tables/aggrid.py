@@ -1,23 +1,21 @@
 
 from epyk.core.Page import Report
+
 from epyk.tests import data_urls
 
-import config
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-data_rest_1 = rptObj.py.requests.csv(data_urls.DC_QUAKES, store_location=config.OUTPUT_TEMPS)
+data_rest_1 = page.py.requests.csv(data_urls.DC_QUAKES)
 
-table1 = rptObj.ui.tables.aggrids.table(data_rest_1)
-table2 = rptObj.ui.tables.aggrids.table(data_rest_1)
+table1 = page.ui.tables.aggrids.table(data_rest_1)
+table2 = page.ui.tables.aggrids.table(data_rest_1)
 
-rptObj.ui.row([
-  rptObj.ui.col([
-    rptObj.ui.titles.title("Test"),
+page.ui.row([
+  page.ui.col([
+    page.ui.titles.title("Test"),
     table1]), table2])
 #table.config.sideBar.toolPanelsColumn()
 # table.config.deltaColumnMode = True
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

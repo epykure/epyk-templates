@@ -1,11 +1,9 @@
 
-import config
-
 from epyk.core.Page import Report
 
 
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 dataPoints = [
   {'x': 0, 'y': 10, 'y1': 10},
@@ -19,18 +17,18 @@ dataPoints2 = [
   {'label': "grape", 'x': 1, 'y': 28, 'y1': 0}
 ]
 
-rptObj.ui.hidden("Test")
+page.ui.hidden("Test")
 
-c = rptObj.ui.charts.plotly.number_with_delta(45)
+c = page.ui.charts.plotly.number_with_delta(45)
 #c.label(0, "Test")
 
-rptObj.ui.button("reset").click([
+page.ui.button("reset").click([
   c.build(90) #dataPoints2),
   #c.js.render(),
 ])
 
 #c.click([
-#  rptObj.js.console.log(c.js.content)
+#  page.js.console.log(c.js.content)
 #])
 
 dataPoints3 = [
@@ -38,11 +36,8 @@ dataPoints3 = [
   {'label': "grape", 'x': 1, 'y': 18, 'y2': 20, 'r': 5}
 ]
 
-rptObj.ui.button("reset").click([
+page.ui.button("reset").click([
   c.build(10, options={"delta": {"reference": 0}}),
   #c.js.render(),
 ])
 
-
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

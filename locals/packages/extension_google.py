@@ -1,6 +1,5 @@
 
 from epyk.core.Page import Report
-import config
 
 #
 from epyk.core.js import Imports
@@ -42,13 +41,12 @@ class Chart(Html.Html):
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # The input data from https://developers.google.com/chart/interactive/docs/gallery/areachart
 data = [['Year', 'Sales', 'Expenses'], ['2013', 1000, 400], ['2014', 1170, 460], ['2015', 660, 1120], ['2016', 1030, 540]]
 
 # Create an object on the Javascript side
-rptObj.ui.bespoke(Chart, vals=data)
+page.ui.bespoke(Chart, vals=data)
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

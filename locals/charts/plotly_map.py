@@ -1,11 +1,9 @@
 
-import config
-
 from epyk.core.Page import Report
 
-rptObj = Report()
-rptObj.headers.dev()
 
+page = Report()
+page.headers.dev()
 
 z1 = [[
     [8.83,8.89,8.81,8.87,8.9,8.87],
@@ -25,10 +23,9 @@ z1 = [[
     [8.93,8.97,8.97,9.18,9.2,9.18]
 ]]
 
-mp = rptObj.ui.charts.plotly.maps(z1)
+mp = page.ui.charts.plotly.maps(z1)
 mp.data.contours.z.show = True
 mp.data.contours.z.usecolormap = True
 mp.data.contours.z.project.z = True
 
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

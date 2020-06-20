@@ -1,6 +1,4 @@
 
-import config
-
 from epyk.core.Page import Report
 
 from epyk.core.js import expr
@@ -8,10 +6,10 @@ from epyk.core.js import std
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+page = Report()
+page.headers.dev()
 
-input = rptObj.ui.input()
+input = page.ui.input()
 
 
 # Simple try except example
@@ -23,10 +21,9 @@ input.enter([
 ])
 
 
-input2 = rptObj.ui.input()
+input2 = page.ui.input()
 input2.enter([
   # Alway raise an exception
   expr.throw("Error! Error!")
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

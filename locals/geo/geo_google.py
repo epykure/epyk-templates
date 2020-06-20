@@ -1,11 +1,9 @@
 
 from epyk.core.Page import Report
 
-import config
 
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-#rptObj.ui.geo.maps()
+#page.ui.geo.maps()
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

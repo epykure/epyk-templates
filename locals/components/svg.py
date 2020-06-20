@@ -1,23 +1,22 @@
 
 from epyk.core.Page import Report
-import config
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-# c = rptObj.ui.charts.svg.heart(w=100, h=200, fill="pink")
+# c = page.ui.charts.svg.heart(w=100, h=200, fill="pink")
 # c[0].transform("transform", "rotate", "0 100 10", "360 100 100")
 # c.text("Aurelie", 50, 100)
 
-#svg = rptObj.ui.charts.svg.new()
+#svg = page.ui.charts.svg.new()
 #svg.path().line_to(15, 8).line_to(0, 15)
 #svg.path(10, 20).line_to(200, 200).horizontal_line_to(10).vertical_line_to(150).move_to(200, 100)
 
-rptObj.ui.charts.svg.arrow_left(y1=40)
+page.ui.charts.svg.arrow_left(y1=40)
 
-svg = rptObj.ui.charts.svg.axes()
+svg = page.ui.charts.svg.axes()
 m = svg.defs().marker("circle", "0 0 10 10", 5, 5)
 m.circle(5, 5, 5, 'red')
 m.markerWidth(10).markerHeight(10)
@@ -27,7 +26,7 @@ p = svg.path(0, 0, from_origin=True).line_to(50, 100).\
 p.markers(m.url)
 
 #
-# poly = rptObj.ui.charts.svg.rectangle(50, 50, 50, 50, rx=20, ry=20)
+# poly = page.ui.charts.svg.rectangle(50, 50, 50, 50, rx=20, ry=20)
 # poly[0].transform("transform", "rotate", "0 100 100", "360 100 100")
 # poly.css({"margin": '10px', "border": "1px solid black"})
 #
@@ -58,11 +57,8 @@ p.markers(m.url)
 # g = poly.g()
 # # f = poly.foreignObject(10, 20, "100%", 150)
 # # f.add([
-# #     rptObj.ui.texts.label("Test Label").css({"color": 'red'}),
-# #     rptObj.ui.input()
+# #     page.ui.texts.label("Test Label").css({"color": 'red'}),
+# #     page.ui.input()
 # # ])
 #
 # g.css({"stroke": 'blue'})
-
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

@@ -1,40 +1,28 @@
 
 from epyk.core.Page import Report
 
-import config
+from epyk.tests import mocks
+
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
+page = Report()
+page.headers.dev()
 
-
-languages = [
-  {"name": 'C', 'type': 'code', 'rating': 17.07, 'change': 12.82},
-  {"name": 'Java', 'type': 'code', 'rating': 16.28, 'change': 0.28},
-  {"name": 'Python', 'type': 'script', 'rating': 9.12, 'change': 1.29},
-  {"name": 'C++', 'type': 'code', 'rating': 6.13, 'change': -1.97},
-  {"name": 'C#', 'type': 'code', 'rating': 4.29, 'change': 0.3},
-  {"name": 'Visual Basic', 'type': 'script', 'rating': 4.18, 'change': -1.01},
-  {"name": 'JavaScript', 'type': 'script', 'rating': 2.68, 'change': -0.01},
-  {"name": 'PHP', 'type': 'script', 'rating': 2.49, 'change': 0},
-  {"name": 'SQL', 'type': 'script', 'rating': 2.09, 'change': -0.47},
-  {"name": 'R', 'type': 'script', 'rating': 1.85, 'change': 0.90},
-]
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+c = page.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 #
-jsData = rptObj.data.js.record('data_test', languages)
+jsData = page.data.js.record('data_test', mocks.languages)
 filter = jsData.filterGroup("test")
 
 
-rptObj.body.onReady([
+page.body.onReady([
   #
   #filter.equal('y', 25).startswith('text', 'test').setFilter("filterTest"),
 
-  #rptObj.js.console.log(jsData.getFilter('filterTest')),
-  #rptObj.js.console.log(jsData.getFilter('filterTest').group().count(["x", "y", "y1"], attrs={"name": 'ok'})),
+  #page.js.console.log(jsData.getFilter('filterTest')),
+  #page.js.console.log(jsData.getFilter('filterTest').group().count(["x", "y", "y1"], attrs={"name": 'ok'})),
   c.dom.write(filter.group().max("rating"), stringify=True),
   c.dom.write(filter.group().min("rating"), stringify=True),
   c.dom.write(filter.group().sortBy("change")[-1].defaults({"toto": 1}), stringify=True),
@@ -51,8 +39,7 @@ rptObj.body.onReady([
   #
   # ''',
   # 'console.log( filterOption(dataPoints, ["y"], "x") )',
-  #rptObj.js.console.log("dataPoints", skip_data_convert=True)
+  #page.js.console.log("dataPoints", skip_data_convert=True)
   #js_data.clearFilters()
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

@@ -1,23 +1,22 @@
 
 from epyk.core.Page import Report
 
-import config
 
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 # Console component
-c = rptObj.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
+c = page.ui.rich.console("* This is a log section for all the events in the different buttons *", options={"timestamp": True})
 
 #
-n = rptObj.ui.numbers.digits(76862.095)
+n = page.ui.numbers.digits(76862.095)
 n.style.color = "red"
 
 
-n1 = rptObj.ui.text(76862.095)
+n1 = page.ui.text(76862.095)
 
 #
-delta = rptObj.ui.charts.plotly.number_with_delta(2009860)
+delta = page.ui.charts.plotly.number_with_delta(2009860)
 delta.data.delta.reference = 400
 delta.data.vmax = 400
 delta.data.gauge.shape = "bullet"
@@ -29,17 +28,16 @@ n1.onReady([
   n1.dom.format.number.toFixed(6)
 ])
 
-rptObj.ui.button("display").click([
-  rptObj.js.alert(n1.dom.content.number.toFixed(5)),
+page.ui.button("display").click([
+  page.js.alert(n1.dom.content.number.toFixed(5)),
   c.dom.write(n1.dom.val, stringify=True, format="Number: %s")
 ])
 
 #
-rptObj.ui.button("click").click([
+page.ui.button("click").click([
   n1.build(-38866),
   n1.dom.format.toMoney('£')
 ])
 
 c.move()
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

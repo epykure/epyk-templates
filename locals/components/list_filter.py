@@ -1,11 +1,10 @@
 
-import config
-
 from epyk.core.Page import Report
 
+
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 record = [
   {"text": 'text', 'icon': 'fas fa-times', 'checked': True, 'value': 8},
@@ -14,15 +13,13 @@ record = [
   {"text": 'ghi', 'icon': 'fas fa-times', 'checked': True, 'value': 5},
 ]
 
-data = rptObj.data.js.record(data=record)
-search = rptObj.ui.inputs.search()
+data = page.data.js.record(data=record)
+search = page.ui.inputs.search()
 
-list = rptObj.ui.lists.items(record, options={"badge": {"background": 'green'}, 'delete': True})
+list = page.ui.lists.items(record, options={"badge": {"background": 'green'}, 'delete': True})
 
 filter = data.filterGroup("test_filter")
 search.enter([
   list.build(filter.any(search.dom.content))
 ])
 
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

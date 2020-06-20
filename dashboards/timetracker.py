@@ -1,6 +1,4 @@
 
-import config
-
 from epyk.core.Page import Report
 
 from epyk.core.data import events
@@ -8,11 +6,11 @@ from epyk.core.data import datamap
 
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 
-side = rptObj.ui.navigation.side()
+side = page.ui.navigation.side()
 
 data = [
     {"id": 0, "group": 0, "content": 'item 0', "start": "2020-06-29", 'type': 'point'},
@@ -31,41 +29,40 @@ groups = [
   {"id": 0, 'content': 'test 0'},
 ]
 
-rptObj.ui.titles.head("Time")
+page.ui.titles.head("Time")
 
-col = rptObj.ui.col([
-  rptObj.ui.fields.input(label="Comment", htmlCode="content"),
-  rptObj.ui.fields.select(['background', 'range', 'box', 'point'], label="Categort", htmlCode="type"),
-  rptObj.ui.date(label="Start Date", htmlCode="start"),
-  rptObj.ui.date(label="End Date", htmlCode="end"),
-  rptObj.ui.button("test", htmlCode="button")
+col = page.ui.col([
+  page.ui.fields.input(label="Comment", htmlCode="content"),
+  page.ui.fields.select(['background', 'range', 'box', 'point'], label="Categort", htmlCode="type"),
+  page.ui.date(label="Start Date", htmlCode="start"),
+  page.ui.date(label="End Date", htmlCode="end"),
+  page.ui.button("test", htmlCode="button")
 ])
 
-dt = rptObj.ui.date(width=(220, 'px'), options={"inline": True})
+dt = page.ui.date(width=(220, 'px'), options={"inline": True})
 
-rptObj.ui.row([dt, col])
+page.ui.row([dt, col])
 
-timeline2 = rptObj.ui.charts.vis.timeline(data, content="content", start='start', end="end", type="type", group="group", options={"type": 'box'})
+timeline2 = page.ui.charts.vis.timeline(data, content="content", start='start', end="end", type="type", group="group", options={"type": 'box'})
 timeline2.options.stack = True
 timeline2.setGroups(groups)
 
-rptObj.components['button'].click([
-  timeline2.js.addItem(datamap(rptObj.get_components(['content', 'type', 'start', 'end'])).attrs({"group": 3})),
+page.components['button'].click([
+  timeline2.js.addItem(datamap(page.get_components(['content', 'type', 'start', 'end'])).attrs({"group": 3})),
   timeline2.js.fit()
 ])
 
 
-scatter = rptObj.ui.charts.chartJs.bar([])
-pie = rptObj.ui.charts.chartJs.pie([])
+scatter = page.ui.charts.chartJs.bar([])
+pie = page.ui.charts.chartJs.pie([])
 
-rptObj.ui.row([scatter, pie])
+page.ui.row([scatter, pie])
 
 dt.select([
-  rptObj.js.post("http://127.0.0.1:8000/data", jsData={"test": 4557}).onSuccess([
+  page.js.post("http://127.0.0.1:8000/data", jsData={"test": 4557}).onSuccess([
     scatter.build(events.data['chart']),
     pie.build(events.data['pie']),
-    rptObj.js.console.log("data", skip_data_convert=True)
+    page.js.console.log("data", skip_data_convert=True)
   ]),
 ])
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

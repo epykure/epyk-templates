@@ -1,15 +1,14 @@
 
-import config
-
 from epyk.core.Page import Report
 from epyk.core.js import expr
 from epyk.core.js import std
 
-# Create a basic report object
-rptObj = Report()
-rptObj.headers._favicon_url = config.FAVICON_URL # Change the Epyk logo
 
-input = rptObj.ui.input()
+# Create a basic report object
+page = Report()
+page.headers.dev()
+
+input = page.ui.input()
 
 
 while_lopp = expr.whileOf(input, options={"var": 'y'})
@@ -27,5 +26,3 @@ input.enter([
 
 ])
 
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

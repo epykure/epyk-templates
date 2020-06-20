@@ -1,10 +1,10 @@
+
 from epyk.core.Page import Report
 
-import config
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
 
 languages = [
@@ -19,11 +19,10 @@ languages = [
   {"name": 'SQL', 'type': 'script', 'rating': 2.09, 'change': -0.47},
   {"name": 'R', 'type': 'script', 'rating': 1.85, 'change': 0.90},
 ]
-table = rptObj.ui.tables.tabulator(languages)
+table = page.ui.tables.tabulator(languages)
 
-d = rptObj.ui.drawers.multi(table, options={"side": 'left'})
+d = page.ui.drawers.multi(table, options={"side": 'left'})
 d.add_drawer("Test1", "ok1")
 d.add_drawer("Test2", "ok2")
 d.add_drawer("Test3", "ok3")
 
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)

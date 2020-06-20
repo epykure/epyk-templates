@@ -1,14 +1,12 @@
 
-import config
-
 from epyk.core.Page import Report
-from epyk.core.css.themes import ThemeDark
+
 
 # Create a basic report object
-rptObj = Report()
-rptObj.headers.dev()
+page = Report()
+page.headers.dev()
 
-tb1 = rptObj.ui.layouts.table()
+tb1 = page.ui.layouts.table()
 tb1.style.css.border_collapse = "separate"
 tb1.style.css.border_spacing = 10
 
@@ -26,20 +24,20 @@ for c in tb1.get_header():
   c.style.border = "1px solid black"
 
 # Create bespoke HTML component to be added to the table
-span1 = rptObj.ui.texts.span("Text 1").tooltip("Click to hide header last line")
-span2 = rptObj.ui.texts.span("Text 2")
-span3 = rptObj.ui.texts.span("Text 3").tooltip("Click to change table values")
+span1 = page.ui.texts.span("Text 1").tooltip("Click to hide header last line")
+span2 = page.ui.texts.span("Text 2")
+span3 = page.ui.texts.span("Text 3").tooltip("Click to change table values")
 
 # Add the row to the table (to the body)
 tb1 += [span1, span2, span3]
 
 span3.click([
-  rptObj.js.log(span3.dom.content),
+  page.js.log(span3.dom.content),
   span2.build("New text"),
 
   # Change the cell properties
-  #tb1[1].cell(1).dom.css({"background": rptObj.theme.warning[0]})
-  tb1[0][1].dom.css({"background": rptObj.theme.warning[0]}),
+  #tb1[1].cell(1).dom.css({"background": page.theme.warning[0]})
+  tb1[0][1].dom.css({"background": page.theme.warning[0]}),
 
   # Change the component in the cell
   tb1[0][1].val[0].dom.css({'text-decoration': 'underline'}),
@@ -65,7 +63,7 @@ from epyk.core.css.styles.classes import CssStyle
 
 class MyCssBody(CssStyle.Style):
   _attrs = {'background': 'inherit'}
-  _hover = {'background': rptObj.theme.success[0]}
+  _hover = {'background': page.theme.success[0]}
 
   _selectors = {'child': 'tbody td'}
 
@@ -73,8 +71,6 @@ class MyCssBody(CssStyle.Style):
 tb1.style.add_classes.custom(MyCssBody)
 
 # delete row
-rptObj.ui.button("Remove").click([
+page.ui.button("Remove").click([
   tb1[0].dom.remove()
 ])
-
-rptObj.outs.html_file(path=config.OUTPUT_PATHS_LOCALS_HTML, name=config.OUT_FILENAME)
