@@ -6,7 +6,12 @@ import config
 
 from flask import render_template_string
 from flask import Flask
+from flask import request
+
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 cur_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(cur_dir, "..", "..", "epyk-ui"))
@@ -43,6 +48,17 @@ def home():
   for pyfile in os.listdir("reports"):
     list.add_item(rptObj.ui.link(pyfile, url="/report/%s" % pyfile[:-3]).css({"padding": '2px 0', 'display': 'block'}))
   return rptObj.outs.html()
+
+
+@app.route('/viewer', methods=['POST'])
+def viewer():
+  print(request.data)
+  print(request.get_json())
+  print(request.form.to_dict())
+  print(request.args.to_dict())
+  return json.dumps({"message": '''
+# New title 2
+'''})
 
 
 @app.route('/data_plotly_geo', methods=['POST'])
