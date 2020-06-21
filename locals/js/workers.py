@@ -29,8 +29,8 @@ self.addEventListener('message', function(e) {
 div = page.ui.div()
 
 page.ui.button("Say HI").click([w.postMessage({'cmd': 'start', 'msg': 'Hi'})])
-page.ui.button("Send unknown command").click([w.postMessage({'cmd': 'stop', 'msg': 'Bye'})])
-page.ui.button("Stop worker").click([w.terminate()])
+page.ui.button("Send unknown command").click([w.postMessage({'cmd': 'test', 'msg': 'test'})])
+page.ui.button("Stop worker").click([w.postMessage({'cmd': 'stop', 'msg': 'Bye'})])
 
 
 w.on('message', [div.build(w.message)])
