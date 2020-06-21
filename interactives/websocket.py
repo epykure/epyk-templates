@@ -32,7 +32,7 @@ localhost_pem = pathlib.Path(__file__).with_name("localhost.pem")
 
 
 start_server = websockets.serve(
-  time, "localhost", 8765
+  hello, "localhost", 8765
 )
 
 asyncio.get_event_loop().run_until_complete(start_server)
