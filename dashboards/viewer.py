@@ -17,11 +17,11 @@ page.theme = Grey()
 page.ui.navigation.shortcut([
   page.ui.layouts.hr(),
   page.ui.titles.title("From to"),
-  #page.ui.date(width=(100, "px")),
+  page.ui.date(width=(100, "px"), htmlCode='date'),
   page.ui.layouts.hr(),
   page.ui.titles.title("Desks"),
-  page.ui.button("FX Options", htmlCode="button", icon="fab fa-angular"),
-  page.ui.button("FX Options", icon="fab fa-angular"),
+  page.ui.button("Data 1", htmlCode="button", icon="fab fa-angular"),
+  page.ui.button("Data 2", icon="fab fa-angular"),
 
   #page.ui.icons.awesome("fab fa-angular").css({"right": '10px', 'position': 'absolute'}),
   page.ui.row([
@@ -32,8 +32,9 @@ page.ui.navigation.shortcut([
 
 page.body.style.css.margin_left = 110
 
-with open(r".\interactives\data\md_file.md") as f:
-  content = f.read()
+content = ""
+#with open(r".\interactives\data\md_file.md") as f:
+#  content = f.read()
 
 page.ui.text(content, htmlCode="text", options={"markdown": True})
 
@@ -42,10 +43,9 @@ This is a disclaimer for mgrherhrh
 ''')
 
 page.components['button'].click([
-  page.js.console.log("This is atest"),
-  page.components['text'].build('''
-# This is a Title
-''')
+  page.js.post("http://127.0.0.1:8080/viewer", datamap([page.components['date']], attrs={"button": 'Data 1'})).onSuccess([
+    page.components['text'].build(events.data["message"])
+  ]),
 ])
 
 footer.style.css.padding_left = 110

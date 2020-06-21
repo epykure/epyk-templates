@@ -52,13 +52,12 @@ def home():
 
 @app.route('/viewer', methods=['POST'])
 def viewer():
-  print(request.data)
-  print(request.get_json())
-  print(request.form.to_dict())
-  print(request.args.to_dict())
+  data = request.get_json()
   return json.dumps({"message": '''
-# New title 2
-'''})
+# Date %(date)s
+
+For the data: %(button)s
+''' % data})
 
 
 @app.route('/data_plotly_geo', methods=['POST'])
