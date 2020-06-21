@@ -17,8 +17,8 @@ PyRest.TMP_PATH = config.OUTPUT_TEMPS
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = None # 'app_react' #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
-category = None
+filter = None # "" # 'app_react' #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
+category = None # 'angular'
 
 SUCCESS = 0
 FAILURE = 0
@@ -72,7 +72,7 @@ if category is None or category == 'locals':
       process_folder(folder, results, main_folder='locals')
 
 # Run other type of reports
-for cat in ['websites', 'dashboards', 'web']:
+for cat in ['websites', 'dashboards']:
   if category is None or category == cat:
     if filter is None:
       print("")
@@ -86,6 +86,23 @@ for cat in ['interactives']:
       print("processing - %s" % cat)
     process_folder("reports", results, main_folder=cat, out_path=config.OUTPUT_PATHS_LOCALS_INTERACTIVE)
 
+if category == 'angular':
+  for cat in ['angular']:
+    script_path = os.path.join("web", cat)
+    mod = __import__("web.%s.exports" % cat, fromlist=['object'])
+
+    #
+    if config.ANGULAR_APP_PATH is not None:
+      out_path = config.ANGULAR_APP_PATH
+      folder, auto_route = 'src/app/apps', True
+    else:
+      out_path = config.OUTPUT_PATHS_LOCALS_TS
+      folder, auto_route = cat, False
+    for script in mod.REPORTS:
+      script_name = script[-1][:-3]
+      py_script = __import__("%s.%s" % (".".join(script[:-1]), script_name), fromlist=['object'])
+
+      py_script.page.outs.publish(server="angular", app_path=out_path, selector=script_name, target_folder=folder, auto_route=auto_route)
 
 # if category is None or category == 'locals':
 # process_folder('websites', results)

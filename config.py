@@ -23,6 +23,8 @@ SERVER_DATA_PORT = 8080
 SERVER_SOCKET_HOST = "127.0.0.1"
 SERVER_SOCKET_PORT = 5000
 
+ANGULAR_APP_PATH = None
+
 #
 FAVICON_URL = r"https://raw.githubusercontent.com/epykure/epyk-templates/master/static/images/logo.ico"
 IMG_PATH = "https://raw.githubusercontent.com/epykure/epyk-ui/master/epyk/static/images"
