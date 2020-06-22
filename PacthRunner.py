@@ -6,7 +6,6 @@ import config
 import traceback
 
 cur_dir = os.path.dirname(os.path.abspath(__file__))
-sys.path.append(os.path.join(cur_dir, "..", "epyk-ui"))
 
 
 from epyk.core.js import Imports
@@ -17,8 +16,8 @@ PyRest.TMP_PATH = config.OUTPUT_TEMPS
 Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
-filter = None # "" # 'app_react' #  "data_" # d3_script 'list_' #'chartjs_ list tabulator'
-category = None # 'angular'
+filter = None #
+category = None # 'angular, vue'
 
 SUCCESS = 0
 FAILURE = 0
@@ -86,23 +85,38 @@ for cat in ['interactives']:
       print("processing - %s" % cat)
     process_folder("reports", results, main_folder=cat, out_path=config.OUTPUT_PATHS_LOCALS_INTERACTIVE)
 
-if category == 'angular':
+if category in ['angular', 'vue']:
+
+  web_frameworks = {
+    'angular': {
+      'out_path': config.ANGULAR_APP_PATH,
+      'folder': 'src/app/apps',
+      'auto_route': True},
+    'vue': {
+      'out_path': config.VUE_APP_PATH,
+      'folder': 'src/views',
+      'auto_route': True},
+    'local': {
+      'out_path': config.OUTPUT_PATHS_LOCALS_TS,
+      'folder': category,
+      'auto_route': False},
+  }
+
   for cat in ['angular']:
     script_path = os.path.join("web", cat)
     mod = __import__("web.%s.exports" % cat, fromlist=['object'])
 
     #
-    if config.ANGULAR_APP_PATH is not None:
-      out_path = config.ANGULAR_APP_PATH
-      folder, auto_route = 'src/app/apps', True
+    if web_frameworks[category]['out_path'] is not None:
+      paths = web_frameworks[category]
     else:
-      out_path = config.OUTPUT_PATHS_LOCALS_TS
-      folder, auto_route = cat, False
+      paths = web_frameworks['local']
+
     for script in mod.REPORTS:
       script_name = script[-1][:-3]
       py_script = __import__("%s.%s" % (".".join(script[:-1]), script_name), fromlist=['object'])
-
-      py_script.page.outs.publish(server="angular", app_path=out_path, selector=script_name, target_folder=folder, auto_route=auto_route)
+      py_script.page.outs.publish(server=category, app_path=paths['out_path'], selector=script_name,
+                                  target_folder=paths['folder'], auto_route=paths['auto_route'])
 
 # if category is None or category == 'locals':
 # process_folder('websites', results)
