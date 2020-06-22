@@ -1,0 +1,3 @@
+REPORTS = [
+	("dashboards", "viewer.py")
+]

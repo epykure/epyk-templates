@@ -23,7 +23,9 @@ SERVER_DATA_PORT = 8080
 SERVER_SOCKET_HOST = "127.0.0.1"
 SERVER_SOCKET_PORT = 5000
 
-ANGULAR_APP_PATH = None
+# The path to the target applications
+ANGULAR_APP_PATH = None # r"C:\Angular\testApp"
+VUE_APP_PATH = None # r"C:\Vue\vue-apps-new"
 
 #
 FAVICON_URL = r"https://raw.githubusercontent.com/epykure/epyk-templates/master/static/images/logo.ico"
