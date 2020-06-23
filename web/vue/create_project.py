@@ -17,6 +17,9 @@ if __name__ == '__main__':
   node_app = vue.VueJs(r"C:\VueJs")
   vue_name = "vue-apps-new"
 
+  # Install Vue CLI
+  # node_app.clis.vue()
+
   # Create the vue application from the NodeJs server
   #node_app.create(vue_name)
 
