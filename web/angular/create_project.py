@@ -14,7 +14,10 @@ if __name__ == '__main__':
   from epyk.web import angular
 
   node_app = angular.Angular(r"C:\Angular")
-  angular_name = "angular-apps2"
+  angular_name = "angular-apps"
+
+  # Install Angular CLI
+  # node_app.clis.angular()
 
   # Create the Angular App
   #node_app.create(angular_name)
