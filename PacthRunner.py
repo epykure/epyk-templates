@@ -47,7 +47,10 @@ def process_folder(folder, results, main_folder=None, out_path=config.OUTPUT_PAT
       script_name = file[:-3]
       try:
         if main_folder is not None:
-          config.OUT_FILENAME = "%s_%s_%s" % (main_folder, folder, script_name)
+          if main_folder == 'interactives':
+            config.OUT_FILENAME = script_name
+          else:
+            config.OUT_FILENAME = "%s_%s_%s" % (main_folder, folder, script_name)
           mod = __import__("%s.%s.%s" % (main_folder, folder, script_name), fromlist=['object'])
         else:
           config.OUT_FILENAME = "%s_%s" % (folder, script_name)

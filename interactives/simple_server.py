@@ -161,7 +161,14 @@ def data_c3():
 @app.route('/report/<file_name>')
 def report(file_name):
   html_content = open(os.path.join('front_end', '%s.html' % file_name)).read()
-  return render_template_string(html_content, title='Projects')
+  return html_content
+  #return render_template_string(html_content, title='Projects')
+
+
+@app.route('/select', methods=['POST'])
+def select():
+  print(request.form)
+  return json.dumps([{"value": 'test'}])
 
 
 if __name__ == '__main__':
