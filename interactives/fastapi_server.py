@@ -57,14 +57,17 @@ async def file(request: Request):
   import json
 
   data = await request.form()
-  content = []
-  for pyFile in data.values():
-    print(pyFile.filename)
-    content = json.loads(await pyFile.read())
-    print(content)
-    print(list(content[0].keys()))
-    return {"cols": content}
-
+  print(data)
+  #data2 = await request.json()
+  #print(data2)
+  # content = []
+  # for pyFile in data.values():
+  #   print(pyFile.filename)
+  #   content = json.loads(await pyFile.read())
+  #   print(content)
+  #   print(list(content[0].keys()))
+  #   return {"cols": content}
+  return {}
 
 @app.post("/data")
 async def data(request: Request):
