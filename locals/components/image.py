@@ -55,6 +55,11 @@ page.ui.images.emoji(page.symbols.smileys.DISAPPOINTED_FACE)
 a = page.ui.images.animated("epykIcon.PNG", text="This is a comment", title="Title", url="#", path=config.IMG_PATH)
 a.style.css.borders()
 
+img = page.ui.img("epykIcon.PNG", path=config.IMG_PATH, align="right", width=(200, "px"))
+img.style.css.border = "1px solid black"
+
+page.ui.layouts.br(2)
+
 # Add multiple badge on the same row
 page.ui.images.badge("306", url="google", icon="fas fa-align-center", options={'badge_css': {'color': 'white', "background": 'red'}})
 page.ui.images.badge("306", url="google", icon="fas fa-align-center", options={'badge_css': {'color': 'white', "background": 'orange'}})
