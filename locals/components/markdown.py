@@ -7,7 +7,18 @@ page = Report()
 page.headers.dev()
 
 
-md = page.ui.rich.markdown()
+md = page.ui.rich.markdown('''
+# H1
+## H2
+### value
+#### rrr
+##### H5
+###### H6
+value
+
+
+''')
+md.tooltips({"value": 'Ok'})
 
 page.ui.button("Refresh").click(
   md.build("""
@@ -15,10 +26,10 @@ page.ui.button("Refresh").click(
 ## H2
 ### H3
 #### H4
-##### H5
+##### value
 ###### H6
 
-Alternatively, for H1 and H2, an underline-ish style:
+Alternatively, for H1 value H2, an underline-ish style:
 
 Alt-H1
 ======
@@ -39,7 +50,7 @@ alert(s);
 ```python
 def function(value):
   print('Ok')
-  return "Test"
+  return "value"
 ```
 """)
 )
