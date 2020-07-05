@@ -1,5 +1,6 @@
 
 from epyk.core.Page import Report
+from epyk.core.data import components
 
 
 # Create a basic report object
@@ -21,7 +22,7 @@ value
 md.tooltips({"value": 'Ok'})
 
 page.ui.button("Refresh").click(
-  md.build("""
+  md.build(components.markdown("""
 # H1
 ## H2
 ### H3
@@ -52,5 +53,11 @@ def function(value):
   print('Ok')
   return "value"
 ```
-""")
+""", {"value": 'Ok', 'youtube': 'test'}))
 )
+
+
+md2 = page.ui.rich.markdown('''
+##### value
+''')
+md2.tooltips({"value": 'Ok2'})
