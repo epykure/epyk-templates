@@ -28,6 +28,7 @@ july = page.ui.calendars.days(7, content, align="center", options={"colors": {"t
 july.task('task1', start="2020-07-10", capacity=[50, 30, 10, 80])
 july.task('task3', start="2020-07-20", capacity=[50, 40, 10])
 
+july.weekly("task6", start="2020-07-02", capacity=3, frequency=2, options={'unit': 8})
 
 page.ui.calendars.legend(july.tasks)
 
@@ -39,7 +40,20 @@ august.style.css.margin = "0 5px"
 #page.ui.row([july, august], position="top")
 
 page.ui.titles.headline("Montly")
-monthly = page.ui.calendars.months(align="center")
+
+records = {
+  1: {"Project 1": 12, "Project 2": 30},
+  2: {"Project 1": 12, "Project 2": 30},
+  3: {"Project 1": 42, "Project 2": 30},
+  4: {"Project 1": 15, "Project 2": 30},
+  5: {"Project 1": 12, "Project 2": 30},
+  6: {"Project 1": 12, "Project 2": 30},
+  7: {"Project 1": 12, "Project 2": 30},
+}
+
+monthly = page.ui.calendars.months(content=records, align="center")
+page.ui.calendars.legend(monthly.tasks)
+
 monthly.style.css.margin_top = 10
 
 update = page.ui.rich.update()

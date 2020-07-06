@@ -23,6 +23,7 @@ page.ui.layouts.new_line()
 # Avatar with a status
 page.ui.images.avatar("Epyk", status='out')
 
+
 # Avatar with an image
 page.ui.images.avatar(image="epykIcon.PNG", path=config.IMG_PATH, status=False)
 
