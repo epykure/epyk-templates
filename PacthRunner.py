@@ -6,6 +6,7 @@ import config
 import traceback
 
 cur_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(os.path.join(cur_dir, "..", "epyk-ui"))
 
 
 from epyk.core.js import Imports
@@ -70,6 +71,9 @@ def process_folder(folder, results, main_folder=None, out_path=config.OUTPUT_PAT
 results = []
 if category is None or category == 'locals':
   for folder in os.listdir(os.path.join(cur_dir, 'locals')):
+    if folder == "webscrapping" and filter is None:
+      continue
+
     if os.path.isdir(os.path.join(cur_dir, 'locals', folder)) and folder != '__pycache__':
       process_folder(folder, results, main_folder='locals')
 
