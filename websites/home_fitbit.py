@@ -10,6 +10,10 @@ from epyk.core.Page import Report
 page = Report()
 page.headers.favicon("https://www.fitbit.com/favicon.ico")
 page.headers.title("Epyk (Fitbit)")
+# <img src="/content/dam/fitbit/logo/FITBIT%20LOGO%20FOR%20HEADER.svg" alt="">
+
+nav = page.ui.navbar(logo="https://www.fitbit.com/content/dam/fitbit/logo/FITBIT%20LOGO%20FOR%20HEADER.svg")
+nav.no_background()
 
 img_link = "https://www.fitbit.com/content/dam/fitbit/global/marketing-pages/home/tablet/4thofjuly-hero-tablet.jpg/jcr:content/renditions/4thofjuly-hero-tablet-1x.jpg"
 
