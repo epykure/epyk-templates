@@ -35,14 +35,22 @@ def process_folder(folder, results, main_folder=None, out_path=config.OUTPUT_PAT
 
   start, count_scripts, count_run_scripts = time.time(), 0, 0
   if main_folder is not None:
-    script_path = os.path.join(cur_dir, main_folder, folder)
+    if isinstance(main_folder, list):
+      script_path = os.path.join(cur_dir, os.path.join(*main_folder), folder)
+      main_folder = ".".join(main_folder)
+    else:
+      script_path = os.path.join(cur_dir, main_folder, folder)
   else:
     script_path = os.path.join(cur_dir, folder)
   for file in os.listdir(script_path):
     if file.endswith(".py") and file != "__init__.py":
       count_scripts += 1
       if filter is not None and not filter in file:
-        continue
+        if main_folder is None:
+          continue
+
+        if main_folder is not None and not filter in folder:
+          continue
 
       script_name = file[:-3]
       try:
@@ -77,12 +85,25 @@ if category is None or category == 'locals':
       process_folder(folder, results, main_folder='locals')
 
 # Run other type of reports
-for cat in ['websites', 'dashboards']:
+for cat in ['dashboards']:
   if category is None or category == cat:
     if filter is None:
       print("")
       print("processing - %s" % cat)
     process_folder(cat, results)
+
+
+# Run other type of reports
+for cat in ['websites']:
+  if category is None or category == cat:
+    if filter is None:
+      print("")
+      print("processing - %s" % cat)
+    for folder in os.listdir(os.path.join(cur_dir, 'websites', 'templates')):
+
+      if os.path.isdir(os.path.join(cur_dir, 'websites', 'templates', folder)) and folder != '__pycache__':
+        process_folder(folder, results, main_folder=['websites', 'templates'])
+
 
 for cat in ['interactives']:
   if category is None or category == cat:
@@ -90,6 +111,7 @@ for cat in ['interactives']:
       print("")
       print("processing - %s" % cat)
     process_folder("reports", results, main_folder=cat, out_path=config.OUTPUT_PATHS_LOCALS_INTERACTIVE)
+
 
 if category in ['angular', 'vue']:
 
