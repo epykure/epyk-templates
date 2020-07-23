@@ -25,6 +25,22 @@ XBOX = "RE4mHqi?ver=025d&q=90&m=8&h=600&w=1600&b=%23FFFFFFFF&l=f&x=0&y=198&s=212
 
 REMOTE = "RE4vk5U?ver=acc9&q=60&m=6&h=600&w=1600&b=%23FFFFFFFF&l=f&o=t&aim=true"
 
+# https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE4ze1O?ver=ea69&q=90&m=6&h=201&w=358&b=%23FFFFFFFF&l=f&o=t&aim=true
+VIGNETS = [
+  {'title': "Microsoft Teams",
+  'content': "Chat, meet, call and collaborate.",
+  'image': ITEM_PATH + 'RE4wE7t?ver=969a&q=90&m=6&h=201&w=358&b=%23FFFFFFFF&l=f&o=t&x=202&y=208&aim=true'},
+  {'title': "This is your 365",
+  'content': "Discover what’s possible every day with Microsoft 365.",
+  'image': ITEM_PATH + 'RE4tj4A?ver=592d&q=90&m=6&h=201&w=358&b=%23FFFFFFFF&l=f&o=t&aim=true'},
+  {'title': "Xbox Game Pass Ultimate",
+  'content': "Xbox Live Gold and over 100 high-quality console and PC games. Play together with friends and discover your next favourite game.",
+  'image': ITEM_PATH + 'RE4dUlg?ver=c684&q=90&m=6&h=201&w=358&b=%23FFFFFFFF&l=f&o=t&aim=true'},
+  {'title': "Surface Laptop 3",
+  'content': "Express yourself powerfully with a thin, light, and elegant design, faster performance and up to 11.5 hours battery life.",
+  'image': ITEM_PATH + 'RE4ze1O?ver=ea69&q=90&m=6&h=201&w=358&b=%23FFFFFFFF&l=f&o=t&aim=true'},
+]
+
 DISCLAIMER_TEXT = "© Microsoft 2020"
 
 DISCLAIMER_LINKS = [

@@ -23,9 +23,15 @@ for item in microsoft_data.ITEMS:
 row = page.ui.row(row)
 row.style.css.margin = "20px auto"
 
+vignets = []
+for v in microsoft_data.VIGNETS:
+  vignets.append(page.ui.vignets.image(title=v['title'], image=v['image'], content=page.py.encode_html(v['content']), render="col"))
+  vignets[-1].add(page.ui.link("Join now >").css({"display": 'block', 'text-align': 'left', 'padding': '10px 15px 0 15px'}))
+row = page.ui.row(vignets)
+
 image = page.ui.images.background("%s%s" % (microsoft_data.ITEM_PATH, microsoft_data.XBOX), height=(500, "px"))
 
-page.ui.title("For Work")
+page.ui.title("For Work").css({"margin": '20px 5% 0 5%'})
 
 page.ui.vignets.background("%s%s" % (microsoft_data.ITEM_PATH, microsoft_data.REMOTE))
 
