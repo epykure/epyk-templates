@@ -6,6 +6,7 @@ import config
 import traceback
 
 cur_dir = os.path.dirname(os.path.abspath(__file__))
+# sys.path.append(os.path.join(cur_dir, "..", "epyk-ui"))
 
 
 from epyk.core.js import Imports
@@ -17,7 +18,7 @@ Imports.STATIC_PATH = "./../../static"
 
 # To reduce the scope of filters to generate
 filter = None #
-category = None # 'angular, vue'
+category = 'slides' # 'angular, vue'
 
 SUCCESS = 0
 FAILURE = 0
@@ -85,7 +86,7 @@ if category is None or category == 'locals':
       process_folder(folder, results, main_folder='locals')
 
 # Run other type of reports
-for cat in ['dashboards']:
+for cat in ['dashboards', 'slides']:
   if category is None or category == cat:
     if filter is None:
       print("")
@@ -153,7 +154,7 @@ if category in ['angular', 'vue']:
 # process_folder('web', results)
 
 
-if filter is not None:
+if filter is not None or category is not None:
   if filter is None:
     print("")
     print("Reports location:")
