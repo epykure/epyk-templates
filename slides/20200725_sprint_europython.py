@@ -15,7 +15,10 @@ data_rest = page.py.requests.csv(data_urls.PLOTLY_APPLE_PRICES)
 
 page.body.style.globals.size = 18
 
+contents = page.ui.contents("Contents", top=50, right=50)
+
 slides = page.ui.vignets.slides(start=0, options={"timer": 2})
+
 
 slides.style.css.display = "block"
 
@@ -25,8 +28,12 @@ slides.add_slide("Epyk - A Web Studio library", [
   page.ui.img("epyklogo_whole_big.png?raw=true", path="https://github.com/epykure/epyk-ui/blob/master/epyk/static/images/", width=(300, 'px')),
 ])
 
-slides.add_slide("Epyk - Architecture", [
+slides.add_slide("Epyk - Images", [
+  page.ui.images.carrousel(["1-1-hubble-z3-black-gray-family-img.jpg", "1-4-hubble-y2-cloud-blue-closeup-img.jpg", "1-5-hubble-z3-gray-closeup-img.jpg"],
+                           path="https://images.samsung.com/mk/smartphones/galaxy-s20/buy/carousel/pc", options={"arrows": True, 'points': False})
+])
 
+slides.add_slide("Epyk - Architecture", [
     page.ui.img("architecture.PNG?raw=true", path="https://github.com/epykure/epyk-ui/blob/master/epyk/static/images", width=(500, 'px'))
 ])
 
@@ -104,7 +111,7 @@ slides.add_slide("Epyk - Analytics", [
 data_rest = page.py.requests.csv(data_urls.PLOTLY_3D)
 #
 slides.add_slide("Epyk - Plotly", [
-  page.ui._3d.plotly.ribbon(data_rest, y_columns=["y1"], x_axis='x1', z_axis="z1", width=(400, 'px'))
+  page.ui._3d.plotly.ribbon(data_rest, y_columns=["y1"], x_axis='x1', z_axis="z1", width=(600, 'px'))
 ])
 
 # # -------------------------
@@ -159,10 +166,10 @@ slides.add_slide("Epyk - Where to find it ?", [
   ])
 ])
 
-
+#page.ui.button("Click").click([
+#  slides.dom.goTo(5)
+#])
 #
-# page.body.onReady([
-#   contents.build([
-#     {"anchor": '#test', 'level': 1, 'text': 'Overview'}
-#   ])
-# ])
+page.body.onReady([
+  contents.build([{"anchor": '#test', 'level': 1, 'text': 'Overview'}])
+])
