@@ -170,6 +170,6 @@ slides.add_slide("Epyk - Where to find it ?", [
 #  slides.dom.goTo(5)
 #])
 #
-page.body.onReady([
-  contents.build([{"anchor": '#test', 'level': 1, 'text': 'Overview'}])
-])
+# page.body.onReady([
+#   contents.build([{"anchor": '#test', 'level': 1, 'text': 'Overview'}])
+# ])
