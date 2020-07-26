@@ -43,6 +43,7 @@ Thumbs.db
 # Ignore test outs results
 outs/html/*
 outs/ts/*
+outs/slides/*
 *interactives/front_end*
 
 # Ignore build results
