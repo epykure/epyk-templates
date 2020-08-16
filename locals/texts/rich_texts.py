@@ -46,7 +46,7 @@ page.ui.title("test print")
 stars = page.ui.rich.stars(3, label="test", helper="This is a helper")
 stars.click()
 
-page.ui.rich.countdown("2020-09-24")
+page.ui.rich.countdown(day=24, month=9, year=2020)
 page.ui.rich.update("Last update: ")
 
 page.ui.button("Click").click([

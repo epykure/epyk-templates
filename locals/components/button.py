@@ -9,6 +9,7 @@ from epyk.core.js.packages import JsFontAwesome
 page = Report()
 page.headers.dev()
 
+page.ui.buttons.absolute("Click Me")
 # page.ui.lists.list(["A", "B"])
 
 #g = page.ui.layouts.grid([t, t2, t3])
