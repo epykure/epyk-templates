@@ -10,6 +10,10 @@ from flask import request
 
 from flask_cors import CORS
 
+#
+from interactives.links.RandServices import ResRand
+
+
 app = Flask(__name__)
 CORS(app)
 
@@ -169,6 +173,14 @@ def report(file_name):
 def select():
   print(request.form)
   return json.dumps([{"value": 'test'}])
+
+
+@app.route('/%s' % ResRand.end_point, methods=['POST'])
+def randoms():
+  data = ResRand(request.get_json())
+  random.seed(data.s.seed)
+  data.random = [{'x': i, 'y': random.random()} for i in range(data.s.n)]
+  return data.response()
 
 
 if __name__ == '__main__':
