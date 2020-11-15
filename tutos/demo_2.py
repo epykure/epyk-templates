@@ -1,7 +1,3 @@
-"""
-
-"""
-
 from epyk.core.css.themes import ThemeBlue
 from epyk.core.js import std
 from epyk_studio.core.Page import Report
