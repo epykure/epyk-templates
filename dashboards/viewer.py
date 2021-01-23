@@ -28,7 +28,7 @@ page.ui.navigation.shortcut([
     page.ui.icons.awesome("far fa-file-pdf"),
     page.ui.icons.awesome("fas fa-at"),
   ]).css({"bottom": '10px', 'position': 'absolute', 'display': 'block'})
-], size=(100, 'px'), options={"position": 'left'}).add_logo("favicon.ico", path="https://www.credit-agricole.fr")
+], size=(100, 'px'), options={"position": 'left'})
 
 page.body.style.css.margin_left = 110
 
